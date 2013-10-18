@@ -12,3 +12,5 @@ tab = xtable(d[d$School=="UCSB", ])
 print(tab, file="UCSBstudentcommittees.tex", include.rownames=FALSE)
 
 
+# ISU non-STAT committees
+d[d$School=="ISU" & d$Department != "STAT",]
