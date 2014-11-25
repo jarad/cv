@@ -1,8 +1,13 @@
 library(xtable)
 
 d = read.csv("studentcommittees.csv")
+d$School = factor(d$School, levels=c("ISU","UCSB"))
+d$Chair  = factor(d$Chair, levels=c("Chair","Co-chair",""))
 
-d = d[order(d$School, d$Completed, d$Degree, d$Department, decreasing=TRUE),]
+d_levels = levels(d$Department)
+d$Department = factor(d$Department, levels=c("STAT",d_levels[-which(d_levels=="STAT")]))
+
+d = d[order(d$School, d$Degree, d$Completed, d$Chair, d$Department),]
 
 #tab = xtable(d[d$School=="ISU", ], 
 #      caption="Graduate student committees at ISU",
