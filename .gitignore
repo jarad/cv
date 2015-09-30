@@ -31,3 +31,5 @@
 derivative/
 
 
+.Rproj.user
+*.Rproj
