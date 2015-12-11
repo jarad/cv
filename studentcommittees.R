@@ -32,6 +32,13 @@ print(tab, file="studentcommittees.tex",
       include.rownames=FALSE,
       table.placement="h")
 
+# # Chair or co-chair
+# tab = xtable(subset(d, Chair %in% c('Chair','Co-chair')), 
+#       caption="Students I have previously or am currently advising or co-advising.",
+#       label="tab:studentcommittees")
+# print(tab, file="advisees.tex", 
+#       include.rownames=FALSE,
+#       table.placement="h")
 
 # ISU non-STAT committees
 #d[d$School=="ISU" & d$Department != "STAT",]
