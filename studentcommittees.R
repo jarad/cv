@@ -43,6 +43,3 @@ print(tab, file="studentcommittees.tex",
 # ISU non-STAT committees
 #d[d$School=="ISU" & d$Department != "STAT",]
 
-
-q("no")
-
