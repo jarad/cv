@@ -35,11 +35,12 @@ d = d[order(d$School, d$Degree, d$Completed, d$Chair, d$Department),]
 
 # Chair or co-chair
 tab = xtable(subset(d, Chair %in% c('Chair','Co-chair')), 
-      caption="Students I have previously or am currently advising or co-advising.",
+      caption="Students Advised",
       label="tab:advisees")
 print(tab, file="advisees.tex", 
       include.rownames=FALSE,
-      table.placement="h")
+      table.placement="h",
+      caption.placement="top")
 
 # Number of committees I am on including Chair and Co-chair
 d$STAT = ifelse(d$Department %in% c('STAT','PSTAT'), 'Yes', 'No')
@@ -48,12 +49,13 @@ s = ddply(d,
           .(In_progress,Degree,STAT), 
           summarize,
           n = length(Student))
-tab = xtable(s, 
-             caption='Previous and current student committees I am serving on.',
+tab = xtable(s[c(2,3,1,4)], 
+             caption='Student Committees',
              label="tab:committees")
 print(tab, file="committees.tex", 
       include.rownames=FALSE,
-      table.placement="h")
+      table.placement="h",
+      caption.placement="top")
 
 
 # ISU non-STAT committees
