@@ -1,14 +1,17 @@
 library(plyr)
+library(dplyr)
 library(xtable)
 
-d = read.csv("studentcommittees.csv")
-d$School = factor(d$School, levels=c("ISU","UCSB"))
-d$Chair  = factor(d$Chair, levels=c("Chair","Co-chair",""))
+d = read.csv("studentcommittees.csv") %>%
+  mutate(School = factor(School, levels=c("ISU","UCSB")),
+         Chair  = factor(Chair, levels=c("Chair","Co-chair","")))
 
 d_levels = levels(d$Department)
 d$Department = factor(d$Department, levels=c("STAT",d_levels[-which(d_levels=="STAT")]))
 
-d = d[order(d$School, d$Degree, d$Completed, d$Chair, d$Department),]
+#d = d[order(d$School, d$Degree, d$Completed, d$Chair, d$Department),]
+
+d = d %>% arrange(School, desc(Completed), Degree, Chair, Department)
 
 #tab = xtable(d[d$School=="ISU", ], 
 #      caption="Graduate student committees at ISU",
@@ -34,7 +37,9 @@ d = d[order(d$School, d$Degree, d$Completed, d$Chair, d$Department),]
 #       table.placement="h")
 
 # Chair or co-chair
-tab = xtable(subset(d, Chair %in% c('Chair','Co-chair')), 
+tab = xtable(d %>% 
+               filter(Chair %in% c('Chair','Co-chair')) %>%
+               arrange(School, desc(Completed), Degree, Chair), 
       caption="Students Advised",
       label="tab:advisees")
 print(tab, file="advisees.tex", 
@@ -43,13 +48,19 @@ print(tab, file="advisees.tex",
       caption.placement="top")
 
 # Number of committees I am on including Chair and Co-chair
-d$STAT = ifelse(d$Department %in% c('STAT','PSTAT'), 'Yes', 'No')
-d$In_progress = ifelse(d$Completed == 'In progress', 'Yes', 'No')
+d = d %>%
+  mutate(STAT = ifelse(d$Department %in% c('STAT','PSTAT'), 'Yes', 'No'),
+         In_progress = ifelse(d$Completed == 'In progress', 'Yes', 'No'))
+
 s = ddply(d, 
           .(In_progress,Degree,STAT), 
           summarize,
           n = length(Student))
-tab = xtable(s[c(2,3,1,4)], 
+
+
+tab = xtable(s %>%
+               select(In_progress, Degree, STAT, n) %>%
+               arrange(STAT, Degree, In_progress), 
              caption='Student Committees',
              label="tab:committees")
 print(tab, file="committees.tex", 
