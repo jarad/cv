@@ -63,8 +63,18 @@
 
 %%===========================================================================%%
 
-%\newcommand{\sinceappt}{\emph{-------------------------- above are since appointment at Iowa State University ------------------------------}}
+\providecommand{\includesinceappt}{0}
+\providecommand{\includesubmitted}{1}
+\providecommand{\includeinprep}{1}
+
+\if0\includesinceappt
+\newcommand{\sinceappt}{\emph{-------------------------- above are since appointment at Iowa State University ------------------------------}}
+\fi
+
+\if1\includesinceappt
 \newcommand{\sinceappt}{}
+\fi 
+
 \newcommand{\lastpromo}{}
 
 \begin{document}
@@ -146,7 +156,8 @@ Research Engineer & Procter \& Gamble & 1999-2001
 
 \vspace{-0.3in}
 
-\subsection{\bf In progress} \vspace{-0.2in}
+\if1\includeinprep
+\subsection{\bf In preparation} \vspace{-0.2in}
 
 Will Landau* and {\bf Jarad Niemi}. Using a scale mixture of normals to improve a high-dimensional hierarchical model.
 
@@ -165,6 +176,10 @@ Dennis Lock, Dan Nettleton, {\bf Jarad Niemi}, and Casey Oliver*. Using informat
 
 Schulte, L.A., {\bf J. Niemi}, M. J. Helmers and others. Prairie strips improve biodiversity and the delivery of multiple ecosystem services from industrial maize-soybean croplands.
 
+\fi
+
+
+\if1\includesubmitted
 \subsection{\bf Submitted Articles} \vspace{-0.2in}
 
 Will Landau*, {\bf Jarad Niemi}, and Dan Nettleton. Fully Bayesian analysis of RNA-seq counts for the detection of gene expression heterosis. \emph{submitted to the Journal of the American Statistical Association: Applications \& Case Studies}
@@ -172,6 +187,7 @@ Will Landau*, {\bf Jarad Niemi}, and Dan Nettleton. Fully Bayesian analysis of R
 Will Landau* and {\bf Jarad Niemi}. A fully Bayesian strategy for
 high-dimensional hierarchical modeling using
 massively parallel computing. \emph{submitted to the Journal of Computational and Graphical Statistics} (\href{https://arxiv.org/abs/1606.06659}{arXiv})
+\fi
 
 \subsection{\bf Refereed Journal Articles} \vspace{-0.2in}
 
@@ -381,11 +397,11 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 {\small 
 
-``Optimal sequential management decisions for measles outbreaks'' International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011 
+``Optimal sequential management decisions for measles outbreaks'' 10\textsuperscript{th} International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011 
 
 \sinceappt
 
-``Optimal sequential management decisions for influenza outbreaks.'' International Society for Disease Surveillance 9\textsuperscript{th} Annual Conference, 2 Dec 2010 
+``Optimal sequential management decisions for influenza outbreaks.'' 9\textsuperscript{th} International Society for Disease Surveillance 9\textsuperscript{th} Annual Conference, 2 Dec 2010 
 
 ``Mixture likelihood ratio scan statistic for disease outbreak detection.'' 7\textsuperscript{th} Annual Meeting of the International Society for Disease Surveillance, 3 December 2008 
 
@@ -488,6 +504,8 @@ The Duke Chronicle
 
 %---------------------------------------------------------------------------
 
+\newpage
+
 \section{\bf Courses taught}
 \vspace{0.1in}
 
@@ -534,7 +552,6 @@ Winter 2010 & PSTAT 262 & Applied Bayesian Time Series \\
 %Spring 2010 & 596 & Importance sampling on graphical models
 %\end{tabular}
 
-\newpage
 
 {\bf Short courses}
 
@@ -681,7 +698,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  	\end{itemize}
 \end{itemize}
 
-\newpage
+
 \subsection{\bf Student Committees and Advisees}
 
 {\small

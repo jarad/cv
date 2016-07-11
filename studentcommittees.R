@@ -50,17 +50,17 @@ print(tab, file="advisees.tex",
 # Number of committees I am on including Chair and Co-chair
 d = d %>%
   mutate(STAT = ifelse(d$Department %in% c('STAT','PSTAT'), 'Yes', 'No'),
-         In_progress = ifelse(d$Completed == 'In progress', 'Yes', 'No'))
+         Completed = ifelse(d$Completed == 'In progress', 'No', 'Yes'))
 
 s = ddply(d, 
-          .(In_progress,Degree,STAT), 
+          .(Degree, STAT, Completed), 
           summarize,
           n = length(Student))
 
 
 tab = xtable(s %>%
-               select(In_progress, Degree, STAT, n) %>%
-               arrange(STAT, Degree, In_progress), 
+               select(Degree, STAT, Completed, n) %>%
+               arrange(Completed, STAT, Degree), 
              caption='Student Committees',
              label="tab:committees")
 print(tab, file="committees.tex", 
