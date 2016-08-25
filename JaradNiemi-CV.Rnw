@@ -1,0 +1,810 @@
+% cv-us.tex
+% $Id: cv.tex,v 1.5 2010-09-10 20:39:11 niemi Exp $
+%
+% LaTeX Curriculum Vitae Template
+%
+% Copyright (C) 2004-2006 Jason Blevins
+%
+% You may use use this document as a template to create your own CV
+% and you may redistribute the source code freely. No attribution is
+% required in any resulting documents, however, I do ask that you
+% please leave this notice and the above URL in the source code if you
+% choose to redistribute this file.
+%
+% Jason R. Blevins <jrblevin@sdf.lonestar.org>
+% http://jrblevin.freeshell.org
+% Durham, December 12, 2006
+%
+%%---------------------------------------------------------------------------%
+%
+% Notes:
+%
+% * Don't forget to change `pdfauthor' and `keywords' in the \hypersetup
+%   section below.
+%
+% * To create a new page use: 
+%
+% * res.cls includes an \address{} command which can be used up to twice,
+%   but my address is too long for the format it uses.
+%
+% * Alternate documentclass statement to put headings in margin:
+%   \documentclass[margin,line,11pt,final]{res}
+%
+% * Can divide publication/presentation list into subsections by year:
+%   \section{\bf\small\hspace{8mm}2006}
+%
+%%----------------------------------------------------------------------------%
+
+\documentclass[overlapped,line]{res}
+
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex]{hyperref}
+\else
+  \usepackage[hypertex]{hyperref}
+\fi
+
+\usepackage{multicol}
+
+\hypersetup{
+  letterpaper,
+  colorlinks,
+  urlcolor=blue,
+  pdfpagemode=none,
+  pdftitle={Curriculum Vitae},
+  pdfauthor={Jarad B. Niemi},
+  pdfcreator={$ $Id: cv.tex,v 1.5 2010-09-10 20:39:11 niemi Exp $ $},
+  pdfsubject={Curriculum Vitae},
+  pdfkeywords={statistics, Bayesian, systems biology, computational statistics}
+}
+
+\usepackage{caption} 
+\captionsetup[table]{skip=10pt}
+
+%%===========================================================================%%
+
+<<options, results='hide', echo=FALSE, purl=FALSE>>=
+opts_chunk$set(comment=NA, 
+               fig.width=6, fig.height=5, 
+               size='tiny', 
+               out.width='0.8\\textwidth', 
+               fig.align='center', 
+               message=FALSE,
+               echo=FALSE,
+               cache=TRUE)
+options(width=120)
+@
+
+<<libraries, warning=FALSE>>=
+require(dplyr)
+@
+
+\providecommand{\includesinceappt}{1}
+\providecommand{\includesubmitted}{1}
+\providecommand{\includeinprep}{1}
+
+\if1\includesinceappt
+\newcommand{\sinceappt}{\emph{-------------------------- above are since appointment at Iowa State University ------------------------------}}
+\fi
+
+\if0\includesinceappt
+\newcommand{\sinceappt}{}
+\fi 
+
+\newcommand{\lastpromo}{}
+
+\begin{document}
+
+%---------------------------------------------------------------------------
+% Document Specific Customizations
+
+% Make lists without bullets and with no indentation
+\setlength{\leftmargini}{0em}
+\renewcommand{\labelitemi}{}
+
+% Use large bold font for printed name at top of pages
+\renewcommand{\namefont}{\large\textbf}
+
+%---------------------------------------------------------------------------
+
+\name{Jarad B. Niemi}
+
+\begin{resume}
+
+\begin{tabular}{l@{\hskip 2in}l}
+  Department of Statistics     & Office: 515.294.8679 \\
+  Iowa State University                   &  Fax: \hspace{.07in} 515.294.4040 \\
+  Ames, IA 50011-1210        & \\
+  niemi@iastate.edu  & \url{http://jarad.me}
+\end{tabular}
+
+
+
+%---------------------------------------------------------------------------
+
+\section{\bf Education}
+Ph.D. Statistical Science, Duke University, 2009 \\%, GPA 3.8
+Thesis: Bayesian Analysis and Computational Methods for Dynamic Modeling\\
+Advisor: Mike West
+
+M.S. Biostatistics, University of Minnesota, 2005\\%, GPA 3.6
+Thesis: Identifying and Evaluating Contrarian Strategies for NCAA Tournament Pools \\
+Advisor: Brad Carlin
+
+B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Program, GPA 3.5
+
+%Duluth Marshall (College Preparatory) High School, 1995, Salutatorian
+
+%---------------------------------------------------------------------------
+
+\section{\bf Academic Positions}
+
+\begin{tabular}{l@{\qquad}r}
+Assistant Professor & Iowa State University \\
+Statistics & 2011--present \\
+\\
+Assistant Professor & University of California,\ Santa Barbara \\
+Statistics \& Applied Probability & 2009--2011
+\end{tabular}
+
+
+%------------------------------------------------------------------------------
+\section{\bf Employment}
+
+\begin{tabular}{l@{\qquad}l@{\qquad}r}
+Consultant & Boehringer Ingelheim Vetmedica, Inc. & 2012--2013 \\
+ & Natural Resources Research Institute  & 2009--2010 \\
+ & Denver Health & 2008 \\
+ & Purdue Pharma LP & 2007--2008 \\
+Research Assistant & Duke University (Mike West) & 2006--2009 \\
+ & University of Minnesota (Brad Carlin) & 2004--2005 \\
+ & University of Minnesota (Grace Peng) & 2003--2004 \\
+Junior Scientist & University of Minnesota & 2001--2004 \\
+ & Natural Resources Research Institute & 2003 \\
+Research Engineer & Procter \& Gamble & 1999-2001
+\end{tabular}
+
+%%===========================================================================%%
+
+\section{Publications}
+
+* Indicates a student I am advising or co-advising.
+
+\vspace{-0.3in}
+
+<<read_pubs, echo=FALSE, cache=TRUE, cache.extra = tools::md5sum('publications.csv'), message=FALSE>>=
+pubs = readr::read_csv("publications.csv") %>% 
+  arrange(-year)
+@
+
+
+
+\if1\includeinprep
+\subsection{\bf In preparation} \vspace{-0.2in}
+<<in_preparation, dependson="read_pubs", results='asis'>>=
+in_prep_print = function(d) {
+  cat(d$author, ". ",
+      d$title,
+      "\n\n",
+      sep="")
+  return(data.frame(a=1)) # to avoid error
+}
+
+tmp = pubs %>% 
+  filter(status=="in preparation") %>%
+  group_by(title) %>%
+  do(in_prep_print(.))
+@
+\fi
+
+
+\if1\includesubmitted
+\subsection{\bf Submitted Articles} \vspace{-0.2in}
+
+<<submitted, dependson="read_pubs", results='asis'>>=
+under_revision_print = function(d) {
+  cat(d$author, 
+      d$title,
+      "\\emph{under revision for",
+      d$journal,
+      "}",
+      "\n\n")
+  return(data.frame(a=1)) # to avoid error
+}
+
+tmp = pubs %>% 
+  filter(status=="under revision") %>%
+  group_by(title) %>%
+  do(under_revision_print(.))
+
+
+submitted_print = function(d) {
+  cat(d$author, ". ",
+      d$title,
+      " \\emph{submitted to ",
+      d$journal,
+      "}",
+      "\n\n")
+  return(data.frame(a=1)) # to avoid error
+}
+
+tmp = pubs %>% 
+  filter(status=="submitted") %>%
+  group_by(title) %>%
+  do(submitted_print(.))
+@
+\fi
+
+\subsection{\bf Refereed Journal Articles} \vspace{-0.2in}
+
+<<published, dependson="read_pubs", results='asis'>>=
+published_print = function(d) {
+  in_print = !is.na(d$volume)
+  
+  if(!in_print) {
+    end = ""
+  } else {
+    end = d$volume
+  }
+  
+  if (!is.na(d$issue)) end = paste0(end,"(",d$issue,")")
+  if (!is.na(d$number)) end = paste0(end,":",d$number)
+  if (!is.na(d$pages)) end = paste0(end, ", ", d$pages)
+  if (in_print) end = paste0(end,". ")
+  
+  cat(d$author, ". ",
+      "(",d$year,") ",
+      d$title, " ",
+      ifelse(in_print, 
+             paste0("\\emph{",d$journal,"} "), 
+             paste0("\\emph{ to appear in ", d$journal, "} ")),
+      end,
+      ifelse(is.na(d$url), "", paste0("(\\href{",d$url,"}{url}) ")),
+      "\n\n",
+      sep="")
+  return(data.frame(a=1)) # to avoid error
+}
+
+
+tmp = pubs %>% 
+  filter(status=="published", new) %>%
+  group_by(year, title) %>%
+  do(published_print(.))
+
+cat("\n\n\\sinceappt\n\n")
+
+tmp = pubs %>% 
+  filter(status=="published", !new) %>%
+  group_by(year, title) %>%
+  do(published_print(.))
+@
+
+
+\lastpromo
+
+% Matthew Simpson*, {\bf Jarad Niemi}, and Vivekananda Roy. (2016) Interweaving Markov chain Monte Carlo strategies for efficient estimation of dynamic linear models. \emph{to appear in the Journal of Computational and Graphical Statistics} (\href{http://www.tandfonline.com/doi/abs/10.1080/10618600.2015.1105748}{url})
+% 
+% Lisa Schulte, Anna MacDonald, {\bf Jarad Niemi}, and Matthew Helmers. (2016) Prairie strips as a mechanism to promote land sharing by birds in industrial agricultural landscapes. \emph{Agriculture, Ecosystems \& Environment}, 220, 55-63. (\href{http://www.sciencedirect.com/science/article/pii/S016788091630007X}{url})
+% 
+% {\bf Jarad Niemi}, Eric Mittman*, Will Landau*, and Dan Nettleton. (2015) Empirical Bayes analysis of RNA-seq data for detection of gene expression heterosis. \emph{Journal of Agricultural, Biological, and Environmental Statistics}, 20(4), 614-628. (\href{http://link.springer.com/article/10.1007%2Fs13253-015-0230-5}{url})
+% 
+% 
+% 
+% David M. Brenner, Jack Dekker, {\bf Jarad Niemi}, and Lisa Pfiffner. (2015) Medical Oxygen Concentrators for Releasing Seed Dormancy. \emph{Crop Science} 55(5), 2291--2293. (\href{https://dl.sciencesocieties.org/publications/cs/pdfs/0/0/cropsci2014.11.0783}{url})
+% 
+% Robert B. Gramacy, {\bf Jarad Niemi}, and Robin Weiss. (2014) Massively parallel approximate Gaussian process regression. \emph{SIAM/ASA Journal on Uncertainty Quantification}, 2, 568--584. (\href{http://epubs.siam.org/doi/abs/10.1137/130941912}{url})
+% 
+% Daniel Sheinson*, {\bf Jarad Niemi}, and Wendy Meiring. (2014) Comparison of the performance of particle filter algorithms applied to tracking of a disease epidemic. \emph{Journal of Mathematical Biosciences}, 255, 21--32. (\href{http://www.sciencedirect.com/science/article/pii/S0025556414001242}{url})
+% 
+% Jonathan Dess, Jennifer L. Momsen, {\bf Jarad Niemi}, and Lisa Montplaisir. (2014) Student interpretations of phylogenetic trees in an introductory biology course. \emph{CBE - Life Sciences Education}, 13(4), 666-676. (\href{http://www.lifescied.org/content/13/4/666.full?sid=7d54efe2-73cc-4823-b359-0ec4066c4e5b}{url})
+% 
+% Jo Eidsvik, Benjamin A. Shaby, Brian J. Reich, Matthew Wheeler, and {\bf Jarad Niemi}. (2014) Estimation and prediction in spatial models with block composite likelihoods. \emph{Journal of Computational and Graphical Statistics}, 23(2), 295-315. (\href{http://amstat.tandfonline.com/doi/abs/10.1080/10618600.2012.760460}{url})
+% 
+% 
+% Bernie J Daigle Jr, Min K Roh, Linda R Petzold, and {\bf Jarad Niemi}. (2012) Accelerated maximum likelihood parameter estimation for stochastic biochemical systems. \emph{BMC Bioinformatics} 13:68. (\href{http://www.biomedcentral.com/1471-2105/13/68}{url})
+% % (30% concept, 20% writing, 0% coding)
+% 
+% \sinceappt
+% 
+% David Banks, Gauri Datta, Alan Karr, James Lynch, {\bf Jarad Niemi}, and Francisco Vera. (2012) Bayesian CAR models for syndromic surveillance on multiple data streams: theory and practice. \emph{Information Fusion}: 13(2): 105--116. (\href{http://www.sciencedirect.com/science/article/pii/S156625350900092X}{url})
+% % (30% concept, 100% coding)
+% 
+% Mike Ludkovski and {\bf Jarad B. Niemi}. (2010) Optimal dynamic policies for influenza management. \emph{Statistical Communications in Infectious Diseases}: 2(1): 5. (\href{http://www.degruyter.com/view/j/scid.2010.2.1/scid.2010.2.1.1020/scid.2010.2.1.1020.xml}{url})
+% % (50% concept, 40% writing, 10% coding)
+% 
+% {\bf Jarad B. Niemi} and Mike West. (2010) Adaptive mixture modelling Metropolis methods for Bayesian analysis of non-linear state-space models. \emph{Journal of Computational and Graphical Statistics}. 19(2): 260--280. (\href{http://www.tandfonline.com/doi/abs/10.1198/jcgs.2010.08117}{url})
+% % (50% concept, 80% writing, 90% coding)
+% 
+% Quanli Wang, {\bf Jarad Niemi}, Cheemeng Tan, Lingchong You, and Mike West. (2010), Image segmentation and dynamic lineage analysis in single-cell fluorescent microscopy. \emph{Cytometry: Part A} {\bf 77A}(1): 101--110. (\href{http://onlinelibrary.wiley.com/doi/10.1002/cyto.a.20812/full}{url})
+% % (20% concept, 10% writing, 0% coding)
+% 
+% {\bf Jarad Niemi}, Brad Carlin, and Jon Alexander. (2008) Contrarian strategies for NCAA tournament pools: a cure for March madness? \emph{Chance} {\bf 21}(1): 39--46. (\href{http://amstat.tandfonline.com/doi/pdf/10.1080/09332480.2008.10722884}{url})
+% % (50% concept, 80% writing, 90% coding)
+% 
+% 
+% Michael J. Simmons, {\bf Jarad B. Niemi}, Don-Felix Ryzek, Cecile Lamour, Joseph W. Goodman, Wojtek Kraszkiewicz, and Ryan Wolff. (2007) Cytotype regulation by telomeric \emph{P} elements in \emph{Drosophila melanogaster}: Interactions with \emph{P} elements from M' strains. \emph{Genetics} {\bf 176}(4): 1957--1966
+% % (10% concept, 5% writing, 20% lab work)
+% 
+% Cheemeng Tan, Hao Song, {\bf Jarad Niemi}, and Lingchong You. (2007) A synthetic biology challenge: making cells compute. \emph{Molecular BioSystems}  {\bf 3}: 343--353
+% % (33% concept, 33% writing)
+% 
+% Kevin J. Haley, Jeremy R. Stuart, John D. Raymond, {\bf Jarad B. Niemi}, and Michael J. Simmons. (2005) Mutations in the Su(var)2-5 gene impair cytotype-mediated regulation of \emph{P} element activity in \emph{Drosophila melanogaster} through a Maternal Effect. \emph{Genetics} {\bf 171}: 583--595.
+% % (10% concept, 5% writing, 20% lab work)
+% 
+% 
+% {\bf Jarad B. Niemi}, John D. Raymond, Ryan Patrek, and Michael J. Simmons. (2004) Establishment and maintenance of the \emph{P} cytotype associated with telomeric \emph{P} elements in \emph{Drosophila melanogaster}. \emph{Genetics} {\bf 166}: 255--264.
+% % (30% concept, 30% writing, 40% lab work)
+% 
+% Michael J. Simmons, John D. Raymond, {\bf Jarad B. Niemi}, Jeremy R. Stuart, and Peter J. Merriman. (2004) The \emph{P} cytotype in \emph{Drosophila melanogaster}: A maternally transmitted regulatory state of the germ line associated with telomeric \emph{P} elements. \emph{Genetics} {\bf 166}: 243--254.
+% % (10% concept, 5% writing, 20% lab work)
+% 
+% 
+% Michael J. Simmons, Kevin J. Haley, Craig D. Grimes, John D. Raymond, and {\bf Jarad B. Niemi}. (2002) A hobo transgene that encodes the \emph{P} element transposase in \emph{Drosophila melanogaster}: Autoregulation and cytotype control of transposase activity. \emph{Genetics} {\bf 161}: 195--204.
+% % (10% concept, 5% writing, 20% lab work)
+
+
+
+%--------------------------------------------------------------
+
+
+\subsection{\bf Book Chapters} \vspace{-0.2in}
+
+{\bf Jarad B. Niemi} and Gerald J. Niemi. (2015) Linear regression, model averaging, and Bayesian techniques for predicting chemical activities from structure. Ebook chapter on Advances in Mathematical Chemistry and Applications
+%: With applications to chemoinformatics, bioinformatics, drug discovery, and predictive toxicology
+, Editors: Subhash C. Basak, Guillermo Restrepo and Jose Luis Villaveces, Bentham Publishers (\href{http://www.eurekaselect.com/132675/chapter/linear-regression%2C-model-averaging%2C-and-bayesian-techniques-for-predicting-chemical-activities-from-structur}{url})
+% (70% all)
+
+\sinceappt
+
+\subsection{\bf Refereed Conference Proceedings} \vspace{-0.2in}
+
+Ignacio Alvarez*, {\bf Jarad Niemi}, and Matt Simpson*. (2014) Bayesian inference for a covariance matrix. \emph{Proceedings for the Conference on Applied Statistics in Agriculture} (\href{http://newprairiepress.org/agstatconference/2014/proceedings/8/}{url})
+
+Michael Ludkovski and {\bf Jarad Niemi} (2011) Optimal disease outbreak decisions using stochastic simulation. \emph{Proceedings of the 2011 Winter Simulation Conference}, eds. S. Jain, R. R. Creasey, J. Himmelspack, K. P. White, and M. Fu.
+% (50% concept, 30% writing, 10% coding)
+
+\sinceappt
+
+{\bf Jarad Niemi}, Meredith Smith, and David Banks. (2008) Test power for drug abuse surveillance. in \emph{Biosurveillance and Biosecurity, Proceedings of BioSecure 2008, Lecture Notes in Computer Science},  eds. Daniel Zeng, Hsinchun Chen, Henry Rolka, and William B. Lober. pp. 131--142
+% (50% concept, 90% writing, 90% coding)
+
+
+
+\subsection{\bf Refereed Abstracts} \vspace{-0.2in}
+
+Nicholas L. Michaud* and {\bf Jarad Niemi}. (2016) A Bayesian Hierarchical Model for Estimating Influenza Epidemic Severity. ISDS Annual Conference Proceedings 2015. \emph{Online Journal of Public Health Informatics} 8:1. (\href{http://ojphi.org/ojs/index.php/ojphi/article/view/6438}{url})
+
+Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: an Application for Viewing Weekly CDC MMWR Disease Count Data. \emph{Online Journal of Public Health Informatics} 8:1. (\href{http://ojphi.org/ojs/index.php/ojphi/article/view/6556}{url})
+
+{\bf Jarad Niemi}. (2014) A Tool for Interactive Disease Outbreak Visualization, Detection, and Forecasting. \emph{Online Journal of Public Health Informatics} 6:1. (\href{http://ojphi.org/article/view/5017}{url})
+
+{\bf Jarad Niemi} and Michael Ludkovski. (2013) Tau-leaped particle learning. \emph{Online Journal of Public Health Informatics} 5:1. (\href{http://dx.doi.org/10.5210%2Fojphi.v5i1.4575}{url})
+
+\sinceappt
+
+{\bf Jarad Niemi} and Michael Ludkovski. (2011) Optimal sequential management decisions for measles outbreaks. \emph{Emerging Health Threats Journal} 4. (\href{http://dx.doi.org/10.3402/ehtj.v4i0.11907}{url})
+
+{\bf Jarad Niemi}. (2011) An exploratory analysis of the 2010 measles outbreak in Zimbabwe. \emph{Emerging Health Threats Journal} 4. (\href{http://dx.doi.org/10.3402/ehtj.v4i0.11907}{url})
+
+{\bf Jarad B. Niemi}, Michael D. Porter, and Brian J. Reich. (2008) Mixture likelihood ratio scan statistic for disease outbreak detection. \emph{Advances in Disease Surveillance} 5:49. (\href{http://faculty.washington.edu/lober/www.isdsjournal.org/htdocs/articles/3251.pdf}{url})
+% (30% concept, 40% writing, 20% coding)
+
+
+
+\subsection{\bf Book reviews} \vspace{-0.2in}
+
+{\bf Jarad B. Niemi}. \underline{Statistics Done Wrong: The Woefully Complete Guide}. \emph{to appear in The American Statistician} 
+
+\sinceappt
+
+{\bf Jarad B. Niemi}. (2010) \underline{Dynamic Linear Models with R}. \emph{The American Statistician} 64:3, pg 268 \href{http://dx.doi.org/10.1198/tast.2010.br643}{url}
+
+
+
+\subsection{\bf Other publications} \vspace{-0.2in}
+
+{\bf Jarad Niemi} and Andrew Gelman. (2011) Statistical graphics: making information clear -- and beautiful. \emph{Significance} 8, 135--137
+% (60% concept, 80% writing)
+
+\sinceappt
+
+{\bf Jarad B. Niemi}. (2010) Evaluating individual player contributions to team offense and defense: a model based approach. \emph{JSM Proceedings, Section on Statistics in Sports}. Vancouver, BC, Canada: American Statistical Association. 4914--4923.
+% (100% concept, 100% writing, 100% coding)
+
+{\bf Jarad B. Niemi} and Matthew Wheeler. Efficient Bayesian inference in stochastic chemical kinetic models using graphical processing units. \href{http://arxiv.org/abs/1101.4242}{url}
+
+Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton, Jon J. Calderas, Rich G. Schafermeyer, and Kevin P. Christmas. Compositions having enhanced aqueous solubility and methods of their preparation. United States Patent Application 20030026872 %PCT/US2002/014505 \emph{filed}
+% (30% concept, 5% writing, 30% lab work)
+
+%------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+
+\section{\bf Presentations}
+
+\vspace{-0.2in}
+
+\subsection{\bf Invited Presentations at Major Conferences or Institutions} \vspace{-0.2in}
+
+{\small
+
+``Massively Parallel Approximate Gaussian Process Regression,'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016 
+
+``Stochastic dynamic models for low count observations,'' Institute for Disease Modeling Symposium, 19 Apr 2016
+
+``Particle learning for low counts in disease outbreaks,'' Institute for Disease Modeling, 18 April 2016
+
+``Massively Parallel Approximate Gaussian Process Regression,'' Joint Statistical Meetings, 7 Aug 2014 
+
+``Particle learning for sequential estimation and prediction of disease outbreaks''  2013 ICSA-ISBS Joint Statistical Conference, 10 June 2013 
+
+``Particle learning for low counts in disease outbreaks'' Midwest Statistics Research Colloquium, 15 Mar 2013 
+
+``A computational approach to the sequential control problem'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012 
+
+``Rejection sampling on a graphical processing unit'' 11th World Meeting of the International Society for Bayesian Analysis, 28 June 2012 
+
+``Determining optimal sequential disease outbreak interventions'' University of Iowa, Computational Epidemiology Seminar, 20 Jan 2012 
+
+\sinceappt
+
+``A sequential Monte Carlo primer'' Iowa State University, Department of Statistics, Computational Statistics working group, 12 Oct 2011 
+
+``Statistical computing on graphical processing units'' Iowa State University, Department of Statistics, Computational Statistics working group, 28 Sep 2011 
+
+``Time management.'' UCSB IGERT Career Development Seminar Series, 12 April 2011 
+
+``Optimal dynamic policies for influenza management.'' Iowa State University departmental seminar, 24 February 2011 
+
+``Optimal sequential management decisions for influenza outbreaks.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2011 (joint with Mike Ludkovski)
+
+``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 April 2010 
+
+``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009 
+
+``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009 
+
+``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009 
+
+
+``Computational methods for general state-space models.'' University of New Mexico Mathematics and Statistics departmental seminar, 19 February 2009 
+
+``Computational methods for general state-space models.'' University of Michigan Statistics departmental seminar, 17 February 2009 
+
+``Computational methods for general state-space models.'' University of Texas, Austin Information, Risk, and Operations Management departmental seminar, 17 February 2009 
+
+``Computational methods for general state-space models.'' Johns Hopkins Biostatistics departmental seminar, 6 February 2009 
+
+``Computational methods for general state-space models.'' University of California, Los Angeles Biostatistics departmental seminar, 28 January 2009 
+
+``Computational methods for general state-space models.'' Iowa State Statistics  departmental seminar, 26 January 2009 
+
+``Computational approaches for general state-space models.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2009 
+}
+
+\subsection{\bf Refereed Presentations at Major Conferences} \vspace{-0.2in}
+
+{\small 
+
+``Optimal sequential management decisions for measles outbreaks'' 10\textsuperscript{th} International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011 
+
+\sinceappt
+
+``Optimal sequential management decisions for influenza outbreaks.'' 9\textsuperscript{th} International Society for Disease Surveillance 9\textsuperscript{th} Annual Conference, 2 Dec 2010 
+
+``Mixture likelihood ratio scan statistic for disease outbreak detection.'' 7\textsuperscript{th} Annual Meeting of the International Society for Disease Surveillance, 3 December 2008 
+
+``Bayesian modeling and inference in single cell dynamic networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 26 May 2007 
+
+}
+
+\subsection{\bf Other Presentations} \vspace{-0.2in}
+
+%\section{\bf\small\hspace{8mm}contributed}
+%
+
+{\small
+
+``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Statistics, Colorado State University, 11 Dec 2015
+
+``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Applied Mathematics, University of Colorado-Boulder, 7 Dec 2015
+
+``Empirical Bayes analysis for detection of gene heterosis in RNAseq data,'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 27 April 2015 
+
+``Empirical Bayes identification of gene heterosis using RNAseq counts,'' Animal Breeding and Genetics, Iowa State University, 28 Jan 2015 
+
+``Particle learning for low counts in disease outbreaks,'' Department of Statistics, Iowa State University, 16 September 2013 
+
+``Statistical Methods for Identifying Gene Expression Heterosis'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 30 April 2013 (joint with Dan Nettleton)
+
+\sinceappt
+
+``Evaluating individual player contributions in basketball.'' Joint Statistical Meetings, 4 Aug 2010 
+
+``Test power for drug abuse surveillance.'' BioSecure, 2 December 2008 
+
+``Assessing the effectiveness of a national drug intervention policy.'' Graduate Student Seminar Series, 17 November 2008 
+
+``Discrete-time models for intracellular processes in systems biology.'' Graduate Student Research Day, Duke University, 02 April 2008 
+
+``Bayesian analysis in systems biology: Advances and impact in single-cell dynamical networks.'' Graduate Student Seminar Series, 25 February 2008 
+
+``Stochastic modelling and estimation in dynamic cellular networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 24 May 2007 (invited, given on behalf of Mike West)
+
+``Identifying and evaluating contrarian strategies for NCAA tournament pools.'' 2006 Joint Statistical Meetings, 8 August 
+
+}
+%------------------------------------------------------------------------------
+
+
+\section{\bf Posters}
+
+{\small
+
+Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. CDCPlot: an Application for Viewing Weekly CDC MMWR Disease Count Data. 2015 International Society for Disease Surveillance Conference, 10 Dec 2015
+
+Nicholas L. Michaud* and {\bf Jarad Niemi}. A Bayesian Hierarchical Model for Estimating Influenza Epidemic Severity. Epidemics5, 3 Dec 2015
+
+Will Landau*, and {\bf Jarad Niemi}. A Hierarchical Modeling Strategy for Identifying Gene Expression Heterosis using Parallel Computing with Graphics Processing Units (GPUs). Conference on Applied Statistics in Agriculture, Kansas State University, Apr 2015
+
+Eric Mittman*, {\bf Jarad Niemi}, and Dan Nettleton. Hierarchical Bayesian modeling of RNA-seq data with Stan. Conference on Applied Statistics in Agriculture, Kansas State University, Apr 2015
+
+{\bf Jarad Niemi} and Michael Ludkovski. Poisson-binomial state-space model for disease outbreaks with low counts. International Society for Bayesian Analysis World Meeting, 16 July 2014 
+
+
+Ignacio Alvarez* and {\bf Jarad Niemi}. Bayesian Inference for covariance matrix. Conference on Applied Statistics in Agriculture, Manhattan, KS, 29 Apr 2014 
+
+{\bf Jarad Niemi}. ``A Tool for Interactive Disease Outbreak Visualization, Detection, and Forecasting'' 2013 International Society for Disease Surveillance Conference, 7 Dec 2013
+
+MacDonald, A.L., L.A. Schulte Moore, M.J. Helmers, and {\bf J.B. Niemi}.  Bird response to native habitat strips integrated into agricultural fields.  International Conference on Agricultural Biodiversity and Sustainability, Hokkaido University, Japan,  29 Aug 2012 
+
+A.L. MacDonald, L.A. Schulte, M.J. Helmers, and {\bf J.B. Niemi}.  2012.  Testing a new conservation practice for agricultural landscapes: Bird response to prairie strips in row-cropped landscapes.  97th Annual Meeting of the Ecological Society of America, Portland, Oregon, 7 Aug 2012 
+
+\sinceappt
+
+{\bf Jarad Niemi}. ``An exploratory analysis of the 2010 measles outbreak in Zimbabwe'' 2011 International Society for Disease Surveillance Conference, 7 Dec 2011 
+
+{\bf Jarad Niemi} and Matthew Wheeler. ``Parameter inference in stochastic chemical kinetic models on GPUs.'' MCMSki3: 4\textsuperscript{th} International IMS/ISBA Joint Meeting, 6 Jan 2011
+
+{\bf Jarad Niemi} and Mike West. ``Nonlinear dynamic models for single-cell time-lapse microscopy.'' Duke Center for Systems Biology Retreat, 18 May 2009
+
+{\bf Jarad Niemi} ``Adaptive mixture filtering: an alternative to particle filtering?'' SAMSI Sequential Monte Carlo Kickoff Workshop, 8 September 2008
+
+{\bf Jarad Niemi} and Mike West. ``Bayesian parameter estimation for systems biological models of dynamic cellular networks.'' SAMSI Biosystems Modeling Workshop, 5 March 2007
+
+{\bf Jarad Niemi} and Mike West. ``Bayesian parameter estimation for systems biological models of dynamic cellular networks.'' 1\textsuperscript{st} Annual Duke Systems Biology Symposium, 14 September 2006
+
+{\bf Jarad Niemi} and Mike West. ``Bayesian parameter estimation for systems biological models of dynamic cellular networks.'' 8\textsuperscript{th}Valencia International Meeting on Bayesian Statistics, 5 June 2006
+
+}
+
+\section{\bf News interviews (hyperlinked)}
+
+\href{http://www.nbcnews.com/business/slam-dunk-your-rivals-office-march-madness-pool-1C8912546}{CNBC}, %18/03/2013 
+\href{http://moneywatch.bnet.com/economic-news/article/ncaa-brackets-how-to-win-your-march-madness-pool/403055/?tag=main;related-link-0}{CBS Moneywatch}, 
+\href{http://articles.moneycentral.msn.com/SmartSpending/blog/page.aspx?post=1704157}{MSN MoneyCentral}, 
+Slate (\href{http://www.slate.com/id/2213974/pagenum/all/}{2009}, \href{http://www.slate.com/id/2288234/pagenum/all/}{2011}, 
+\href{http://www.slate.com/articles/sports/sports_nut/2012/03/ncaa_basketball_tournament_bracket_act_like_a_hedge_fund_manager_and_pick_ohio_state_to_win_it_all_.single.html}{2012}, 
+\href{http://www.slate.com/articles/sports/sports_nut/2012/03/ncaa_basketball_tournament_bracket_act_like_a_hedge_fund_manager_and_pick_ohio_state_to_win_it_all_.single.html}{2013}),
+The Duke Chronicle
+
+
+
+
+%---------------------------------------------------------------------------
+
+\newpage
+
+\section{\bf Courses taught}
+\vspace{0.1in}
+
+{\bf Regular courses}
+
+\begin{tabular}{lll}
+\multicolumn{3}{l}{At Iowa State University:} \\
+\hline
+Spring 2016 & STAT 544 & Bayesian Statistics \\
+Fall 2015 & STAT 615 & Advanced Bayesian Methods \\
+Spring 2015 & STAT 544 & Bayesian Statistics \\
+Fall 2014 & STAT 401A & Statistical Methods for Research Workers \\
+& STAT 330 & Probability and Statistics for Computer Science \\
+Spring 2014 & STAT 544 & Bayesian Statistics \\
+Fall 2013 & STAT 401A & Statistical Methods for Research Workers \\
+& STAT 615 & Advanced Bayesian Methods \\
+Spring 2013 & STAT 544 & Bayesian Statistics \\
+Fall 2012 & STAT 401A & Statistical Methods for Research Workers \\
+ & HON 321E & Paradox \\
+Spring 2012 & STAT 401A & Statistical Methods for Research Workers \\
+Fall 2011 & STAT 615 & Advanced Bayesian Methods \\
+\hline
+\\
+\multicolumn{3}{l}{At University of California - Santa Barbara:} \\
+\hline
+Spring 2011 & PSTAT 120C & Probability and Statistics \\ % (categorical, nonparametrics, and Bayesian) 
+& PSTAT 230 & Seminars and Projects in Statistical Consulting \\
+Winter 2011 & PSTAT 220B & Advanced Statistical Methods (GLMs) \\
+Fall 2010  & PSTAT 120B & Probability and Statistics \\
+Spring 2010 & PSTAT 120B & Probability and Statistics (estimation and testing) \\
+ & PSTAT 230 & Seminar and Projects in Statistical Consulting \\
+Winter 2010 & PSTAT 262 & Applied Bayesian Time Series \\
+\hline
+\end{tabular}
+
+% {\bf Independent studies}
+%
+%\begin{tabular}{llll}
+%Spring & 596 & Parallelizing block composite likelihoods \\
+%Winter 2011 & 596 & Bayesian inference in stochastic chemical kinetic models \\
+%& 596 & Bayesian inference in ecological models \\
+%& 510 & Preparation for applied statistics qualifying exam \\
+%Fall 2010 & 596 & Bayesian inference in graphical processing units \\
+%Spring 2010 & 596 & Importance sampling on graphical models
+%\end{tabular}
+
+
+{\bf Short courses}
+
+\begin{tabular}{llll}
+Dec 2015 & Introduction to R for Biosurveillance & ISDS & 1-day \\
+Dec 2014 & Introduction to R for Biosurveillance & ISDS & 1-day \\
+Apr 2010 & Sequential Monte Carlo methods & ASA-Albuquerque & $\frac{1}{2}$-day \\
+Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
+\end{tabular}
+
+%-------------------------------------------------------------------
+
+
+\section{\bf Grants, Honors, and Awards}
+
+\begin{itemize}
+\item D. Nettleton, P. Liu, J. Niemi, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156] (allocation to Niemi: 25\%)
+
+\item Iowa State University Health Research Initiative on Infectious Diseases (PI Michael Cho, I was one of many investigators) [\$150,000] (2012)
+\item World Meeting of the International Society for Bayesian Analysis Early Career Researchers Travel Grant [\$500] (2012)
+\item Iowa State University College of Liberal Arts and Sciences grant for GPU cluster and RA support [\$88,000] (2011)
+
+\sinceappt
+
+\item University of California Regents Junior Faculty Fellowship [\$7,500] (2011)
+\item MCMSki3 conference travel support [\$650] (2011)
+\item NVIDIA Academic Partnership Program award [2$\times$C2050 GPGPUs] (2010)
+
+
+
+\item Section on Bayesian Statistical Science Student Paper Competition winner [\$1,000] (2009)
+\item International Society for Disease Surveillance Technical Contest 2\textsuperscript{nd} place (2008)
+\item NSF National Research Service Award Fellowship (2003--2004)
+%\item Undergraduate Research Opportunity Program grant (1997)
+%\item John Tate Memorial Scholarship (1997)
+%\item Presidential Leadership Award (1997)
+%\item Lower Division Honors (1997)
+%\item Whiteside Scholastic Scholarship (1995)
+%\item Phillips Family Scholarship (1995)
+\end{itemize}
+
+
+
+
+%%---------------------------------------------------------------------------
+
+
+\section{\bf Memberships}
+\begin{itemize}
+\item American Association for the Advancement of Science
+\item American Statistical Association
+\item International Society for Bayesian Analysis
+\item International Society for Disease Surveillance
+\end{itemize}
+
+%---------------------------------------------------------------------------
+\section{\bf Service}
+
+\begin{itemize}
+\item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
+\item Refereeing
+ \begin{itemize}
+ \item Science (2016), 
+ Plos ONE (2016), 
+ Scientific Reports (2016), 
+ Annals of Applied Statistics (2015), 
+ Journal of Computational and Graphical Statistics (2014), 
+ Technometrics (2013), 
+ Electronic Journal of Statistics (2013), 
+ Journal of the American Statistical Association (2015,2014,2012), 
+ Journal of Quantitative Analysis in Sports (2014,2012), 
+ Statistics and Computing (2015,2012), 
+ Journal of Agricultural, Biological, and Environmental Statistics (2015,2012x2), 
+ Current Computer-Aided Drug Design (2012), 
+ IEEE Trans. on Systems, Man, and Cybernetics--Part C: Applications and Reviews (2011), 
+ Journal of Agricultural, Biological, and Environmental Statistics (2011), 
+ Applied Stochastic Models in Business and Industry (2011), 
+ Annals of Applied Statistics  (2011$\times 2$), 
+ Computational Statistics \& Data Analysis (2010), 
+ Electronic Journal of Statistics (2010), 
+ International Society for Disease Surveillance conference (2010--2013), 
+ Journal of Statistical Education (2009)
+ \end{itemize}
+ 
+ 
+
+ 
+\item Conference organization
+ \begin{itemize}
+ \item International Society for Disease Surveillance Analytical Methods track chair (2012,2013)
+ \item International Society for Disease Surveillance session chair (2010)
+ \item Joint Statistical Meetings, Section on Statistical Computing session chair (2009)
+ \end{itemize}
+\item Other statistical community service (hyperlinked if appropriate)
+ \begin{itemize}
+ \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{2,154 rep}
+ \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
+ \item Professional website (\url{http://jarad.me/}) (2009--present)
+ \item \href{http://www.significancemagazine.org/view/searchResults.html?s=&t=&q=jarad+niemi}{News Editor for Significance Magazine} (2010--2012)
+ \item Professional twitter account ({\tt \href{https://twitter.com/jaradniemi}{@jaradniemi}})
+%\item Boy Scouts of America troop presentation on estimating player abilities in basketball
+ \end{itemize}
+
+\item University service
+\begin{itemize}
+\item ISU Transportation Advisory Council (2015--present)
+\item ISU Faculty Senate departmental representative (2012--present)
+\item UCSB faculty legislature, member (2010--2011)
+\item Center for research in financial mathematics and statistics, UCSB, member (2010--2011)
+\item Quantitative methods in the social sciences, UCSB, core faculty (2009--2011)
+%\item Overall plan for advising students work group, University of Minnesota (1997-1999)
+%\item Semester advising task force, University of Minnesota (1997-1999)
+%\item Committee for semester conversion institution, University of Minnesota (1996-1999)
+%\item Semester conversion committee, University of Minnesota (1996-1999)
+%\item Business and rules committee, University of Minnesota (1996-1997)
+%\item Student senate consultative committee, University of Minnesota (1996-1997)
+%\item Management team for the Minnesota student association, University of Minnesota (1996-1997)
+%\item Institute of Technology senator, University of Minnesota (1996-1997)
+ \end{itemize}
+
+
+\item Departmental service
+ 	\begin{itemize}
+	\item ISU Department of Statistics 
+		\begin{itemize}
+    \item Snedecor Sustainability Committee, co-chair (2015--present)
+  	\item Preparing Future Faculty mentor: Will Landau (2013--2014), Natalia da Silva (2015--current)
+  	\item STAT-ers advisor (2011--present)
+		\item Statistics/BCB search committee (2014--2015)
+		\item Director of Statistical Consulting search committee (2014--2015)
+		\item Department Chair search committee (2012--2014)
+		\item Computational Statistics working group, chair (2011--2014)
+		\item Computation advisory committee, member (2011--2015)
+		\item Social committee (2011--2015)
+		\end{itemize}
+	\item UCSB Department of Statistics \& Applied Probability
+		\begin{itemize}
+		\item Applied statistics qualifying exam committee, UCSB (2010--2011)
+		\item Computing committee, UCSB (2009--2011)
+		\item Library liaison, UCSB (2009--2011)
+		\end{itemize}
+%	\item Duke University Statistical Science graduate consultative committee,  (2005--2007)
+%	\item University of Minnesota Biostatistics Student rep. on Biostatistics faculty committee (2003--2005)
+ 	\end{itemize}
+\end{itemize}
+
+
+\subsection{\bf Student Committees and Advisees}
+
+{\small
+      \begin{center}
+		\input{committees}
+		\end{center}
+
+	    \begin{center}
+		\input{advisees}
+		\end{center}
+}
+
+%%---------------------------------------------------------------------------%%
+
+
+\end{resume}
+
+\end{document}
+
+%%===========================================================================%%
