@@ -79,9 +79,9 @@ options(width=120)
 require(dplyr)
 @
 
-\providecommand{\includesinceappt}{1}
-\providecommand{\includesubmitted}{1}
-\providecommand{\includeinprep}{1}
+\providecommand{\includesinceappt}{0}
+\providecommand{\includesubmitted}{0}
+\providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since appointment at Iowa State University ------------------------------}}
@@ -205,7 +205,7 @@ tmp = pubs %>%
 under_revision_print = function(d) {
   cat(d$author, 
       d$title,
-      "\\emph{under revision for",
+      "\\emph{under revision for the",
       d$journal,
       "}",
       "\n\n")
@@ -221,7 +221,7 @@ tmp = pubs %>%
 submitted_print = function(d) {
   cat(d$author, ". ",
       d$title,
-      " \\emph{submitted to ",
+      " \\emph{submitted to the",
       d$journal,
       "}",
       "\n\n")
@@ -247,10 +247,10 @@ published_print = function(d) {
     end = d$volume
   }
   
-  if (!is.na(d$issue)) end = paste0(end,"(",d$issue,")")
+  if (!is.na(d$issue))  end = paste0(end,"(",d$issue,")")
   if (!is.na(d$number)) end = paste0(end,":",d$number)
-  if (!is.na(d$pages)) end = paste0(end, ", ", d$pages)
-  if (in_print) end = paste0(end,". ")
+  if (!is.na(d$pages))  end = paste0(end, ", ", d$pages)
+  if (in_print)         end = paste0(end,". ")
   
   cat(d$author, ". ",
       "(",d$year,") ",
@@ -268,14 +268,16 @@ published_print = function(d) {
 
 tmp = pubs %>% 
   filter(status=="published", new) %>%
-  group_by(year, title) %>%
+  arrange(-year) %>%
+  rowwise() %>%
   do(published_print(.))
 
 cat("\n\n\\sinceappt\n\n")
 
 tmp = pubs %>% 
   filter(status=="published", !new) %>%
-  group_by(year, title) %>%
+  arrange(-year) %>%
+  rowwise() %>%
   do(published_print(.))
 @
 
@@ -424,25 +426,31 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \vspace{-0.2in}
 
-\subsection{\bf Invited Presentations at Major Conferences or Institutions} \vspace{-0.2in}
-
-{\small
+\subsection{\bf Invited Presentations at Major Conferences} \vspace{-0.2in}
 
 ``Massively Parallel Approximate Gaussian Process Regression,'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016 
-
-``Stochastic dynamic models for low count observations,'' Institute for Disease Modeling Symposium, 19 Apr 2016
-
-``Particle learning for low counts in disease outbreaks,'' Institute for Disease Modeling, 18 April 2016
 
 ``Massively Parallel Approximate Gaussian Process Regression,'' Joint Statistical Meetings, 7 Aug 2014 
 
 ``Particle learning for sequential estimation and prediction of disease outbreaks''  2013 ICSA-ISBS Joint Statistical Conference, 10 June 2013 
 
-``Particle learning for low counts in disease outbreaks'' Midwest Statistics Research Colloquium, 15 Mar 2013 
+``Rejection sampling on a graphical processing unit'' 11th World Meeting of the International Society for Bayesian Analysis, 28 June 2012 
+
+\sinceappt
+
+``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009 
+
+\subsection{\bf Invited Presentations at Major Institutions} \vspace{-0.2in}
+
+
+``Hierarchical modeling and data fusion,'' Centers for Disease Control and Prevention Seasonal Influenza Forecasting Workshop, 31 Aug 2016
+
+``Stochastic dynamic models for low count observations,'' Institute for Disease Modeling Symposium, 19 Apr 2016
+
+``Particle learning for low counts in disease outbreaks,'' Institute for Disease Modeling, 18 April 2016
+
 
 ``A computational approach to the sequential control problem'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012 
-
-``Rejection sampling on a graphical processing unit'' 11th World Meeting of the International Society for Bayesian Analysis, 28 June 2012 
 
 ``Determining optimal sequential disease outbreak interventions'' University of Iowa, Computational Epidemiology Seminar, 20 Jan 2012 
 
@@ -459,13 +467,9 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 ``Optimal sequential management decisions for influenza outbreaks.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2011 (joint with Mike Ludkovski)
 
 ``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 April 2010 
-
 ``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009 
 
 ``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009 
-
-``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009 
-
 
 ``Computational methods for general state-space models.'' University of New Mexico Mathematics and Statistics departmental seminar, 19 February 2009 
 
@@ -480,7 +484,7 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 ``Computational methods for general state-space models.'' Iowa State Statistics  departmental seminar, 26 January 2009 
 
 ``Computational approaches for general state-space models.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2009 
-}
+
 
 \subsection{\bf Refereed Presentations at Major Conferences} \vspace{-0.2in}
 
@@ -508,6 +512,8 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Statistics, Colorado State University, 11 Dec 2015
 
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Applied Mathematics, University of Colorado-Boulder, 7 Dec 2015
+
+``Particle learning for low counts in disease outbreaks'' Midwest Statistics Research Colloquium, 15 Mar 2013 
 
 ``Empirical Bayes analysis for detection of gene heterosis in RNAseq data,'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 27 April 2015 
 
@@ -550,7 +556,6 @@ Will Landau*, and {\bf Jarad Niemi}. A Hierarchical Modeling Strategy for Identi
 Eric Mittman*, {\bf Jarad Niemi}, and Dan Nettleton. Hierarchical Bayesian modeling of RNA-seq data with Stan. Conference on Applied Statistics in Agriculture, Kansas State University, Apr 2015
 
 {\bf Jarad Niemi} and Michael Ludkovski. Poisson-binomial state-space model for disease outbreaks with low counts. International Society for Bayesian Analysis World Meeting, 16 July 2014 
-
 
 Ignacio Alvarez* and {\bf Jarad Niemi}. Bayesian Inference for covariance matrix. Conference on Applied Statistics in Agriculture, Manhattan, KS, 29 Apr 2014 
 
@@ -603,6 +608,7 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Fall 2016 & STAT 330 & Probability and Statistics for Computer Science \\
 Spring 2016 & STAT 544 & Bayesian Statistics \\
 Fall 2015 & STAT 615 & Advanced Bayesian Methods \\
 Spring 2015 & STAT 544 & Bayesian Statistics \\
@@ -654,6 +660,65 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 %-------------------------------------------------------------------
 
 
+
+\section{\bf Student Committees and Advisees}
+
+\vspace{0.1in}
+
+<<read_studentcommittees>>=
+library(plyr)
+library(dplyr)
+library(xtable)
+
+d = read.csv("studentcommittees.csv") %>%
+  mutate(School = factor(School, levels=c("ISU","UCSB")),
+         Chair  = factor(Chair,  levels=c("Chair","Co-chair","")))
+
+d_levels = levels(d$Department)
+d$Department = factor(d$Department, levels=c("STAT",d_levels[-which(d_levels=="STAT")]))
+
+d = d %>% arrange(School, desc(Completed), Degree, Chair, Department)
+@
+
+
+<<advisees, dependson="read_studentcommittees", results='asis'>>=
+tab = xtable(d %>% 
+               filter(Chair %in% c('Chair','Co-chair')) %>%
+               arrange(School, Degree, desc(Completed), Chair), 
+      caption="Students Advised",
+      label="tab:advisees")
+
+print(tab,
+      include.rownames=FALSE,
+      table.placement="h",
+      caption.placement="top")
+@
+
+
+<<committees, dependson="read_studentcommittees", results='asis'>>=
+s = d %>%
+  filter(!(Chair %in% c("Chair","Co-chair"))) %>%
+  mutate(STAT = ifelse(Department %in% c('STAT','PSTAT'), 'Yes', 'No'),
+         prog = ifelse(Completed == 'In progress', 'In progress', 'Completed')) %>%
+  group_by(Degree, STAT, prog) %>%
+  dplyr::summarize(n = length(Student)) %>%
+  tidyr::spread(prog,n,fill=0) %>%
+  select(STAT, Degree, Completed, `In progress`) %>%
+  arrange(STAT, Degree)
+
+tab2 = xtable(s, 
+              caption='Other student committees',
+              label="tab:committees",
+              digits=0)
+
+print(tab2, 
+      include.rownames=FALSE,
+      table.placement="h",
+      caption.placement="top")
+@
+
+
+\newpage
 \section{\bf Grants, Honors, and Awards}
 
 \begin{itemize}
@@ -667,7 +732,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 \item University of California Regents Junior Faculty Fellowship [\$7,500] (2011)
 \item MCMSki3 conference travel support [\$650] (2011)
-\item NVIDIA Academic Partnership Program award [2$\times$C2050 GPGPUs] (2010)
+\item NVIDIA Academic Partnership Program award [2$\times$ NVIDIA C2050 GPUs] (2010)
 
 
 
@@ -736,7 +801,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
- \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{2,154 rep}
+ \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{2,594 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
  \item \href{http://www.significancemagazine.org/view/searchResults.html?s=&t=&q=jarad+niemi}{News Editor for Significance Magazine} (2010--2012)
@@ -766,6 +831,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  	\begin{itemize}
 	\item ISU Department of Statistics 
 		\begin{itemize}
+		\item Computation Advisory Committee, member (2011--2015,2016--present)
     \item Snedecor Sustainability Committee, co-chair (2015--present)
   	\item Preparing Future Faculty mentor: Will Landau (2013--2014), Natalia da Silva (2015--current)
   	\item STAT-ers advisor (2011--present)
@@ -773,7 +839,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 		\item Director of Statistical Consulting search committee (2014--2015)
 		\item Department Chair search committee (2012--2014)
 		\item Computational Statistics working group, chair (2011--2014)
-		\item Computation advisory committee, member (2011--2015)
+		\item Computation Advisory Committee, member (2011--2015)
 		\item Social committee (2011--2015)
 		\end{itemize}
 	\item UCSB Department of Statistics \& Applied Probability
@@ -788,17 +854,6 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \end{itemize}
 
 
-\subsection{\bf Student Committees and Advisees}
-
-{\small
-      \begin{center}
-		\input{committees}
-		\end{center}
-
-	    \begin{center}
-		\input{advisees}
-		\end{center}
-}
 
 %%---------------------------------------------------------------------------%%
 
