@@ -79,9 +79,9 @@ options(width=120)
 require(dplyr)
 @
 
-\providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{0}
-\providecommand{\includeinprep}{0}
+\providecommand{\includesinceappt}{1}
+\providecommand{\includesubmitted}{1}
+\providecommand{\includeinprep}{1}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since appointment at Iowa State University ------------------------------}}
@@ -466,7 +466,8 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 ``Optimal sequential management decisions for influenza outbreaks.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2011 (joint with Mike Ludkovski)
 
-``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 April 2010 
+``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 April 2010
+
 ``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009 
 
 ``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009 
@@ -598,8 +599,6 @@ The Duke Chronicle
 
 %---------------------------------------------------------------------------
 
-\newpage
-
 \section{\bf Courses taught}
 \vspace{0.1in}
 
@@ -698,7 +697,7 @@ print(tab,
 <<committees, dependson="read_studentcommittees", results='asis'>>=
 s = d %>%
   filter(!(Chair %in% c("Chair","Co-chair"))) %>%
-  mutate(STAT = ifelse(Department %in% c('STAT','PSTAT'), 'Yes', 'No'),
+  mutate(STAT = ifelse(Department %in% c('STAT','PSTAT','STAT&ECON'), 'Yes', 'No'),
          prog = ifelse(Completed == 'In progress', 'In progress', 'Completed')) %>%
   group_by(Degree, STAT, prog) %>%
   dplyr::summarize(n = length(Student)) %>%
@@ -718,7 +717,6 @@ print(tab2,
 @
 
 
-\newpage
 \section{\bf Grants, Honors, and Awards}
 
 \begin{itemize}
@@ -853,6 +851,63 @@ print(tab2,
  	\end{itemize}
 \end{itemize}
 
+
+
+\section{\bf Student Committees and Advisees}
+
+\vspace{0.1in}
+
+<<read_studentcommittees>>=
+library(plyr)
+library(dplyr)
+library(xtable)
+
+d = read.csv("studentcommittees.csv") %>%
+  mutate(School = factor(School, levels=c("ISU","UCSB")),
+         Chair  = factor(Chair,  levels=c("Chair","Co-chair","")))
+
+d_levels = levels(d$Department)
+d$Department = factor(d$Department, levels=c("STAT",d_levels[-which(d_levels=="STAT")]))
+
+d = d %>% arrange(School, desc(Completed), Degree, Chair, Department)
+@
+
+
+<<advisees, dependson="read_studentcommittees", results='asis'>>=
+tab = xtable(d %>% 
+               filter(Chair %in% c('Chair','Co-chair')) %>%
+               arrange(School, Degree, desc(Completed), Chair), 
+      caption="Students Advised",
+      label="tab:advisees")
+
+print(tab,
+      include.rownames=FALSE,
+      table.placement="h",
+      caption.placement="top")
+@
+
+
+<<committees, dependson="read_studentcommittees", results='asis'>>=
+s = d %>%
+  filter(!(Chair %in% c("Chair","Co-chair"))) %>%
+  mutate(STAT = ifelse(Department %in% c('STAT','PSTAT','STAT&ECON'), 'Yes', 'No'),
+         prog = ifelse(Completed == 'In progress', 'In progress', 'Completed')) %>%
+  group_by(Degree, STAT, prog) %>%
+  dplyr::summarize(n = length(Student)) %>%
+  tidyr::spread(prog,n,fill=0) %>%
+  select(STAT, Degree, Completed, `In progress`) %>%
+  arrange(STAT, Degree)
+
+tab2 = xtable(s, 
+              caption='Other student committees',
+              label="tab:committees",
+              digits=0)
+
+print(tab2, 
+      include.rownames=FALSE,
+      table.placement="h",
+      caption.placement="top")
+@
 
 
 %%---------------------------------------------------------------------------%%
