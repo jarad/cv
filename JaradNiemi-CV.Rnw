@@ -660,61 +660,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 
 
-\section{\bf Student Committees and Advisees}
 
-\vspace{0.1in}
-
-<<read_studentcommittees>>=
-library(plyr)
-library(dplyr)
-library(xtable)
-
-d = read.csv("studentcommittees.csv") %>%
-  mutate(School = factor(School, levels=c("ISU","UCSB")),
-         Chair  = factor(Chair,  levels=c("Chair","Co-chair","")))
-
-d_levels = levels(d$Department)
-d$Department = factor(d$Department, levels=c("STAT",d_levels[-which(d_levels=="STAT")]))
-
-d = d %>% arrange(School, desc(Completed), Degree, Chair, Department)
-@
-
-
-<<advisees, dependson="read_studentcommittees", results='asis'>>=
-tab = xtable(d %>% 
-               filter(Chair %in% c('Chair','Co-chair')) %>%
-               arrange(School, Degree, desc(Completed), Chair), 
-      caption="Students Advised",
-      label="tab:advisees")
-
-print(tab,
-      include.rownames=FALSE,
-      table.placement="h",
-      caption.placement="top")
-@
-
-
-<<committees, dependson="read_studentcommittees", results='asis'>>=
-s = d %>%
-  filter(!(Chair %in% c("Chair","Co-chair"))) %>%
-  mutate(STAT = ifelse(Department %in% c('STAT','PSTAT','STAT&ECON'), 'Yes', 'No'),
-         prog = ifelse(Completed == 'In progress', 'In progress', 'Completed')) %>%
-  group_by(Degree, STAT, prog) %>%
-  dplyr::summarize(n = length(Student)) %>%
-  tidyr::spread(prog,n,fill=0) %>%
-  select(STAT, Degree, Completed, `In progress`) %>%
-  arrange(STAT, Degree)
-
-tab2 = xtable(s, 
-              caption='Other student committees',
-              label="tab:committees",
-              digits=0)
-
-print(tab2, 
-      include.rownames=FALSE,
-      table.placement="h",
-      caption.placement="top")
-@
 
 
 \section{\bf Grants, Honors, and Awards}
