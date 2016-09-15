@@ -428,6 +428,8 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf Invited Presentations at Major Conferences} \vspace{-0.2in}
 
+``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis,'' 9th International Conference of the RCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
+
 ``Massively Parallel Approximate Gaussian Process Regression,'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016 
 
 ``Massively Parallel Approximate Gaussian Process Regression,'' Joint Statistical Meetings, 7 Aug 2014 
