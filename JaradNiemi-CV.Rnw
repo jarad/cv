@@ -183,7 +183,7 @@ pubs = readr::read_csv("publications.csv") %>%
 \subsection{\bf In preparation} \vspace{-0.2in}
 <<in_preparation, dependson="read_pubs", results='asis'>>=
 in_prep_print = function(d) {
-  cat(d$author, ". ",
+  cat(d$authors, ". ",
       d$title,
       "\n\n",
       sep="")
@@ -203,7 +203,7 @@ tmp = pubs %>%
 
 <<submitted, dependson="read_pubs", results='asis'>>=
 under_revision_print = function(d) {
-  cat(d$author, 
+  cat(d$authors, 
       d$title,
       "\\emph{under revision for the",
       d$journal,
@@ -219,7 +219,7 @@ tmp = pubs %>%
 
 
 submitted_print = function(d) {
-  cat(d$author, ". ",
+  cat(d$authors, ". ",
       d$title,
       " \\emph{submitted to the",
       d$journal,
@@ -252,7 +252,7 @@ published_print = function(d) {
   if (!is.na(d$pages))  end = paste0(end, ", ", d$pages)
   if (in_print)         end = paste0(end,". ")
   
-  cat(d$author, ". ",
+  cat(d$authors, ". ",
       "(",d$year,") ",
       d$title, " ",
       ifelse(in_print, 
