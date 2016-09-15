@@ -755,6 +755,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 \item University service
 \begin{itemize}
+\item ISU Faculty Compensation Committee (2016--present)
 \item ISU Transportation Advisory Council (2015--present)
 \item ISU Faculty Senate departmental representative (2012--present)
 \item UCSB faculty legislature, member (2010--2011)
