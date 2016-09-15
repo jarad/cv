@@ -823,7 +823,7 @@ d = d %>% arrange(School, desc(Completed), Degree, Chair, Department)
 tab = xtable(d %>% 
                filter(Chair %in% c('Chair','Co-chair')) %>%
                arrange(School, Degree, desc(Completed), Chair), 
-      caption="Students Advised",
+      caption="Students advised",
       label="tab:advisees")
 
 print(tab,
