@@ -203,12 +203,12 @@ tmp = pubs %>%
 
 <<submitted, dependson="read_pubs", results='asis'>>=
 under_revision_print = function(d) {
-  cat(d$authors, 
+  cat(d$authors, ". ",
       d$title,
       "\\emph{under revision for the",
       d$journal,
       "}",
-      "\n\n")
+      "\n\n", sep="")
   return(data.frame(a=1)) # to avoid error
 }
 
@@ -224,7 +224,7 @@ submitted_print = function(d) {
       " \\emph{submitted to the",
       d$journal,
       "}",
-      "\n\n")
+      "\n\n", sep="")
   return(data.frame(a=1)) # to avoid error
 }
 
@@ -422,35 +422,12 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 %------------------------------------------------------------------------------
 
-\section{\bf Presentations}
+\section{\bf Invited Talks}
 
 \vspace{-0.2in}
 
-\subsection{\bf Invited Presentations at Major Conferences} \vspace{-0.2in}
 
-``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis,'' 9th International Conference of the RCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
-
-``Massively Parallel Approximate Gaussian Process Regression,'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016 
-
-``Massively Parallel Approximate Gaussian Process Regression,'' Joint Statistical Meetings, 7 Aug 2014 
-
-``Particle learning for sequential estimation and prediction of disease outbreaks''  2013 ICSA-ISBS Joint Statistical Conference, 10 June 2013 
-
-``Rejection sampling on a graphical processing unit'' 11th World Meeting of the International Society for Bayesian Analysis, 28 June 2012 
-
-\sinceappt
-
-``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009 
-
-\subsection{\bf Invited Presentations at Major Institutions} \vspace{-0.2in}
-
-
-``Hierarchical modeling and data fusion,'' Centers for Disease Control and Prevention Seasonal Influenza Forecasting Workshop, 31 Aug 2016
-
-``Stochastic dynamic models for low count observations,'' Institute for Disease Modeling Symposium, 19 Apr 2016
-
-``Particle learning for low counts in disease outbreaks,'' Institute for Disease Modeling, 18 April 2016
-
+\subsection{\bf At other universities} \vspace{-0.2in}
 
 ``A computational approach to the sequential control problem'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012 
 
@@ -458,21 +435,9 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \sinceappt
 
-``A sequential Monte Carlo primer'' Iowa State University, Department of Statistics, Computational Statistics working group, 12 Oct 2011 
-
-``Statistical computing on graphical processing units'' Iowa State University, Department of Statistics, Computational Statistics working group, 28 Sep 2011 
-
-``Time management.'' UCSB IGERT Career Development Seminar Series, 12 April 2011 
-
-``Optimal dynamic policies for influenza management.'' Iowa State University departmental seminar, 24 February 2011 
-
-``Optimal sequential management decisions for influenza outbreaks.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2011 (joint with Mike Ludkovski)
-
-``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 April 2010
-
 ``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009 
 
-``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009 
+
 
 ``Computational methods for general state-space models.'' University of New Mexico Mathematics and Statistics departmental seminar, 19 February 2009 
 
@@ -489,7 +454,46 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 ``Computational approaches for general state-space models.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2009 
 
 
-\subsection{\bf Refereed Presentations at Major Conferences} \vspace{-0.2in}
+
+\subsection{\bf At conferences} \vspace{-0.2in}
+
+``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis,'' 9th International Conference of the ERCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
+
+``Massively Parallel Approximate Gaussian Process Regression,'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016 
+
+``Massively Parallel Approximate Gaussian Process Regression,'' Joint Statistical Meetings, 7 Aug 2014 
+
+``Particle learning for sequential estimation and prediction of disease outbreaks''  2013 ICSA-ISBS Joint Statistical Conference, 10 June 2013 
+
+``Particle learning for low counts in disease outbreaks'' Midwest Statistics Research Colloquium, 15 Mar 2013 
+
+``Rejection sampling on a graphical processing unit'' 11th World Meeting of the International Society for Bayesian Analysis, 28 June 2012 
+
+\sinceappt
+
+``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009 
+
+``Test power for drug abuse surveillance.'' BioSecure, 2 December 2008 
+
+
+
+
+
+\subsection{\bf At agencies, companies, other venues} \vspace{-0.2in}
+
+``Hierarchical modeling and data fusion,'' Centers for Disease Control and Prevention Seasonal Influenza Forecasting Workshop, 31 Aug 2016
+
+``Stochastic dynamic models for low count observations,'' Institute for Disease Modeling Symposium, 19 Apr 2016
+
+``Particle learning for low counts in disease outbreaks,'' Institute for Disease Modeling, 18 April 2016
+
+\sinceappt
+
+
+
+
+
+\section{\bf Refereed Presentations at Major Conferences} 
 
 {\small 
 
@@ -497,26 +501,25 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \sinceappt
 
+``Evaluating individual player contributions in basketball.'' Joint Statistical Meetings, 4 Aug 2010 
+
 ``Optimal sequential management decisions for influenza outbreaks.'' 9\textsuperscript{th} International Society for Disease Surveillance 9\textsuperscript{th} Annual Conference, 2 Dec 2010 
 
 ``Mixture likelihood ratio scan statistic for disease outbreak detection.'' 7\textsuperscript{th} Annual Meeting of the International Society for Disease Surveillance, 3 December 2008 
 
 ``Bayesian modeling and inference in single cell dynamic networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 26 May 2007 
 
+``Identifying and evaluating contrarian strategies for NCAA tournament pools.'' 2006 Joint Statistical Meetings, 8 August 
+
 }
 
-\subsection{\bf Other Presentations} \vspace{-0.2in}
-
-%\section{\bf\small\hspace{8mm}contributed}
-%
+\section{\bf Other Talks} 
 
 {\small
 
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Statistics, Colorado State University, 11 Dec 2015
 
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Applied Mathematics, University of Colorado-Boulder, 7 Dec 2015
-
-``Particle learning for low counts in disease outbreaks'' Midwest Statistics Research Colloquium, 15 Mar 2013 
 
 ``Empirical Bayes analysis for detection of gene heterosis in RNAseq data,'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 27 April 2015 
 
@@ -528,9 +531,19 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \sinceappt
 
-``Evaluating individual player contributions in basketball.'' Joint Statistical Meetings, 4 Aug 2010 
+``A sequential Monte Carlo primer'' Iowa State University, Department of Statistics, Computational Statistics working group, 12 Oct 2011 
 
-``Test power for drug abuse surveillance.'' BioSecure, 2 December 2008 
+``Statistical computing on graphical processing units'' Iowa State University, Department of Statistics, Computational Statistics working group, 28 Sep 2011 
+
+``Time management.'' UCSB IGERT Career Development Seminar Series, 12 April 2011 
+
+``Optimal dynamic policies for influenza management.'' Iowa State University departmental seminar, 24 February 2011 
+
+``Optimal sequential management decisions for influenza outbreaks.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2011 (joint with Mike Ludkovski)
+
+``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 April 2010
+
+``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009 
 
 ``Assessing the effectiveness of a national drug intervention policy.'' Graduate Student Seminar Series, 17 November 2008 
 
@@ -539,8 +552,6 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 ``Bayesian analysis in systems biology: Advances and impact in single-cell dynamical networks.'' Graduate Student Seminar Series, 25 February 2008 
 
 ``Stochastic modelling and estimation in dynamic cellular networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 24 May 2007 (invited, given on behalf of Mike West)
-
-``Identifying and evaluating contrarian strategies for NCAA tournament pools.'' 2006 Joint Statistical Meetings, 8 August 
 
 }
 %------------------------------------------------------------------------------
