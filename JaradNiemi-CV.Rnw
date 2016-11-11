@@ -205,7 +205,7 @@ tmp = pubs %>%
 under_revision_print = function(d) {
   cat(d$authors, ". ",
       d$title,
-      "\\emph{under revision for the",
+      "\\emph{ under revision for the ",
       d$journal,
       "}",
       "\n\n", sep="")
@@ -221,7 +221,7 @@ tmp = pubs %>%
 submitted_print = function(d) {
   cat(d$authors, ". ",
       d$title,
-      " \\emph{submitted to the",
+      " \\emph{submitted to the ",
       d$journal,
       "}",
       "\n\n", sep="")
@@ -348,7 +348,7 @@ tmp = pubs %>%
 
 %--------------------------------------------------------------
 
-
+\newpage
 \subsection{\bf Book Chapters} \vspace{-0.2in}
 
 {\bf Jarad B. Niemi} and Gerald J. Niemi. (2015) Linear regression, model averaging, and Bayesian techniques for predicting chemical activities from structure. Ebook chapter on Advances in Mathematical Chemistry and Applications
@@ -517,6 +517,8 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 {\small
 
+``Using information underlying missing data for improve estimation of NFL field goal kicker accuracy,'' Midwest Sports Analytics Meetings, 19 Nov 2016
+
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Statistics, Colorado State University, 11 Dec 2015
 
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Applied Mathematics, University of Colorado-Boulder, 7 Dec 2015
@@ -663,6 +665,7 @@ Winter 2010 & PSTAT 262 & Applied Bayesian Time Series \\
 {\bf Short courses}
 
 \begin{tabular}{llll}
+Dec 2016 & Introduction to R for Biosurveillance & ISDS & 1-day \\
 Dec 2015 & Introduction to R for Biosurveillance & ISDS & 1-day \\
 Dec 2014 & Introduction to R for Biosurveillance & ISDS & 1-day \\
 Apr 2010 & Sequential Monte Carlo methods & ASA-Albuquerque & $\frac{1}{2}$-day \\
@@ -675,7 +678,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 
 
-
+\newpage
 \section{\bf Grants, Honors, and Awards}
 
 \begin{itemize}
@@ -725,7 +728,8 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
 \item Refereeing
  \begin{itemize}
- \item Science (2016), 
+ \item Bayesian Analysis (2016,)
+ Science (2016), 
  Plos ONE (2016), 
  Scientific Reports (2016), 
  Annals of Applied Statistics (2015), 
@@ -758,7 +762,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
- \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{2,594 rep}
+ \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{2,711 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
  \item \href{http://www.significancemagazine.org/view/searchResults.html?s=&t=&q=jarad+niemi}{News Editor for Significance Magazine} (2010--2012)
@@ -812,12 +816,12 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \end{itemize}
 
 
-
+\newpage
 \section{\bf Student Committees and Advisees}
 
 \vspace{0.1in}
 
-<<read_studentcommittees>>=
+<<read_studentcommittees, cache.extra = tools::md5sum("studentcommittees.csv")>>=
 library(plyr)
 library(dplyr)
 library(xtable)
