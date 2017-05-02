@@ -34,7 +34,6 @@
 %   \section{\bf\small\hspace{8mm}2006}
 %
 %%----------------------------------------------------------------------------%
-
 \documentclass[overlapped,line]{res}
 
 \usepackage{ifpdf}
@@ -79,9 +78,9 @@ options(width=120)
 require(dplyr)
 @
 
-\providecommand{\includesinceappt}{1}
+\providecommand{\includesinceappt}{0}
 \providecommand{\includesubmitted}{1}
-\providecommand{\includeinprep}{1}
+\providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since appointment at Iowa State University ------------------------------}}
