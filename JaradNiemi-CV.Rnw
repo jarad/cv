@@ -79,7 +79,7 @@ require(dplyr)
 @
 
 \providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{1}
+\providecommand{\includesubmitted}{0}
 \providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
@@ -139,11 +139,12 @@ B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Pr
 \section{\bf Academic Positions}
 
 \begin{tabular}{l@{\qquad}r}
-Assistant Professor & Iowa State University \\
-Statistics & 2011--present \\
+Statistics & Iowa State University \\
+Associate Professor & 2017--present \\
+Assistant Professor & 2011--2017 \\
 \\
-Assistant Professor & University of California,\ Santa Barbara \\
-Statistics \& Applied Probability & 2009--2011
+Statistics \& Applied Probability & University of California,\ Santa Barbara \\
+Assistant Professor & 2009--2011
 \end{tabular}
 
 
@@ -347,7 +348,6 @@ tmp = pubs %>%
 
 %--------------------------------------------------------------
 
-\newpage
 \subsection{\bf Book Chapters} \vspace{-0.2in}
 
 {\bf Jarad B. Niemi} and Gerald J. Niemi. (2015) Linear regression, model averaging, and Bayesian techniques for predicting chemical activities from structure. Ebook chapter on Advances in Mathematical Chemistry and Applications
@@ -621,6 +621,9 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Fall & STAT 615 & Advanced Bayesian Methods \\
+Spring 2017 & STAT 401D & Statistical Methods for Research Workers \\
+Spring 2017 & STAT 544 & Bayesian Statistics \\
 Fall 2016 & STAT 330 & Probability and Statistics for Computer Science \\
 Spring 2016 & STAT 544 & Bayesian Statistics \\
 Fall 2015 & STAT 615 & Advanced Bayesian Methods \\
@@ -761,10 +764,10 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
- \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{2,711 rep}
+ \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{3,286 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
- \item \href{http://www.significancemagazine.org/view/searchResults.html?s=&t=&q=jarad+niemi}{News Editor for Significance Magazine} (2010--2012)
+ \item News Editor for Significance Magazine (2010--2012)
  \item Professional twitter account ({\tt \href{https://twitter.com/jaradniemi}{@jaradniemi}})
 %\item Boy Scouts of America troop presentation on estimating player abilities in basketball
  \end{itemize}
@@ -774,9 +777,9 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \item ISU Faculty Compensation Committee (2016--present)
 \item ISU Transportation Advisory Council (2015--present)
 \item ISU Faculty Senate departmental representative (2012--present)
-\item UCSB faculty legislature, member (2010--2011)
-\item Center for research in financial mathematics and statistics, UCSB, member (2010--2011)
-\item Quantitative methods in the social sciences, UCSB, core faculty (2009--2011)
+\item UCSB Faculty Legislature, member (2010--2011)
+\item Center for Research in Financial Mathematics and Statistics, UCSB, member (2010--2011)
+\item Quantitative Methods in the Social Sciences, UCSB, core faculty (2009--2011)
 %\item Overall plan for advising students work group, University of Minnesota (1997-1999)
 %\item Semester advising task force, University of Minnesota (1997-1999)
 %\item Committee for semester conversion institution, University of Minnesota (1996-1999)
@@ -792,15 +795,20 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  	\begin{itemize}
 	\item ISU Department of Statistics 
 		\begin{itemize}
-		\item Computation Advisory Committee, member (2011--2015,2016--present)
-    \item Snedecor Sustainability Committee, co-chair (2015--present)
-  	\item Preparing Future Faculty mentor: Will Landau (2013--2014), Natalia da Silva (2015--current)
-  	\item STAT-ers advisor (2011--present)
+		\item Computation Advisory Committee, chair (2017--chair)
+		\item Computation Advisory Committee, member (2011--2017)
+		\item Qualifying Exam Committee, member (2016--present)
+    \item Snedecor Sustainability Committee, co-chair (2015--2017)
+  	\item Preparing Future Faculty mentor: 
+  	  \begin{itemize}
+  	  \item Will Landau (2013--2014)
+  	  \item Natalia da Silva (2015--current)
+  	  \end{itemize}
+  	\item STAT-ers advisor (2011--2017)
 		\item Statistics/BCB search committee (2014--2015)
 		\item Director of Statistical Consulting search committee (2014--2015)
 		\item Department Chair search committee (2012--2014)
 		\item Computational Statistics working group, chair (2011--2014)
-		\item Computation Advisory Committee, member (2011--2015)
 		\item Social committee (2011--2015)
 		\end{itemize}
 	\item UCSB Department of Statistics \& Applied Probability
