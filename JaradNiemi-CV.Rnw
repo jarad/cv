@@ -46,7 +46,6 @@
 \usepackage{multicol}
 
 \hypersetup{
-  letterpaper,
   colorlinks,
   urlcolor=blue,
   pdfpagemode=none,
@@ -57,7 +56,7 @@
   pdfkeywords={statistics, Bayesian, systems biology, computational statistics}
 }
 
-\usepackage{caption} 
+\usepackage{caption,verbatim,fullpage} 
 \captionsetup[table]{skip=10pt}
 
 %%===========================================================================%%
@@ -283,67 +282,6 @@ tmp = pubs %>%
 
 
 \lastpromo
-
-% Matthew Simpson*, {\bf Jarad Niemi}, and Vivekananda Roy. (2016) Interweaving Markov chain Monte Carlo strategies for efficient estimation of dynamic linear models. \emph{to appear in the Journal of Computational and Graphical Statistics} (\href{http://www.tandfonline.com/doi/abs/10.1080/10618600.2015.1105748}{url})
-% 
-% Lisa Schulte, Anna MacDonald, {\bf Jarad Niemi}, and Matthew Helmers. (2016) Prairie strips as a mechanism to promote land sharing by birds in industrial agricultural landscapes. \emph{Agriculture, Ecosystems \& Environment}, 220, 55-63. (\href{http://www.sciencedirect.com/science/article/pii/S016788091630007X}{url})
-% 
-% {\bf Jarad Niemi}, Eric Mittman*, Will Landau*, and Dan Nettleton. (2015) Empirical Bayes analysis of RNA-seq data for detection of gene expression heterosis. \emph{Journal of Agricultural, Biological, and Environmental Statistics}, 20(4), 614-628. (\href{http://link.springer.com/article/10.1007%2Fs13253-015-0230-5}{url})
-% 
-% 
-% 
-% David M. Brenner, Jack Dekker, {\bf Jarad Niemi}, and Lisa Pfiffner. (2015) Medical Oxygen Concentrators for Releasing Seed Dormancy. \emph{Crop Science} 55(5), 2291--2293. (\href{https://dl.sciencesocieties.org/publications/cs/pdfs/0/0/cropsci2014.11.0783}{url})
-% 
-% Robert B. Gramacy, {\bf Jarad Niemi}, and Robin Weiss. (2014) Massively parallel approximate Gaussian process regression. \emph{SIAM/ASA Journal on Uncertainty Quantification}, 2, 568--584. (\href{http://epubs.siam.org/doi/abs/10.1137/130941912}{url})
-% 
-% Daniel Sheinson*, {\bf Jarad Niemi}, and Wendy Meiring. (2014) Comparison of the performance of particle filter algorithms applied to tracking of a disease epidemic. \emph{Journal of Mathematical Biosciences}, 255, 21--32. (\href{http://www.sciencedirect.com/science/article/pii/S0025556414001242}{url})
-% 
-% Jonathan Dess, Jennifer L. Momsen, {\bf Jarad Niemi}, and Lisa Montplaisir. (2014) Student interpretations of phylogenetic trees in an introductory biology course. \emph{CBE - Life Sciences Education}, 13(4), 666-676. (\href{http://www.lifescied.org/content/13/4/666.full?sid=7d54efe2-73cc-4823-b359-0ec4066c4e5b}{url})
-% 
-% Jo Eidsvik, Benjamin A. Shaby, Brian J. Reich, Matthew Wheeler, and {\bf Jarad Niemi}. (2014) Estimation and prediction in spatial models with block composite likelihoods. \emph{Journal of Computational and Graphical Statistics}, 23(2), 295-315. (\href{http://amstat.tandfonline.com/doi/abs/10.1080/10618600.2012.760460}{url})
-% 
-% 
-% Bernie J Daigle Jr, Min K Roh, Linda R Petzold, and {\bf Jarad Niemi}. (2012) Accelerated maximum likelihood parameter estimation for stochastic biochemical systems. \emph{BMC Bioinformatics} 13:68. (\href{http://www.biomedcentral.com/1471-2105/13/68}{url})
-% % (30% concept, 20% writing, 0% coding)
-% 
-% \sinceappt
-% 
-% David Banks, Gauri Datta, Alan Karr, James Lynch, {\bf Jarad Niemi}, and Francisco Vera. (2012) Bayesian CAR models for syndromic surveillance on multiple data streams: theory and practice. \emph{Information Fusion}: 13(2): 105--116. (\href{http://www.sciencedirect.com/science/article/pii/S156625350900092X}{url})
-% % (30% concept, 100% coding)
-% 
-% Mike Ludkovski and {\bf Jarad B. Niemi}. (2010) Optimal dynamic policies for influenza management. \emph{Statistical Communications in Infectious Diseases}: 2(1): 5. (\href{http://www.degruyter.com/view/j/scid.2010.2.1/scid.2010.2.1.1020/scid.2010.2.1.1020.xml}{url})
-% % (50% concept, 40% writing, 10% coding)
-% 
-% {\bf Jarad B. Niemi} and Mike West. (2010) Adaptive mixture modelling Metropolis methods for Bayesian analysis of non-linear state-space models. \emph{Journal of Computational and Graphical Statistics}. 19(2): 260--280. (\href{http://www.tandfonline.com/doi/abs/10.1198/jcgs.2010.08117}{url})
-% % (50% concept, 80% writing, 90% coding)
-% 
-% Quanli Wang, {\bf Jarad Niemi}, Cheemeng Tan, Lingchong You, and Mike West. (2010), Image segmentation and dynamic lineage analysis in single-cell fluorescent microscopy. \emph{Cytometry: Part A} {\bf 77A}(1): 101--110. (\href{http://onlinelibrary.wiley.com/doi/10.1002/cyto.a.20812/full}{url})
-% % (20% concept, 10% writing, 0% coding)
-% 
-% {\bf Jarad Niemi}, Brad Carlin, and Jon Alexander. (2008) Contrarian strategies for NCAA tournament pools: a cure for March madness? \emph{Chance} {\bf 21}(1): 39--46. (\href{http://amstat.tandfonline.com/doi/pdf/10.1080/09332480.2008.10722884}{url})
-% % (50% concept, 80% writing, 90% coding)
-% 
-% 
-% Michael J. Simmons, {\bf Jarad B. Niemi}, Don-Felix Ryzek, Cecile Lamour, Joseph W. Goodman, Wojtek Kraszkiewicz, and Ryan Wolff. (2007) Cytotype regulation by telomeric \emph{P} elements in \emph{Drosophila melanogaster}: Interactions with \emph{P} elements from M' strains. \emph{Genetics} {\bf 176}(4): 1957--1966
-% % (10% concept, 5% writing, 20% lab work)
-% 
-% Cheemeng Tan, Hao Song, {\bf Jarad Niemi}, and Lingchong You. (2007) A synthetic biology challenge: making cells compute. \emph{Molecular BioSystems}  {\bf 3}: 343--353
-% % (33% concept, 33% writing)
-% 
-% Kevin J. Haley, Jeremy R. Stuart, John D. Raymond, {\bf Jarad B. Niemi}, and Michael J. Simmons. (2005) Mutations in the Su(var)2-5 gene impair cytotype-mediated regulation of \emph{P} element activity in \emph{Drosophila melanogaster} through a Maternal Effect. \emph{Genetics} {\bf 171}: 583--595.
-% % (10% concept, 5% writing, 20% lab work)
-% 
-% 
-% {\bf Jarad B. Niemi}, John D. Raymond, Ryan Patrek, and Michael J. Simmons. (2004) Establishment and maintenance of the \emph{P} cytotype associated with telomeric \emph{P} elements in \emph{Drosophila melanogaster}. \emph{Genetics} {\bf 166}: 255--264.
-% % (30% concept, 30% writing, 40% lab work)
-% 
-% Michael J. Simmons, John D. Raymond, {\bf Jarad B. Niemi}, Jeremy R. Stuart, and Peter J. Merriman. (2004) The \emph{P} cytotype in \emph{Drosophila melanogaster}: A maternally transmitted regulatory state of the germ line associated with telomeric \emph{P} elements. \emph{Genetics} {\bf 166}: 243--254.
-% % (10% concept, 5% writing, 20% lab work)
-% 
-% 
-% Michael J. Simmons, Kevin J. Haley, Craig D. Grimes, John D. Raymond, and {\bf Jarad B. Niemi}. (2002) A hobo transgene that encodes the \emph{P} element transposase in \emph{Drosophila melanogaster}: Autoregulation and cytotype control of transposase activity. \emph{Genetics} {\bf 161}: 195--204.
-% % (10% concept, 5% writing, 20% lab work)
-
 
 
 %--------------------------------------------------------------
@@ -609,10 +547,9 @@ Slate (\href{http://www.slate.com/id/2213974/pagenum/all/}{2009}, \href{http://w
 The Duke Chronicle
 
 
-
-
 %---------------------------------------------------------------------------
 
+\newpage
 \section{\bf Courses taught}
 \vspace{0.1in}
 
@@ -621,7 +558,7 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
-Fall & STAT 615 & Advanced Bayesian Methods \\
+Fall 2017 & STAT 615 & Advanced Bayesian Methods \\
 Spring 2017 & STAT 401D & Statistical Methods for Research Workers \\
 Spring 2017 & STAT 544 & Bayesian Statistics \\
 Fall 2016 & STAT 330 & Probability and Statistics for Computer Science \\
@@ -642,7 +579,7 @@ Fall 2011 & STAT 615 & Advanced Bayesian Methods \\
 \\
 \multicolumn{3}{l}{At University of California - Santa Barbara:} \\
 \hline
-Spring 2011 & PSTAT 120C & Probability and Statistics \\ % (categorical, nonparametrics, and Bayesian) 
+Spring 2011 & PSTAT 120C & Probability and Statistics \\ % (categorical, nonparametrics, and Bayesian)
 & PSTAT 230 & Seminars and Projects in Statistical Consulting \\
 Winter 2011 & PSTAT 220B & Advanced Statistical Methods (GLMs) \\
 Fall 2010  & PSTAT 120B & Probability and Statistics \\
@@ -678,8 +615,6 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 
 
-
-
 \newpage
 \section{\bf Grants, Honors, and Awards}
 
@@ -701,12 +636,12 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \item Section on Bayesian Statistical Science Student Paper Competition winner [\$1,000] (2009)
 \item International Society for Disease Surveillance Technical Contest 2\textsuperscript{nd} place (2008)
 \item NSF National Research Service Award Fellowship (2003--2004)
-%\item Undergraduate Research Opportunity Program grant (1997)
-%\item John Tate Memorial Scholarship (1997)
-%\item Presidential Leadership Award (1997)
-%\item Lower Division Honors (1997)
-%\item Whiteside Scholastic Scholarship (1995)
-%\item Phillips Family Scholarship (1995)
+% \item Undergraduate Research Opportunity Program grant (1997)
+% \item John Tate Memorial Scholarship (1997)
+% \item Presidential Leadership Award (1997)
+% \item Lower Division Honors (1997)
+% \item Whiteside Scholastic Scholarship (1995)
+% \item Phillips Family Scholarship (1995)
 \end{itemize}
 
 
@@ -730,26 +665,28 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
 \item Refereeing
  \begin{itemize}
- \item Bayesian Analysis (2016,)
- Science (2016), 
- Plos ONE (2016), 
- Scientific Reports (2016), 
- Annals of Applied Statistics (2015), 
- Journal of Computational and Graphical Statistics (2014), 
- Technometrics (2013), 
- Electronic Journal of Statistics (2013), 
- Journal of the American Statistical Association (2015,2014,2012), 
- Journal of Quantitative Analysis in Sports (2014,2012), 
- Statistics and Computing (2015,2012), 
- Journal of Agricultural, Biological, and Environmental Statistics (2015,2012x2), 
- Current Computer-Aided Drug Design (2012), 
- IEEE Trans. on Systems, Man, and Cybernetics--Part C: Applications and Reviews (2011), 
- Journal of Agricultural, Biological, and Environmental Statistics (2011), 
- Applied Stochastic Models in Business and Industry (2011), 
- Annals of Applied Statistics  (2011$\times 2$), 
- Computational Statistics \& Data Analysis (2010), 
- Electronic Journal of Statistics (2010), 
- International Society for Disease Surveillance conference (2010--2013), 
+ \item Journal of the American Statistical Association (2017),
+ SIAM Undergraduate Research Online (2017),
+ Bayesian Analysis (2016,)
+ Science (2016),
+ Plos ONE (2016),
+ Scientific Reports (2016),
+ Annals of Applied Statistics (2015),
+ Journal of Computational and Graphical Statistics (2014),
+ Technometrics (2013),
+ Electronic Journal of Statistics (2013),
+ Journal of the American Statistical Association (2015,2014,2012),
+ Journal of Quantitative Analysis in Sports (2014,2012),
+ Statistics and Computing (2015,2012),
+ Journal of Agricultural, Biological, and Environmental Statistics (2015,2012x2),
+ Current Computer-Aided Drug Design (2012),
+ IEEE Trans. on Systems, Man, and Cybernetics--Part C: Applications and Reviews (2011),
+ Journal of Agricultural, Biological, and Environmental Statistics (2011),
+ Applied Stochastic Models in Business and Industry (2011),
+ Annals of Applied Statistics  (2011$\times 2$),
+ Computational Statistics \& Data Analysis (2010),
+ Electronic Journal of Statistics (2010),
+ International Society for Disease Surveillance conference (2010--2013),
  Journal of Statistical Education (2009)
  \end{itemize}
  
@@ -764,7 +701,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
- \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{3,286 rep}
+ \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{3,581 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
  \item News Editor for Significance Magazine (2010--2012)
@@ -816,7 +753,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 		\item Applied statistics qualifying exam committee, UCSB (2010--2011)
 		\item Computing committee, UCSB (2009--2011)
 		\item Library liaison, UCSB (2009--2011)
-		\end{itemize}
+	  \end{itemize}
 %	\item Duke University Statistical Science graduate consultative committee,  (2005--2007)
 %	\item University of Minnesota Biostatistics Student rep. on Biostatistics faculty committee (2003--2005)
  	\end{itemize}
@@ -829,18 +766,21 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \vspace{0.1in}
 
 <<read_studentcommittees, cache.extra = tools::md5sum("studentcommittees.csv")>>=
-library(plyr)
+# library(plyr)
 library(dplyr)
 library(xtable)
 
-d = read.csv("studentcommittees.csv") %>%
+d = readr::read_csv("studentcommittees.csv") %>%
   mutate(School = factor(School, levels=c("ISU","UCSB")),
          Chair  = factor(Chair,  levels=c("Chair","Co-chair","")))
 
-d_levels = levels(d$Department)
-d$Department = factor(d$Department, levels=c("STAT",d_levels[-which(d_levels=="STAT")]))
+d_levels = unique(d$Department)
+d$Department = factor(d$Department, 
+                      levels = c("STAT",
+                                 d_levels[-which(d_levels=="STAT")]))
 
-d = d %>% arrange(School, desc(Completed), Degree, Chair, Department)
+d = d %>% 
+  arrange(School, desc(Completed), Degree, Chair, Department)
 @
 
 
@@ -848,29 +788,30 @@ d = d %>% arrange(School, desc(Completed), Degree, Chair, Department)
 tab = xtable(d %>% 
                filter(Chair %in% c('Chair','Co-chair')) %>%
                arrange(School, Degree, desc(Completed), Chair), 
-      caption="Students advised",
-      label="tab:advisees")
+             caption = "Students advised",
+             label   = "tab:advisees")
 
 print(tab,
-      include.rownames=FALSE,
-      table.placement="h",
-      caption.placement="top")
+      include.rownames  = FALSE,
+      table.placement   = "h",
+      caption.placement = "top")
 @
 
 
 <<committees, dependson="read_studentcommittees", results='asis'>>=
 s = d %>%
-  filter(!(Chair %in% c("Chair","Co-chair"))) %>%
-  mutate(STAT = ifelse(Department %in% c('STAT','PSTAT','STAT&ECON'), 'Yes', 'No'),
+  # filter(!(Chair %in% c("Chair","Co-chair"))) %>%
+  mutate(`Chair/Co-chair` = ifelse(Chair %in% c("Chair","Co-chair"), 'Yes', "No"),
+         STAT = ifelse(Department %in% c('STAT','PSTAT','STAT&ECON'), 'Yes', 'No'),
          prog = ifelse(Completed == 'In progress', 'In progress', 'Completed')) %>%
-  group_by(Degree, STAT, prog) %>%
+  group_by(Degree, `Chair/Co-chair`, STAT, prog) %>%
   dplyr::summarize(n = length(Student)) %>%
   tidyr::spread(prog,n,fill=0) %>%
-  select(STAT, Degree, Completed, `In progress`) %>%
-  arrange(STAT, Degree)
+  select(`Chair/Co-chair`, STAT, Degree, Completed, `In progress`) %>%
+  arrange(desc(`Chair/Co-chair`), STAT, Degree)
 
 tab2 = xtable(s, 
-              caption='Other student committees',
+              caption='All student committees',
               label="tab:committees",
               digits=0)
 
