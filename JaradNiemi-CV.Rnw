@@ -366,6 +366,10 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf At other universities} \vspace{-0.2in}
 
+``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvin, 28 Nov 2017
+
+``Fully Bayesian analysis of RNAseq data for gene expression heterosis detection.'' University of Massachusetts - Amherst, 24 March 2017 
+
 ``A computational approach to the sequential control problem'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012 
 
 ``Determining optimal sequential disease outbreak interventions'' University of Iowa, Computational Epidemiology Seminar, 20 Jan 2012 
@@ -741,7 +745,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
   	\item Preparing Future Faculty mentor: 
   	  \begin{itemize}
   	  \item Will Landau (2013--2014)
-  	  \item Natalia da Silva (2015--current)
+  	  \item Natalia da Silva (2015--2016
   	  \end{itemize}
   	\item STAT-ers advisor (2011--2017)
 		\item Statistics/BCB search committee (2014--2015)
