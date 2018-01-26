@@ -558,9 +558,11 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Spring 2018 & STAT 544 & Bayesian Statistics \\
+ & STAT 401C & Statistical Methods for Research Workers \\
 Fall 2017 & STAT 615 & Advanced Bayesian Methods \\
 Spring 2017 & STAT 401D & Statistical Methods for Research Workers \\
-Spring 2017 & STAT 544 & Bayesian Statistics \\
+ & STAT 544 & Bayesian Statistics \\
 Fall 2016 & STAT 330 & Probability and Statistics for Computer Science \\
 Spring 2016 & STAT 544 & Bayesian Statistics \\
 Fall 2015 & STAT 615 & Advanced Bayesian Methods \\
