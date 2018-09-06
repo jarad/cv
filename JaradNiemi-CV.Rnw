@@ -562,6 +562,7 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Fall 2018 & STAT 226 & Introduction to Business Statistics \\
 Spring 2018 & STAT 544 & Bayesian Statistics \\
  & STAT 401C & Statistical Methods for Research Workers \\
 Fall 2017 & STAT 615 & Advanced Bayesian Methods \\
@@ -718,8 +719,8 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \item University service
 \begin{itemize}
 \item ISU Faculty Compensation Committee (2016--present)
-\item ISU Transportation Advisory Council (2015--present)
-\item ISU Faculty Senate departmental representative (2012--present)
+\item ISU Transportation Advisory Council (2015--2018)
+\item ISU Faculty Senate departmental representative (2012--2018)
 \item UCSB Faculty Legislature, member (2010--2011)
 \item Center for Research in Financial Mathematics and Statistics, UCSB, member (2010--2011)
 \item Quantitative Methods in the Social Sciences, UCSB, core faculty (2009--2011)
@@ -738,9 +739,8 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
  	\begin{itemize}
 	\item ISU Department of Statistics 
 		\begin{itemize}
-		\item Computation Advisory Committee, chair (2017--chair)
-		\item Computation Advisory Committee, member (2011--2017)
 		\item Qualifying Exam Committee, member (2016--present)
+		\item Computation Advisory Committee, member (2011--present), chair (2017--present)
     \item Snedecor Sustainability Committee, co-chair (2015--2017)
   	\item Preparing Future Faculty mentor: 
   	  \begin{itemize}
