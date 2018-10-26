@@ -74,7 +74,7 @@ options(width=120)
 @
 
 <<libraries, warning=FALSE>>=
-require(dplyr)
+require("dplyr")
 @
 
 \providecommand{\includesinceappt}{0}
@@ -82,7 +82,7 @@ require(dplyr)
 \providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
-\newcommand{\sinceappt}{\emph{-------------------------- above are since appointment at Iowa State University ------------------------------}}
+\newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Associate Professor ------------------------------}}
 \fi
 
 \if0\includesinceappt
@@ -182,6 +182,8 @@ pubs = readr::read_csv("publications.csv") %>%
 \subsection{\bf In preparation} \vspace{-0.2in}
 <<in_preparation, dependson="read_pubs", results='asis'>>=
 in_prep_print = function(d) {
+  if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
+  
   cat(d$authors, ". ",
       d$title,
       "\n\n",
@@ -202,9 +204,11 @@ tmp = pubs %>%
 
 <<submitted, dependson="read_pubs", results='asis'>>=
 under_revision_print = function(d) {
+  if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
+  
   cat(d$authors, ". ",
       d$title,
-      "\\emph{ under revision for the ",
+      "\\emph{ under revision for ",
       d$journal,
       "}",
       "\n\n", sep="")
@@ -218,6 +222,8 @@ tmp = pubs %>%
 
 
 submitted_print = function(d) {
+  if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
+  
   cat(d$authors, ". ",
       d$title,
       " \\emph{submitted to the ",
@@ -288,21 +294,21 @@ tmp = pubs %>%
 
 \subsection{\bf Book Chapters} \vspace{-0.2in}
 
+\sinceappt
+
 {\bf Jarad B. Niemi} and Gerald J. Niemi. (2015) Linear regression, model averaging, and Bayesian techniques for predicting chemical activities from structure. Ebook chapter on Advances in Mathematical Chemistry and Applications
 %: With applications to chemoinformatics, bioinformatics, drug discovery, and predictive toxicology
 , Editors: Subhash C. Basak, Guillermo Restrepo and Jose Luis Villaveces, Bentham Publishers (\href{http://www.eurekaselect.com/132675/chapter/linear-regression%2C-model-averaging%2C-and-bayesian-techniques-for-predicting-chemical-activities-from-structur}{url})
 % (70% all)
 
-\sinceappt
-
 \subsection{\bf Refereed Conference Proceedings} \vspace{-0.2in}
+
+\sinceappt
 
 Ignacio Alvarez*, {\bf Jarad Niemi}, and Matt Simpson*. (2014) Bayesian inference for a covariance matrix. \emph{Proceedings for the Conference on Applied Statistics in Agriculture} (\href{http://newprairiepress.org/agstatconference/2014/proceedings/8/}{url})
 
 Michael Ludkovski and {\bf Jarad Niemi} (2011) Optimal disease outbreak decisions using stochastic simulation. \emph{Proceedings of the 2011 Winter Simulation Conference}, eds. S. Jain, R. R. Creasey, J. Himmelspack, K. P. White, and M. Fu.
 % (50% concept, 30% writing, 10% coding)
-
-\sinceappt
 
 {\bf Jarad Niemi}, Meredith Smith, and David Banks. (2008) Test power for drug abuse surveillance. in \emph{Biosurveillance and Biosecurity, Proceedings of BioSecure 2008, Lecture Notes in Computer Science},  eds. Daniel Zeng, Hsinchun Chen, Henry Rolka, and William B. Lober. pp. 131--142
 % (50% concept, 90% writing, 90% coding)
@@ -311,6 +317,8 @@ Michael Ludkovski and {\bf Jarad Niemi} (2011) Optimal disease outbreak decision
 
 \subsection{\bf Refereed Abstracts} \vspace{-0.2in}
 
+\sinceappt
+
 Nicholas L. Michaud* and {\bf Jarad Niemi}. (2016) A Bayesian Hierarchical Model for Estimating Influenza Epidemic Severity. ISDS Annual Conference Proceedings 2015. \emph{Online Journal of Public Health Informatics} 8:1. (\href{http://ojphi.org/ojs/index.php/ojphi/article/view/6438}{url})
 
 Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: an Application for Viewing Weekly CDC MMWR Disease Count Data. \emph{Online Journal of Public Health Informatics} 8:1. (\href{http://ojphi.org/ojs/index.php/ojphi/article/view/6556}{url})
@@ -318,8 +326,6 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 {\bf Jarad Niemi}. (2014) A Tool for Interactive Disease Outbreak Visualization, Detection, and Forecasting. \emph{Online Journal of Public Health Informatics} 6:1. (\href{http://ojphi.org/article/view/5017}{url})
 
 {\bf Jarad Niemi} and Michael Ludkovski. (2013) Tau-leaped particle learning. \emph{Online Journal of Public Health Informatics} 5:1. (\href{http://dx.doi.org/10.5210%2Fojphi.v5i1.4575}{url})
-
-\sinceappt
 
 {\bf Jarad Niemi} and Michael Ludkovski. (2011) Optimal sequential management decisions for measles outbreaks. \emph{Emerging Health Threats Journal} 4. (\href{http://dx.doi.org/10.3402/ehtj.v4i0.11907}{url})
 
@@ -332,9 +338,13 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 
 \subsection{\bf Book reviews} \vspace{-0.2in}
 
-{\bf Jarad B. Niemi}. \underline{Statistics Done Wrong: The Woefully Complete Guide}. \emph{to appear in The American Statistician} 
-
 \sinceappt
+
+{\bf Jarad B. Niemi}. \underline{Statistics Done Wrong: The Woefully Complete Guide}. \emph{to appear in The American Statistician} 
+% email from 9 Feb 2016 says 
+% "This e-mail confirms that the Author Publishing Agreement submitted for the article listed above has been accepted."
+% But review never appeared. Instead a review from Christian Robert appeared in Sept 2016.
+% My review was not overly positive.
 
 {\bf Jarad B. Niemi}. (2010) \underline{Dynamic Linear Models with R}. \emph{The American Statistician} 64:3, pg 268 \href{http://dx.doi.org/10.1198/tast.2010.br643}{url}
 
@@ -342,10 +352,10 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 
 \subsection{\bf Other publications} \vspace{-0.2in}
 
+\sinceappt
+
 {\bf Jarad Niemi} and Andrew Gelman. (2011) Statistical graphics: making information clear -- and beautiful. \emph{Significance} 8, 135--137
 % (60% concept, 80% writing)
-
-\sinceappt
 
 {\bf Jarad B. Niemi}. (2010) Evaluating individual player contributions to team offense and defense: a model based approach. \emph{JSM Proceedings, Section on Statistics in Sports}. Vancouver, BC, Canada: American Statistical Association. 4914--4923.
 % (100% concept, 100% writing, 100% coding)
@@ -366,19 +376,17 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf At other universities} \vspace{-0.2in}
 
-``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvin, 28 Nov 2017
+``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvine, 28 Nov 2017
 
 ``Fully Bayesian analysis of RNAseq data for gene expression heterosis detection.'' University of Massachusetts - Amherst, 24 March 2017 
+
+\sinceappt
 
 ``A computational approach to the sequential control problem'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012 
 
 ``Determining optimal sequential disease outbreak interventions'' University of Iowa, Computational Epidemiology Seminar, 20 Jan 2012 
 
-\sinceappt
-
 ``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009 
-
-
 
 ``Computational methods for general state-space models.'' University of New Mexico Mathematics and Statistics departmental seminar, 19 February 2009 
 
@@ -422,13 +430,13 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf At agencies, companies, other venues} \vspace{-0.2in}
 
+\sinceappt
+
 ``Hierarchical modeling and data fusion,'' Centers for Disease Control and Prevention Seasonal Influenza Forecasting Workshop, 31 Aug 2016
 
 ``Stochastic dynamic models for low count observations,'' Institute for Disease Modeling Symposium, 19 Apr 2016
 
 ``Particle learning for low counts in disease outbreaks,'' Institute for Disease Modeling, 18 April 2016
-
-\sinceappt
 
 
 
@@ -436,11 +444,14 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \section{\bf Refereed Presentations at Major Conferences} 
 
+``Fully Bayesian Analysis of Hierarchical Count Regression Models.'' 
+Joint Statistical Meetings, 31 July 2018
+
+\sinceappt
+
 {\small 
 
 ``Optimal sequential management decisions for measles outbreaks'' 10\textsuperscript{th} International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011 
-
-\sinceappt
 
 ``Evaluating individual player contributions in basketball.'' Joint Statistical Meetings, 4 Aug 2010 
 
@@ -455,6 +466,8 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 }
 
 \section{\bf Other Talks} 
+
+\sinceappt
 
 {\small
 
@@ -471,8 +484,6 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 ``Particle learning for low counts in disease outbreaks,'' Department of Statistics, Iowa State University, 16 September 2013 
 
 ``Statistical Methods for Identifying Gene Expression Heterosis'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 30 April 2013 (joint with Dan Nettleton)
-
-\sinceappt
 
 ``A sequential Monte Carlo primer'' Iowa State University, Department of Statistics, Computational Statistics working group, 12 Oct 2011 
 
@@ -502,6 +513,14 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \section{\bf Posters}
 
+{\bf Jarad Niemi} and Will Landau. Fully Bayesian analysis of hierarchical count regression models
+applied to RNAseq. 2018 ISBA World Meeting, 26 June 2018
+
+{\bf Jarad Niemi} and Will Landau.  {\tt fbseq}: An R package for fully Bayesian 
+analysis of RNAseq data.
+
+\sinceappt
+
 {\small
 
 Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. CDCPlot: an Application for Viewing Weekly CDC MMWR Disease Count Data. 2015 International Society for Disease Surveillance Conference, 10 Dec 2015
@@ -521,8 +540,6 @@ Ignacio Alvarez* and {\bf Jarad Niemi}. Bayesian Inference for covariance matrix
 MacDonald, A.L., L.A. Schulte Moore, M.J. Helmers, and {\bf J.B. Niemi}.  Bird response to native habitat strips integrated into agricultural fields.  International Conference on Agricultural Biodiversity and Sustainability, Hokkaido University, Japan,  29 Aug 2012 
 
 A.L. MacDonald, L.A. Schulte, M.J. Helmers, and {\bf J.B. Niemi}.  2012.  Testing a new conservation practice for agricultural landscapes: Bird response to prairie strips in row-cropped landscapes.  97th Annual Meeting of the Ecological Society of America, Portland, Oregon, 7 Aug 2012 
-
-\sinceappt
 
 {\bf Jarad Niemi}. ``An exploratory analysis of the 2010 measles outbreak in Zimbabwe'' 2011 International Society for Disease Surveillance Conference, 7 Dec 2011 
 
@@ -626,6 +643,13 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \section{\bf Grants, Honors, and Awards}
 
 \begin{itemize}
+\item Lisa Schulte-Moore, J. Gordon Arbuckle, Robert Brown, Emily Heaton, Matt
+Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, Jarad Niemi,
+and Dara Wald.
+Initiative for Cultivating Human And Naturally reGenerative Enterprises (I-CHANGE), 
+Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
+1 June 2018 to 31 May 2021 [\$741,480] (allocation to Niemi: $\sim$ 12\%)
+
 \item D. Nettleton, P. Liu, J. Niemi, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156] (allocation to Niemi: 25\%)
 
 \item Iowa State University Health Research Initiative on Infectious Diseases (PI Michael Cho, I was one of many investigators) [\$150,000] (2012)
@@ -672,7 +696,9 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
 \item Refereeing
  \begin{itemize}
- \item Journal of the American Statistical Association (2017),
+ \item 
+ Bioinformatics (2018),
+ Journal of the American Statistical Association (2017),
  SIAM Undergraduate Research Online (2017),
  Bayesian Analysis (2016,)
  Science (2016),

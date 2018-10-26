@@ -1,10 +1,14 @@
 title,authors,status,journal,volume,issue,number,pages,url,doi,arXiv,year,new
-Using a scale mixture of normals to improve a high-dimensional hierarchical model.,Will Landau* and {\bf Jarad Niemi},in preparation,,,,,,,,,,TRUE
-An approximate Bayesian estimation of a Poisson Markov random field model for crash data.,"Ignacio Alvarez*, {\bf Jarad Niemi}, Kristian Schmidt, and Alicia Carriquiry",in preparation,,,,,,,,,,TRUE
-Evaluating the benefits of incorporating biased data for influenza forecasting.,Nicholas Michaud* and {\bf Jarad Niemi},in preparation,,,,,,,,,,TRUE
-A Bayesian hierarchical model for estimating influenza epidemic severity.,Nicholas Michaud* and {\bf Jarad Niemi},in preparation,,,,,,,,,,TRUE
-Particle learning for Poisson-binomial state-space models.,"{\bf Jarad Niemi}, Nicholas Michaud*, and Mike Ludkovski",in preparation,,,,,,,,,,TRUE
-Using information underlying missing data to improve estimation of NFL field goal kicker accuracy,"Dennis Lock, Dan Nettleton, {\bf Jarad Niemi}, and Casey Oliver*",in preparation,,,,,,,,,,TRUE
+A nonlinear hierarchical model for monitoring crop growth.,"Colin Lewis-Beck*, {\bf Jarad Niemi}, Petrutza Caragea, Brian Hornbuckle, Victoria Walker",submitted,"Journal of Agricultural, Biological, and Environmental Statistics",,,,,,,,,TRUE
+"Fully Bayesian analysis of allele-specific RNA-seq data using an hierarchical, overdispersed, count regression model.","Ignacio Alvarez*, {\bf Jarad Niemi}, and Dan Nettleton",in preparation,Mathematical Biosciences,,,,,,,,70,TRUE
+Uniting two implementations of perceptbility in distance-removal modeling.,"Adam Martin-Schwarze*, {\bf Jarad Niemi}, and Philip Dixon",in preparation,Biometrics,,,,,,,,100,TRUE
+Multivariate temporal modeling of crime with dynamic linear models.,Nathaniel Garton* and {\bf Jarad Niemi},under revision,PLoS ONE,,,,,,,,,TRUE
+Using a scale mixture of normals to improve a high-dimensional hierarchical model.,Will Landau* and {\bf Jarad Niemi},in preparation,,,,,,,,,80,TRUE
+An approximate Bayesian estimation of a Poisson Markov random field model for crash data.,"Ignacio Alvarez*, {\bf Jarad Niemi}, Kristian Schmidt, and Alicia Carriquiry",in preparation,Annals of Applied Statistics,,,,,,,,90,TRUE
+Evaluating the benefits of incorporating biased data for influenza forecasting.,Nicholas Michaud* and {\bf Jarad Niemi},in preparation,,,,,,,,,4,TRUE
+A Bayesian hierarchical model for estimating influenza epidemic severity.,Nicholas Michaud* and {\bf Jarad Niemi},in preparation,,,,,,,,,3,TRUE
+Particle learning for Poisson-binomial state-space models.,"{\bf Jarad Niemi}, Nicholas Michaud*, and Mike Ludkovski",in preparation,,,,,,,,,1,TRUE
+Using information underlying missing data to improve estimation of NFL field goal kicker accuracy.,"Dennis Lock, Dan Nettleton, {\bf Jarad Niemi}, and Casey Oliver*",in preparation,Journal of the American Statistical Association,,,,,,,,2,TRUE
 Fully Bayesian analysis of RNA-seq counts for the detection of gene expression heterosis.,"Will Landau*, {\bf Jarad Niemi}, and Dan Nettleton",published,Journal of the American Statistical Association,,,,,https://www.tandfonline.com/doi/full/10.1080/01621459.2018.1497496,10.1080/01621459.2018.1497496,,2018,TRUE
 A fully Bayesian strategy for high-dimensional hierarchical modeling using massively parallel computing.,Will Landau* and {\bf Jarad Niemi},under revision,Journal of Computational and Graphical Statistics,,,,,,,https://arxiv.org/abs/1606.06659,,TRUE
 Assessing the impacts of time to detection distribution assumptions on detection probability estimation.,"Adam Martin-Schwarze*, {\bf Jarad Niemi}, and Philip Dixon",published,"Journal of Agricultural, Biological, and Environmental Statistics",22,4,,465-480,https://link.springer.com/article/10.1007/s13253-017-0300-y,10.1007/s13253-017-0300-y,,2017,TRUE
