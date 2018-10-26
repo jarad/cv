@@ -340,13 +340,15 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 
 \sinceappt
 
-{\bf Jarad B. Niemi}. \underline{Statistics Done Wrong: The Woefully Complete Guide}. \emph{to appear in The American Statistician} 
+{\bf Jarad B. Niemi}. \underline{Statistics Done Wrong: The Woefully Complete Guide}. 
+\emph{The American Statistician} 70(1), pg 125
+\href{https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1140432}{url}
 % email from 9 Feb 2016 says 
 % "This e-mail confirms that the Author Publishing Agreement submitted for the article listed above has been accepted."
 % But review never appeared. Instead a review from Christian Robert appeared in Sept 2016.
 % My review was not overly positive.
 
-{\bf Jarad B. Niemi}. (2010) \underline{Dynamic Linear Models with R}. \emph{The American Statistician} 64:3, pg 268 \href{http://dx.doi.org/10.1198/tast.2010.br643}{url}
+{\bf Jarad B. Niemi}. (2010) \underline{Dynamic Linear Models with R}. \emph{The American Statistician} 64(3), pg 268 \href{http://dx.doi.org/10.1198/tast.2010.br643}{url}
 
 
 
