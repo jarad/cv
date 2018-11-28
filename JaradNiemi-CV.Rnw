@@ -473,6 +473,8 @@ Joint Statistical Meetings, 31 July 2018
 
 {\small
 
+``Emulation of WEPP and DEP,'' SAMSI MUMS Prediction Uncertainty and Extrapolation working group, 28 Nov 2018
+
 ``Using information underlying missing data for improve estimation of NFL field goal kicker accuracy,'' Midwest Sports Analytics Meetings, 19 Nov 2016
 
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Statistics, Colorado State University, 11 Dec 2015
