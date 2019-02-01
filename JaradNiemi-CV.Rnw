@@ -78,7 +78,7 @@ require("dplyr")
 @
 
 \providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{0}
+\providecommand{\includesubmitted}{1}
 \providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
@@ -583,6 +583,8 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Spring 2019 & STAT 544 & Bayesian Statistics \\
+& STAT 587C & Statistical Methods for Research Workers \\
 Fall 2018 & STAT 226 & Introduction to Business Statistics \\
 Spring 2018 & STAT 544 & Bayesian Statistics \\
  & STAT 401C & Statistical Methods for Research Workers \\
@@ -647,12 +649,19 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \section{\bf Grants, Honors, and Awards}
 
 \begin{itemize}
+\item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, 
+Bradley Miller, Jarad Niemi, Lisa Schulte, and John Tyndall, 
+Prairie Strips for Healthy Soils and Thriving Farms, 
+Foundation for Food and Agriculture Research,
+1 October 2018 to 30 September 2021
+[\$746,204.44] (allocation to Niemi: $\sim$ 6\%)
 \item Lisa Schulte-Moore, J. Gordon Arbuckle, Robert Brown, Emily Heaton, Matt
 Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, Jarad Niemi,
 and Dara Wald.
 Initiative for Cultivating Human And Naturally reGenerative Enterprises (I-CHANGE), 
 Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
-1 June 2018 to 31 May 2021 [\$741,480] (allocation to Niemi: $\sim$ 12\%)
+1 June 2018 to 31 May 2021 
+[\$741,480] (allocation to Niemi: $\sim$ 12\%)
 
 \item D. Nettleton, P. Liu, J. Niemi, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156] (allocation to Niemi: 25\%)
 
