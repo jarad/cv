@@ -1,9 +1,9 @@
 title,authors,status,journal,volume,issue,number,pages,url,doi,arXiv,year,new
-iButton temperature data loggers increase sample size and precision when estimating daily survival rate for bird nests,"Matthew Stephenson, Lisa Schulte, Robert Klaver, and {\bf Jarad Niemi}",in preparation,,,,,,,,,,
-Comparing agricultural conservation planning framework (ACPF) practice placements for runoff mitigation and controlled drainage among 32 watersheds representing Iowa landscapes.,"M.D. Tomer, J.D. Van Horn, S.A. Porter, D.E. James, and {\bf J. Niemi}",in preparation,,,,,,,,,,
-A nonlinear hierarchical model for monitoring crop growth.,"Colin Lewis-Beck*, {\bf Jarad Niemi}, Petrutza Caragea, Brian Hornbuckle, Victoria Walker",submitted,"Journal of Agricultural, Biological, and Environmental Statistics",,,,,,,,,TRUE
-"Fully Bayesian analysis of allele-specific RNA-seq data using an hierarchical, overdispersed, count regression model.","Ignacio Alvarez*, {\bf Jarad Niemi}, and Dan Nettleton",in preparation,Mathematical Biosciences,,,,,,,,70,TRUE
-Uniting two implementations of perceptbility in distance-removal modeling.,"Adam Martin-Schwarze*, {\bf Jarad Niemi}, and Philip Dixon",in preparation,Biometrics,,,,,,,,100,TRUE
+iButton temperature data loggers increase sample size and precision when estimating daily survival rate for bird nests,"Matthew Stephenson, Lisa Schulte, Robert Klaver, and {\bf Jarad Niemi}",in preparation,,,,,,https://amstat.tandfonline.com/doi/full/10.1080/01621459.2018.1497496,10.1080/01621459.2018.1497496,,,TRUE
+Comparing agricultural conservation planning framework (ACPF) practice placements for runoff mitigation and controlled drainage among 32 watersheds representing Iowa landscapes.,"M.D. Tomer, J.D. Van Horn, S.A. Porter, D.E. James, and {\bf J. Niemi}",submitted,Journal of Soil and Water Conservation,,,,,,,,,TRUE
+A nonlinear hierarchical model for monitoring crop growth.,"Colin Lewis-Beck*, {\bf Jarad Niemi}, Petrutza Caragea, Brian Hornbuckle, Victoria Walker",in preparation,Annals of Applied Statistics,,,,,,,,,TRUE
+"Fully Bayesian analysis of allele-specific RNA-seq data.","Ignacio Alvarez* and {\bf Jarad Niemi}",submitted,Mathematical Biosciences and Engineering,,,,,,,,70,TRUE
+Uniting two implementations of perceptbility in distance-removal modeling.,"Adam Martin-Schwarze*, {\bf Jarad Niemi}, and Philip Dixon",under revision,Biometrics,,,,,,,,100,TRUE
 Multivariate temporal modeling of crime with dynamic linear models.,Nathaniel Garton* and {\bf Jarad Niemi},under revision,PLoS ONE,,,,,,,,,TRUE
 Using a scale mixture of normals to improve a high-dimensional hierarchical model.,Will Landau* and {\bf Jarad Niemi},in preparation,,,,,,,,,80,TRUE
 An approximate Bayesian estimation of a Poisson Markov random field model for crash data.,"Ignacio Alvarez*, {\bf Jarad Niemi}, Kristian Schmidt, and Alicia Carriquiry",in preparation,Annals of Applied Statistics,,,,,,,,90,TRUE
