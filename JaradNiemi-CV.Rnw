@@ -167,7 +167,7 @@ Research Engineer & Procter \& Gamble & 1999-2001
 
 \section{Publications}
 
-* Indicates a student I am advising or co-advising.
+* Indicates a student advisee or co-advisee.
 
 \vspace{-0.3in}
 
@@ -473,6 +473,8 @@ Joint Statistical Meetings, 31 July 2018
 
 {\small
 
+``Bayesian analysis in R,'' Rgronomists/LunchinatoRs, 1 Feb 2019
+
 ``Emulation of WEPP and DEP,'' SAMSI MUMS Prediction Uncertainty and Extrapolation working group, 28 Nov 2018
 
 ``Using information underlying missing data for improve estimation of NFL field goal kicker accuracy,'' Midwest Sports Analytics Meetings, 19 Nov 2016
@@ -650,20 +652,20 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 \begin{itemize}
 \item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, 
-Bradley Miller, Jarad Niemi, Lisa Schulte, and John Tyndall, 
+Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall, 
 Prairie Strips for Healthy Soils and Thriving Farms, 
 Foundation for Food and Agriculture Research,
 1 October 2018 to 30 September 2021
 [\$746,204.44] (allocation to Niemi: $\sim$ 6\%)
 \item Lisa Schulte-Moore, J. Gordon Arbuckle, Robert Brown, Emily Heaton, Matt
-Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, Jarad Niemi,
+Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, {\bf Jarad Niemi},
 and Dara Wald.
 Initiative for Cultivating Human And Naturally reGenerative Enterprises (I-CHANGE), 
 Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 1 June 2018 to 31 May 2021 
 [\$741,480] (allocation to Niemi: $\sim$ 12\%)
 
-\item D. Nettleton, P. Liu, J. Niemi, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156] (allocation to Niemi: 25\%)
+\item D. Nettleton, P. Liu, {\bf J. Niemi}, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156] (allocation to Niemi: 25\%)
 
 \item Iowa State University Health Research Initiative on Infectious Diseases (PI Michael Cho, I was one of many investigators) [\$150,000] (2012)
 \item World Meeting of the International Society for Bayesian Analysis Early Career Researchers Travel Grant [\$500] (2012)
