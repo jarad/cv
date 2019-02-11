@@ -78,7 +78,7 @@ require("dplyr")
 @
 
 \providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{0}
+\providecommand{\includesubmitted}{1}
 \providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
@@ -651,6 +651,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \section{\bf Grants, Honors, and Awards}
 
 \begin{itemize}
+\item CALS Team Award, 8 Mar 2018
 \item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, 
 Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall, 
 Prairie Strips for Healthy Soils and Thriving Farms, 
@@ -760,6 +761,7 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 
 \item University service
 \begin{itemize}
+\item ISU STRIPS Data lead (2018--present)
 \item ISU Faculty Compensation Committee (2016--present)
 \item ISU Transportation Advisory Council (2015--2018)
 \item ISU Faculty Senate departmental representative (2012--2018)
