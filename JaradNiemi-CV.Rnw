@@ -138,6 +138,9 @@ B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Pr
 \section{\bf Academic Positions}
 
 \begin{tabular}{l@{\qquad}r}
+Canadian Statistical Sciences Institute & Simon Fraser University \\
+Visiting Scholar & 2019-2020 \\
+\\
 Statistics & Iowa State University \\
 Associate Professor & 2017--present \\
 Assistant Professor & 2011--2017 \\
@@ -648,11 +651,10 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 
 \newpage
-\section{\bf Grants, Honors, and Awards}
+
+\section{\bf Grants}
 
 \begin{itemize}
-\item Iowa State University Institutional Service Award, 2018
-\item Iowa State University College of Agriculture and Life Sciences Team Award, 8 Mar 2018
 \item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, 
 Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall, 
 Prairie Strips for Healthy Soils and Thriving Farms, 
@@ -667,20 +669,26 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 1 June 2018 to 31 May 2021 
 [\$741,480] (allocation to Niemi: $\sim$ 12\%)
 
+\sinceappt
+
 \item D. Nettleton, P. Liu, {\bf J. Niemi}, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156] (allocation to Niemi: 25\%)
+\end{itemize}
+
+
+\section{\bf Honors, and Awards}
+
+\begin{itemize}
+\item Iowa State University Institutional Service Award, 2018
+\item Iowa State University College of Agriculture and Life Sciences Team Award, 8 Mar 2018
+
+\sinceappt
 
 \item Iowa State University Health Research Initiative on Infectious Diseases (PI Michael Cho, I was one of many investigators) [\$150,000] (2012)
 \item World Meeting of the International Society for Bayesian Analysis Early Career Researchers Travel Grant [\$500] (2012)
 \item Iowa State University College of Liberal Arts and Sciences grant for GPU cluster and RA support [\$88,000] (2011)
-
-\sinceappt
-
 \item University of California Regents Junior Faculty Fellowship [\$7,500] (2011)
 \item MCMSki3 conference travel support [\$650] (2011)
 \item NVIDIA Academic Partnership Program award [2$\times$ NVIDIA C2050 GPUs] (2010)
-
-
-
 \item Section on Bayesian Statistical Science Student Paper Competition winner [\$1,000] (2009)
 \item International Society for Disease Surveillance Technical Contest 2\textsuperscript{nd} place (2008)
 \item NSF National Research Service Award Fellowship (2003--2004)
@@ -784,6 +792,8 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
  	\begin{itemize}
 	\item ISU Department of Statistics 
 		\begin{itemize}
+		\item Chair Search Advisory committee (2018-2019)
+		\item Data Science Faculty search committee (2018-2019)
 		\item Qualifying Exam Committee, member (2016--present)
 		\item Computation Advisory Committee, member (2011--present), chair (2017--present)
     \item Snedecor Sustainability Committee, co-chair (2015--2017)
