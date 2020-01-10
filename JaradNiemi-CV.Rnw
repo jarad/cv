@@ -381,6 +381,12 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf At other universities} \vspace{-0.2in}
 
+``Gaussian Process emulation of the Water Erosion Prediction Project,''
+Los Alamos National Labs, 22 Apr 2020
+
+``Sequantial Knot Selection in Sparse Gaussian Processes,''
+Simon Fraser University, 10 Jan 2020
+
 ``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvine, 28 Nov 2017
 
 ``Fully Bayesian analysis of RNAseq data for gene expression heterosis detection.'' University of Massachusetts - Amherst, 24 March 2017 
@@ -410,6 +416,9 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 
 \subsection{\bf At conferences} \vspace{-0.2in}
+
+``OAT knot selection for approximate Gaussian Processes,''
+SIAM UQ20, March 2020
 
 ``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis,'' 9th International Conference of the ERCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
 
