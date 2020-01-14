@@ -78,8 +78,8 @@ require("dplyr")
 @
 
 \providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{0}
-\providecommand{\includeinprep}{0}
+\providecommand{\includesubmitted}{1}
+\providecommand{\includeinprep}{1}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Associate Professor ------------------------------}}
