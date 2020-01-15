@@ -458,6 +458,8 @@ SIAM UQ20, March 2020
 
 \section{\bf Refereed Presentations at Major Conferences} 
 
+``Subfield Yield Analysis for Precision Agriculture,'' Joint Statistical Meetings, 30 July 2019
+
 ``Fully Bayesian Analysis of Hierarchical Count Regression Models.'' 
 Joint Statistical Meetings, 31 July 2018
 
