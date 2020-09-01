@@ -382,7 +382,7 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 \subsection{\bf At other universities} \vspace{-0.2in}
 
 ``Gaussian Process emulation of the Water Erosion Prediction Project,''
-Los Alamos National Labs, 22 Apr 2020
+Los Alamos National Labs, 23 Sep 2020
 
 ``Sequantial Knot Selection in Sparse Gaussian Processes,''
 Simon Fraser University, 10 Jan 2020
@@ -417,8 +417,12 @@ Simon Fraser University, 10 Jan 2020
 
 \subsection{\bf At conferences} \vspace{-0.2in}
 
+
+``Multivariate Temporal Modeling of Crime with Dynamic Linear Models,''
+Joint Statistical Meetings, virtual, 6 Aug 2020, 
+
 ``OAT knot selection for approximate Gaussian Processes,''
-SIAM UQ20, March 2020
+SIAM UQ20, March 2020 (canceled due to COVID-19)
 
 ``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis,'' 9th International Conference of the ERCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
 
@@ -599,6 +603,7 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Fall 2020 & STAT 587-2 & Statistical Methods For Research Workers \\
 Spring 2019 & STAT 544 & Bayesian Statistics \\
 & STAT 587C & Statistical Methods for Research Workers \\
 Fall 2018 & STAT 226 & Introduction to Business Statistics \\
@@ -666,6 +671,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \section{\bf Grants}
 
 \begin{itemize}
+\item Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue, Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE), 1 Sep 2020 to ?? [\$10,000,000]
 \item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, 
 Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall, 
 Prairie Strips for Healthy Soils and Thriving Farms, 
