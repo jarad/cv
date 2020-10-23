@@ -381,8 +381,7 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf At other universities} \vspace{-0.2in}
 
-``Gaussian Process emulation of the Water Erosion Prediction Project,''
-Los Alamos National Labs, 23 Sep 2020
+``COVID-19 Forecast Hub,'' University of Iowa, 15 Oct 2020
 
 ``Sequantial Knot Selection in Sparse Gaussian Processes,''
 Simon Fraser University, 10 Jan 2020
@@ -448,6 +447,9 @@ SIAM UQ20, March 2020 (canceled due to COVID-19)
 
 \subsection{\bf At agencies, companies, other venues} \vspace{-0.2in}
 
+``Gaussian Process emulation of the Water Erosion Prediction Project,''
+Los Alamos National Labs, 23 Sep 2020
+
 \sinceappt
 
 ``Hierarchical modeling and data fusion,'' Centers for Disease Control and Prevention Seasonal Influenza Forecasting Workshop, 31 Aug 2016
@@ -487,13 +489,21 @@ Joint Statistical Meetings, 31 July 2018
 
 \section{\bf Other Talks} 
 
-\sinceappt
-
 {\small
+
+``COVID-19 Forecast Hub,'' ISU Undergraduate STAT Club, 22 Oct 2020
 
 ``Bayesian analysis in R,'' Rgronomists/LunchinatoRs, 1 Feb 2019
 
 ``Emulation of WEPP and DEP,'' SAMSI MUMS Prediction Uncertainty and Extrapolation working group, 28 Nov 2018
+}
+
+
+\sinceappt
+
+{\small
+
+
 
 ``Using information underlying missing data for improve estimation of NFL field goal kicker accuracy,'' Midwest Sports Analytics Meetings, 19 Nov 2016
 
