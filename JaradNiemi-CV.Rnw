@@ -613,6 +613,8 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Spring 2021 & STAT 330-2 & Probability and Statistics for Computer Science \\
+& STAT 587-3 & Statistical Methods For Research Workers \\
 Fall 2020 & STAT 587-2 & Statistical Methods For Research Workers \\
 Spring 2019 & STAT 544 & Bayesian Statistics \\
 & STAT 587C & Statistical Methods for Research Workers \\
@@ -705,8 +707,9 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 \section{\bf Honors, and Awards}
 
 \begin{itemize}
-\item Iowa State University Institutional Service Award, 2018
-\item Iowa State University College of Agriculture and Life Sciences Team Award, 8 Mar 2018
+\item \href{https://www.swcs.org/resources/news/soil-and-water-conservation-society-recognizes-international-leaders-in-conservation}{2020 Conservation Innovation Award}, Soil and Water Conservation Society, \href{http://prairiestrips.org/}{STRIPS Team}
+\item \href{https://news.las.iastate.edu/2018/05/14/las-announces-2018-award-winners/}{Iowa State University Institutional Service Award}, 2018
+\item \href{https://www.cals.iastate.edu/features/2018/science-based-trials-rowcrops-integrated-prairie-strips-project-received-team-award}{Iowa State University College of Agriculture and Life Sciences Team Award}, 8 Mar 2018
 
 \sinceappt
 
