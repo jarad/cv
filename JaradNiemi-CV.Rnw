@@ -803,7 +803,8 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 
 \item University service
 \begin{itemize}
-\item ISU STRIPS Data lead (2018--2019)
+\item ISU LAS CASTLE (2020--present)
+\item ISU STRIPS Data lead (2018--present)
 \item ISU Faculty Compensation Committee (2016--present)
 \item ISU Transportation Advisory Council (2015--2018)
 \item ISU Faculty Senate departmental representative (2012--2018)
