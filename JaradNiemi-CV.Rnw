@@ -74,12 +74,12 @@ options(width=120)
 @
 
 <<libraries, warning=FALSE>>=
-require("dplyr")
+library("dplyr")
 @
 
 \providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{0}
-\providecommand{\includeinprep}{0}
+\providecommand{\includesubmitted}{1}
+\providecommand{\includeinprep}{1}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Associate Professor ------------------------------}}
@@ -381,7 +381,7 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf At other universities} \vspace{-0.2in}
 
-``COVID-19 Forecast Hub,'' University of Iowa, 15 Oct 2020
+``COVID-19 Forecast Hub,'' virtual, University of Iowa, 15 Oct 2020
 
 ``Sequantial Knot Selection in Sparse Gaussian Processes,''
 Simon Fraser University, 10 Jan 2020
@@ -416,6 +416,8 @@ Simon Fraser University, 10 Jan 2020
 
 \subsection{\bf At conferences} \vspace{-0.2in}
 
+``Gaussian Processes with Functional Length-Scales for Agricultural Models,''
+Statistical Society of Cananda Annual Meeting, virtual, 11 June 2021
 
 ``Multivariate Temporal Modeling of Crime with Dynamic Linear Models,''
 Joint Statistical Meetings, virtual, 6 Aug 2020, 
@@ -447,7 +449,7 @@ SIAM UQ20, March 2020 (canceled due to COVID-19)
 
 \subsection{\bf At agencies, companies, other venues} \vspace{-0.2in}
 
-``Gaussian Process emulation of the Water Erosion Prediction Project,''
+``Emulation of Agricultural Production Systems sIMulator (APSIM),''
 Los Alamos National Labs, 23 Sep 2020
 
 \sinceappt
@@ -613,6 +615,8 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Fall 2021 & STAT 587-1 & Statistical Methods For Research Workers \\
+& STAT 615 & Advanced Bayesian Methods \\
 Spring 2021 & STAT 330-2 & Probability and Statistics for Computer Science \\
 & STAT 587-3 & Statistical Methods For Research Workers \\
 Fall 2020 & STAT 587-2 & Statistical Methods For Research Workers \\
@@ -826,10 +830,15 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
  	\begin{itemize}
 	\item ISU Department of Statistics 
 		\begin{itemize}
+		\item Faculty Search Committee, member (2021--current)
+		\item Curriculum Review Committee, chair (2021--current)
+		\item Exam Future Committee, member (2021--current)
+		\item Website Committee, chair (2020--current)
+		\item Graduate Admissions Committee, member (2020--current)
+		\item Computation Advisory Committee, member (2011--2019,2020--current), chair (2017--2019)
 		\item Chair Search Advisory committee (2018--2019)
 		\item Data Science Faculty search committee (2018--2019)
 		\item Qualifying Exam Committee, member (2016--2019)
-		\item Computation Advisory Committee, member (2011--2019), chair (2017--2019)
     \item Snedecor Sustainability Committee, co-chair (2015--2017)
   	\item Preparing Future Faculty mentor: 
   	  \begin{itemize}
