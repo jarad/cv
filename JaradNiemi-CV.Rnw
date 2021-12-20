@@ -22,7 +22,7 @@
 % * Don't forget to change `pdfauthor' and `keywords' in the \hypersetup
 %   section below.
 %
-% * To create a new page use: 
+% * To create a new page use:
 %
 % * res.cls includes an \address{} command which can be used up to twice,
 %   but my address is too long for the format it uses.
@@ -56,17 +56,17 @@
   pdfkeywords={statistics, Bayesian, systems biology, computational statistics}
 }
 
-\usepackage{caption,verbatim,fullpage} 
+\usepackage{caption,verbatim,fullpage}
 \captionsetup[table]{skip=10pt}
 
 %%===========================================================================%%
 
 <<options, results='hide', echo=FALSE, purl=FALSE>>=
-opts_chunk$set(comment=NA, 
-               fig.width=6, fig.height=5, 
-               size='tiny', 
-               out.width='0.8\\textwidth', 
-               fig.align='center', 
+opts_chunk$set(comment=NA,
+               fig.width=6, fig.height=5,
+               size='tiny',
+               out.width='0.8\\textwidth',
+               fig.align='center',
                message=FALSE,
                echo=FALSE,
                cache=TRUE)
@@ -78,8 +78,8 @@ library("dplyr")
 @
 
 \providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{1}
-\providecommand{\includeinprep}{1}
+\providecommand{\includesubmitted}{0}
+\providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Associate Professor ------------------------------}}
@@ -87,7 +87,7 @@ library("dplyr")
 
 \if0\includesinceappt
 \newcommand{\sinceappt}{}
-\fi 
+\fi
 
 \newcommand{\lastpromo}{}
 
@@ -138,12 +138,12 @@ B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Pr
 \section{\bf Academic Positions}
 
 \begin{tabular}{l@{\qquad}r}
-Statistics and Actuarial Sciences & Simon Fraser University \\
-Visiting Scholar & 2019-2020 \\
-\\
 Statistics & Iowa State University \\
 Associate Professor & 2017--present \\
 Assistant Professor & 2011--2017 \\
+\\
+Statistics and Actuarial Sciences & Simon Fraser University \\
+Visiting Scholar & 2019-2020 \\
 \\
 Statistics \& Applied Probability & University of California,\ Santa Barbara \\
 Assistant Professor & 2009--2011
@@ -175,7 +175,7 @@ Research Engineer & Procter \& Gamble & 1999-2001
 \vspace{-0.3in}
 
 <<read_pubs, echo=FALSE, cache=TRUE, cache.extra = tools::md5sum('publications.csv'), message=FALSE>>=
-pubs = readr::read_csv("publications.csv") %>% 
+pubs = readr::read_csv("publications.csv") %>%
   arrange(-year)
 @
 
@@ -186,7 +186,7 @@ pubs = readr::read_csv("publications.csv") %>%
 <<in_preparation, dependson="read_pubs", results='asis'>>=
 in_prep_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
-  
+
   cat(d$authors, ". ",
       d$title,
       "\n\n",
@@ -194,7 +194,7 @@ in_prep_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-tmp = pubs %>% 
+tmp = pubs %>%
   filter(status=="in preparation") %>%
   group_by(title) %>%
   do(in_prep_print(.))
@@ -208,7 +208,7 @@ tmp = pubs %>%
 <<submitted, dependson="read_pubs", results='asis'>>=
 under_revision_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
-  
+
   cat(d$authors, ". ",
       d$title,
       "\\emph{ under revision for ",
@@ -218,7 +218,7 @@ under_revision_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-tmp = pubs %>% 
+tmp = pubs %>%
   filter(status=="under revision") %>%
   group_by(title) %>%
   do(under_revision_print(.))
@@ -226,7 +226,7 @@ tmp = pubs %>%
 
 submitted_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
-  
+
   cat(d$authors, ". ",
       d$title,
       " \\emph{submitted to the ",
@@ -236,7 +236,7 @@ submitted_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-tmp = pubs %>% 
+tmp = pubs %>%
   filter(status=="submitted") %>%
   group_by(title) %>%
   do(submitted_print(.))
@@ -248,23 +248,23 @@ tmp = pubs %>%
 <<published, dependson="read_pubs", results='asis'>>=
 published_print = function(d) {
   in_print = !is.na(d$volume)
-  
+
   if(!in_print) {
     end = ""
   } else {
     end = paste0("{ \\bf ", d$volume, "}")
   }
-  
+
   if (!is.na(d$issue))  end = paste0(end,"(",d$issue,")")
   if (!is.na(d$number)) end = paste0(end,":",d$number)
   if (!is.na(d$pages))  end = paste0(end, ", ", d$pages)
   if (in_print)         end = paste0(end,". ")
-  
+
   cat(d$authors, ". ",
       "(",d$year,") ",
       "``",d$title, '"',
-      ifelse(in_print, 
-             paste0("\\emph{",d$journal,"}, "), 
+      ifelse(in_print,
+             paste0("\\emph{",d$journal,"}, "),
              paste0("\\emph{ to appear in ", d$journal, "} ")),
       end,
       ifelse(is.na(d$url), "", paste0("(\\href{",d$url,"}{url}) ")),
@@ -274,7 +274,7 @@ published_print = function(d) {
 }
 
 
-tmp = pubs %>% 
+tmp = pubs %>%
   filter(status=="published", new) %>%
   arrange(-year) %>%
   rowwise() %>%
@@ -282,7 +282,7 @@ tmp = pubs %>%
 
 cat("\n\n\\sinceappt\n\n")
 
-tmp = pubs %>% 
+tmp = pubs %>%
   filter(status=="published", !new) %>%
   arrange(-year) %>%
   rowwise() %>%
@@ -343,10 +343,10 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 
 \sinceappt
 
-{\bf Jarad B. Niemi}. \underline{Statistics Done Wrong: The Woefully Complete Guide}. 
+{\bf Jarad B. Niemi}. \underline{Statistics Done Wrong: The Woefully Complete Guide}.
 \emph{The American Statistician} 70(1), pg 125
 \href{https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1140432}{url}
-% email from 9 Feb 2016 says 
+% email from 9 Feb 2016 says
 % "This e-mail confirms that the Author Publishing Agreement submitted for the article listed above has been accepted."
 % But review never appeared. Instead a review from Christian Robert appeared in Sept 2016.
 % My review was not overly positive.
@@ -388,29 +388,29 @@ Simon Fraser University, 10 Jan 2020
 
 ``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvine, 28 Nov 2017
 
-``Fully Bayesian analysis of RNAseq data for gene expression heterosis detection.'' University of Massachusetts - Amherst, 24 March 2017 
+``Fully Bayesian analysis of RNAseq data for gene expression heterosis detection.'' University of Massachusetts - Amherst, 24 March 2017
 
 \sinceappt
 
-``A computational approach to the sequential control problem'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012 
+``A computational approach to the sequential control problem'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012
 
-``Determining optimal sequential disease outbreak interventions'' University of Iowa, Computational Epidemiology Seminar, 20 Jan 2012 
+``Determining optimal sequential disease outbreak interventions'' University of Iowa, Computational Epidemiology Seminar, 20 Jan 2012
 
-``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009 
+``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009
 
-``Computational methods for general state-space models.'' University of New Mexico Mathematics and Statistics departmental seminar, 19 February 2009 
+``Computational methods for general state-space models.'' University of New Mexico Mathematics and Statistics departmental seminar, 19 February 2009
 
-``Computational methods for general state-space models.'' University of Michigan Statistics departmental seminar, 17 February 2009 
+``Computational methods for general state-space models.'' University of Michigan Statistics departmental seminar, 17 February 2009
 
-``Computational methods for general state-space models.'' University of Texas, Austin Information, Risk, and Operations Management departmental seminar, 17 February 2009 
+``Computational methods for general state-space models.'' University of Texas, Austin Information, Risk, and Operations Management departmental seminar, 17 February 2009
 
-``Computational methods for general state-space models.'' Johns Hopkins Biostatistics departmental seminar, 6 February 2009 
+``Computational methods for general state-space models.'' Johns Hopkins Biostatistics departmental seminar, 6 February 2009
 
-``Computational methods for general state-space models.'' University of California, Los Angeles Biostatistics departmental seminar, 28 January 2009 
+``Computational methods for general state-space models.'' University of California, Los Angeles Biostatistics departmental seminar, 28 January 2009
 
-``Computational methods for general state-space models.'' Iowa State Statistics  departmental seminar, 26 January 2009 
+``Computational methods for general state-space models.'' Iowa State Statistics  departmental seminar, 26 January 2009
 
-``Computational approaches for general state-space models.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2009 
+``Computational approaches for general state-space models.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2009
 
 
 
@@ -420,28 +420,28 @@ Simon Fraser University, 10 Jan 2020
 Statistical Society of Cananda Annual Meeting, virtual, 11 June 2021
 
 ``Multivariate Temporal Modeling of Crime with Dynamic Linear Models,''
-Joint Statistical Meetings, virtual, 6 Aug 2020, 
+Joint Statistical Meetings, virtual, 6 Aug 2020,
 
 ``OAT knot selection for approximate Gaussian Processes,''
 SIAM UQ20, March 2020 (canceled due to COVID-19)
 
 ``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis,'' 9th International Conference of the ERCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
 
-``Massively Parallel Approximate Gaussian Process Regression,'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016 
+``Massively Parallel Approximate Gaussian Process Regression,'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016
 
-``Massively Parallel Approximate Gaussian Process Regression,'' Joint Statistical Meetings, 7 Aug 2014 
+``Massively Parallel Approximate Gaussian Process Regression,'' Joint Statistical Meetings, 7 Aug 2014
 
-``Particle learning for sequential estimation and prediction of disease outbreaks''  2013 ICSA-ISBS Joint Statistical Conference, 10 June 2013 
+``Particle learning for sequential estimation and prediction of disease outbreaks''  2013 ICSA-ISBS Joint Statistical Conference, 10 June 2013
 
-``Particle learning for low counts in disease outbreaks'' Midwest Statistics Research Colloquium, 15 Mar 2013 
+``Particle learning for low counts in disease outbreaks'' Midwest Statistics Research Colloquium, 15 Mar 2013
 
-``Rejection sampling on a graphical processing unit'' 11th World Meeting of the International Society for Bayesian Analysis, 28 June 2012 
+``Rejection sampling on a graphical processing unit'' 11th World Meeting of the International Society for Bayesian Analysis, 28 June 2012
 
 \sinceappt
 
-``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009 
+``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009
 
-``Test power for drug abuse surveillance.'' BioSecure, 2 December 2008 
+``Test power for drug abuse surveillance.'' BioSecure, 2 December 2008
 
 
 
@@ -464,32 +464,32 @@ Los Alamos National Labs, 23 Sep 2020
 
 
 
-\section{\bf Refereed Presentations at Major Conferences} 
+\section{\bf Refereed Presentations at Major Conferences}
 
 ``Subfield Yield Analysis for Precision Agriculture,'' Joint Statistical Meetings, 30 July 2019
 
-``Fully Bayesian Analysis of Hierarchical Count Regression Models.'' 
+``Fully Bayesian Analysis of Hierarchical Count Regression Models.''
 Joint Statistical Meetings, 31 July 2018
 
 \sinceappt
 
-{\small 
+{\small
 
-``Optimal sequential management decisions for measles outbreaks'' 10\textsuperscript{th} International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011 
+``Optimal sequential management decisions for measles outbreaks'' 10\textsuperscript{th} International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011
 
-``Evaluating individual player contributions in basketball.'' Joint Statistical Meetings, 4 Aug 2010 
+``Evaluating individual player contributions in basketball.'' Joint Statistical Meetings, 4 Aug 2010
 
-``Optimal sequential management decisions for influenza outbreaks.'' 9\textsuperscript{th} International Society for Disease Surveillance 9\textsuperscript{th} Annual Conference, 2 Dec 2010 
+``Optimal sequential management decisions for influenza outbreaks.'' 9\textsuperscript{th} International Society for Disease Surveillance 9\textsuperscript{th} Annual Conference, 2 Dec 2010
 
-``Mixture likelihood ratio scan statistic for disease outbreak detection.'' 7\textsuperscript{th} Annual Meeting of the International Society for Disease Surveillance, 3 December 2008 
+``Mixture likelihood ratio scan statistic for disease outbreak detection.'' 7\textsuperscript{th} Annual Meeting of the International Society for Disease Surveillance, 3 December 2008
 
-``Bayesian modeling and inference in single cell dynamic networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 26 May 2007 
+``Bayesian modeling and inference in single cell dynamic networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 26 May 2007
 
-``Identifying and evaluating contrarian strategies for NCAA tournament pools.'' 2006 Joint Statistical Meetings, 8 August 
+``Identifying and evaluating contrarian strategies for NCAA tournament pools.'' 2006 Joint Statistical Meetings, 8 August
 
 }
 
-\section{\bf Other Talks} 
+\section{\bf Other Talks}
 
 {\small
 
@@ -513,33 +513,33 @@ Joint Statistical Meetings, 31 July 2018
 
 ``Bayesian analysis for heterosis detection in RNAseq data,'' Department of Applied Mathematics, University of Colorado-Boulder, 7 Dec 2015
 
-``Empirical Bayes analysis for detection of gene heterosis in RNAseq data,'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 27 April 2015 
+``Empirical Bayes analysis for detection of gene heterosis in RNAseq data,'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 27 April 2015
 
-``Empirical Bayes identification of gene heterosis using RNAseq counts,'' Animal Breeding and Genetics, Iowa State University, 28 Jan 2015 
+``Empirical Bayes identification of gene heterosis using RNAseq counts,'' Animal Breeding and Genetics, Iowa State University, 28 Jan 2015
 
-``Particle learning for low counts in disease outbreaks,'' Department of Statistics, Iowa State University, 16 September 2013 
+``Particle learning for low counts in disease outbreaks,'' Department of Statistics, Iowa State University, 16 September 2013
 
 ``Statistical Methods for Identifying Gene Expression Heterosis'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 30 April 2013 (joint with Dan Nettleton)
 
-``A sequential Monte Carlo primer'' Iowa State University, Department of Statistics, Computational Statistics working group, 12 Oct 2011 
+``A sequential Monte Carlo primer'' Iowa State University, Department of Statistics, Computational Statistics working group, 12 Oct 2011
 
-``Statistical computing on graphical processing units'' Iowa State University, Department of Statistics, Computational Statistics working group, 28 Sep 2011 
+``Statistical computing on graphical processing units'' Iowa State University, Department of Statistics, Computational Statistics working group, 28 Sep 2011
 
-``Time management.'' UCSB IGERT Career Development Seminar Series, 12 April 2011 
+``Time management.'' UCSB IGERT Career Development Seminar Series, 12 April 2011
 
-``Optimal dynamic policies for influenza management.'' Iowa State University departmental seminar, 24 February 2011 
+``Optimal dynamic policies for influenza management.'' Iowa State University departmental seminar, 24 February 2011
 
 ``Optimal sequential management decisions for influenza outbreaks.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2011 (joint with Mike Ludkovski)
 
 ``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 April 2010
 
-``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009 
+``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009
 
-``Assessing the effectiveness of a national drug intervention policy.'' Graduate Student Seminar Series, 17 November 2008 
+``Assessing the effectiveness of a national drug intervention policy.'' Graduate Student Seminar Series, 17 November 2008
 
-``Discrete-time models for intracellular processes in systems biology.'' Graduate Student Research Day, Duke University, 02 April 2008 
+``Discrete-time models for intracellular processes in systems biology.'' Graduate Student Research Day, Duke University, 02 April 2008
 
-``Bayesian analysis in systems biology: Advances and impact in single-cell dynamical networks.'' Graduate Student Seminar Series, 25 February 2008 
+``Bayesian analysis in systems biology: Advances and impact in single-cell dynamical networks.'' Graduate Student Seminar Series, 25 February 2008
 
 ``Stochastic modelling and estimation in dynamic cellular networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 24 May 2007 (invited, given on behalf of Mike West)
 
@@ -552,7 +552,7 @@ Joint Statistical Meetings, 31 July 2018
 {\bf Jarad Niemi} and Will Landau. Fully Bayesian analysis of hierarchical count regression models
 applied to RNAseq. 2018 ISBA World Meeting, 26 June 2018
 
-{\bf Jarad Niemi} and Will Landau.  {\tt fbseq}: An R package for fully Bayesian 
+{\bf Jarad Niemi} and Will Landau.  {\tt fbseq}: An R package for fully Bayesian
 analysis of RNAseq data.
 
 \sinceappt
@@ -567,17 +567,17 @@ Will Landau*, and {\bf Jarad Niemi}. A Hierarchical Modeling Strategy for Identi
 
 Eric Mittman*, {\bf Jarad Niemi}, and Dan Nettleton. Hierarchical Bayesian modeling of RNA-seq data with Stan. Conference on Applied Statistics in Agriculture, Kansas State University, Apr 2015
 
-{\bf Jarad Niemi} and Michael Ludkovski. Poisson-binomial state-space model for disease outbreaks with low counts. International Society for Bayesian Analysis World Meeting, 16 July 2014 
+{\bf Jarad Niemi} and Michael Ludkovski. Poisson-binomial state-space model for disease outbreaks with low counts. International Society for Bayesian Analysis World Meeting, 16 July 2014
 
-Ignacio Alvarez* and {\bf Jarad Niemi}. Bayesian Inference for covariance matrix. Conference on Applied Statistics in Agriculture, Manhattan, KS, 29 Apr 2014 
+Ignacio Alvarez* and {\bf Jarad Niemi}. Bayesian Inference for covariance matrix. Conference on Applied Statistics in Agriculture, Manhattan, KS, 29 Apr 2014
 
 {\bf Jarad Niemi}. ``A Tool for Interactive Disease Outbreak Visualization, Detection, and Forecasting'' 2013 International Society for Disease Surveillance Conference, 7 Dec 2013
 
-MacDonald, A.L., L.A. Schulte Moore, M.J. Helmers, and {\bf J.B. Niemi}.  Bird response to native habitat strips integrated into agricultural fields.  International Conference on Agricultural Biodiversity and Sustainability, Hokkaido University, Japan,  29 Aug 2012 
+MacDonald, A.L., L.A. Schulte Moore, M.J. Helmers, and {\bf J.B. Niemi}.  Bird response to native habitat strips integrated into agricultural fields.  International Conference on Agricultural Biodiversity and Sustainability, Hokkaido University, Japan,  29 Aug 2012
 
-A.L. MacDonald, L.A. Schulte, M.J. Helmers, and {\bf J.B. Niemi}.  2012.  Testing a new conservation practice for agricultural landscapes: Bird response to prairie strips in row-cropped landscapes.  97th Annual Meeting of the Ecological Society of America, Portland, Oregon, 7 Aug 2012 
+A.L. MacDonald, L.A. Schulte, M.J. Helmers, and {\bf J.B. Niemi}.  2012.  Testing a new conservation practice for agricultural landscapes: Bird response to prairie strips in row-cropped landscapes.  97th Annual Meeting of the Ecological Society of America, Portland, Oregon, 7 Aug 2012
 
-{\bf Jarad Niemi}. ``An exploratory analysis of the 2010 measles outbreak in Zimbabwe'' 2011 International Society for Disease Surveillance Conference, 7 Dec 2011 
+{\bf Jarad Niemi}. ``An exploratory analysis of the 2010 measles outbreak in Zimbabwe'' 2011 International Society for Disease Surveillance Conference, 7 Dec 2011
 
 {\bf Jarad Niemi} and Matthew Wheeler. ``Parameter inference in stochastic chemical kinetic models on GPUs.'' MCMSki3: 4\textsuperscript{th} International IMS/ISBA Joint Meeting, 6 Jan 2011
 
@@ -595,11 +595,11 @@ A.L. MacDonald, L.A. Schulte, M.J. Helmers, and {\bf J.B. Niemi}.  2012.  Testin
 
 \section{\bf News interviews (hyperlinked)}
 
-\href{http://www.nbcnews.com/business/slam-dunk-your-rivals-office-march-madness-pool-1C8912546}{CNBC}, %18/03/2013 
-\href{http://moneywatch.bnet.com/economic-news/article/ncaa-brackets-how-to-win-your-march-madness-pool/403055/?tag=main;related-link-0}{CBS Moneywatch}, 
-\href{http://articles.moneycentral.msn.com/SmartSpending/blog/page.aspx?post=1704157}{MSN MoneyCentral}, 
-Slate (\href{http://www.slate.com/id/2213974/pagenum/all/}{2009}, \href{http://www.slate.com/id/2288234/pagenum/all/}{2011}, 
-\href{http://www.slate.com/articles/sports/sports_nut/2012/03/ncaa_basketball_tournament_bracket_act_like_a_hedge_fund_manager_and_pick_ohio_state_to_win_it_all_.single.html}{2012}, 
+\href{http://www.nbcnews.com/business/slam-dunk-your-rivals-office-march-madness-pool-1C8912546}{CNBC}, %18/03/2013
+\href{http://moneywatch.bnet.com/economic-news/article/ncaa-brackets-how-to-win-your-march-madness-pool/403055/?tag=main;related-link-0}{CBS Moneywatch},
+\href{http://articles.moneycentral.msn.com/SmartSpending/blog/page.aspx?post=1704157}{MSN MoneyCentral},
+Slate (\href{http://www.slate.com/id/2213974/pagenum/all/}{2009}, \href{http://www.slate.com/id/2288234/pagenum/all/}{2011},
+\href{http://www.slate.com/articles/sports/sports_nut/2012/03/ncaa_basketball_tournament_bracket_act_like_a_hedge_fund_manager_and_pick_ohio_state_to_win_it_all_.single.html}{2012},
 \href{http://www.slate.com/articles/sports/sports_nut/2012/03/ncaa_basketball_tournament_bracket_act_like_a_hedge_fund_manager_and_pick_ohio_state_to_win_it_all_.single.html}{2013}),
 The Duke Chronicle
 
@@ -687,19 +687,19 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \section{\bf Grants}
 
 \begin{itemize}
-\item Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue, Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE), 1 Sep 2020 to ?? [\$10,000,000]
-\item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, 
-Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall, 
-Prairie Strips for Healthy Soils and Thriving Farms, 
+\item Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue, Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE), 1 Sep 2020 to 31 Aug 2024 [\$10,000,000]
+\item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel,
+Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall,
+Prairie Strips for Healthy Soils and Thriving Farms,
 Foundation for Food and Agriculture Research,
 1 October 2018 to 30 September 2021
 [\$746,204.44] (allocation to Niemi: $\sim$ 6\%)
 \item Lisa Schulte-Moore, J. Gordon Arbuckle, Robert Brown, Emily Heaton, Matt
 Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, {\bf Jarad Niemi},
 and Dara Wald.
-Initiative for Cultivating Human And Naturally reGenerative Enterprises (I-CHANGE), 
+Initiative for Cultivating Human And Naturally reGenerative Enterprises (I-CHANGE),
 Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
-1 June 2018 to 31 May 2021 
+1 June 2018 to 31 May 2021
 [\$741,480] (allocation to Niemi: $\sim$ 12\%)
 
 \sinceappt
@@ -756,7 +756,8 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 \item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
 \item Refereeing
  \begin{itemize}
- \item 
+ \item
+ Journal of Computational and Graphical Statistics (2021),
  F1000 (2020),
  Annals of Applied Statistics (2019),
  Statistics and Computing (2019),
@@ -785,10 +786,10 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
  International Society for Disease Surveillance conference (2010--2013),
  Journal of Statistical Education (2009)
  \end{itemize}
- 
- 
 
- 
+
+
+
 \item Conference organization
  \begin{itemize}
  \item International Society for Disease Surveillance Analytical Methods track chair (2012,2013)
@@ -828,7 +829,7 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 
 \item Departmental service
  	\begin{itemize}
-	\item ISU Department of Statistics 
+	\item ISU Department of Statistics
 		\begin{itemize}
 		\item Faculty Search Committee, member (2021--current)
 		\item Curriculum Review Committee, chair (2021--current)
@@ -840,7 +841,7 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
 		\item Data Science Faculty search committee (2018--2019)
 		\item Qualifying Exam Committee, member (2016--2019)
     \item Snedecor Sustainability Committee, co-chair (2015--2017)
-  	\item Preparing Future Faculty mentor: 
+  	\item Preparing Future Faculty mentor:
   	  \begin{itemize}
   	  \item Will Landau (2013--2014)
   	  \item Natalia da Silva (2015--2016
@@ -879,19 +880,19 @@ d = readr::read_csv("studentcommittees.csv") %>%
          Chair  = factor(Chair,  levels=c("Chair","Co-chair","")))
 
 d_levels = unique(d$Department)
-d$Department = factor(d$Department, 
+d$Department = factor(d$Department,
                       levels = c("STAT",
                                  d_levels[-which(d_levels=="STAT")]))
 
-d = d %>% 
+d = d %>%
   arrange(School, desc(Completed), Degree, Chair, Department)
 @
 
 
 <<advisees, dependson="read_studentcommittees", results='asis'>>=
-tab = xtable(d %>% 
+tab = xtable(d %>%
                filter(Chair %in% c('Chair','Co-chair')) %>%
-               arrange(School, Degree, desc(Completed), Chair), 
+               arrange(School, Degree, desc(Completed), Chair),
              caption = "Students advised",
              label   = "tab:advisees")
 
@@ -914,12 +915,12 @@ s = d %>%
   select(`Chair/Co-chair`, STAT, Degree, Completed, `In progress`) %>%
   arrange(desc(`Chair/Co-chair`), STAT, Degree)
 
-tab2 = xtable(s, 
+tab2 = xtable(s,
               caption='All student committees',
               label="tab:committees",
               digits=0)
 
-print(tab2, 
+print(tab2,
       include.rownames=FALSE,
       table.placement="h",
       caption.placement="top")
