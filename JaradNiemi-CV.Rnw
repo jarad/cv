@@ -671,6 +671,7 @@ Winter 2010 & PSTAT 262 & Applied Bayesian Time Series \\
 {\bf Short courses}
 
 \begin{tabular}{llll}
+Jan 2022 & Data Management Workshop & ISU & 1-day \\
 Dec 2016 & Introduction to R for Biosurveillance & ISDS & 1-day \\
 Dec 2015 & Introduction to R for Biosurveillance & ISDS & 1-day \\
 Dec 2014 & Introduction to R for Biosurveillance & ISDS & 1-day \\
