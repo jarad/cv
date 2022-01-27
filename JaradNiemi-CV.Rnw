@@ -73,8 +73,8 @@ opts_chunk$set(comment=NA,
 options(width=120)
 @
 
-<<libraries, warning=FALSE>>=
-library("dplyr")
+<<libraries, warning=FALSE, message=FALSE>>=
+library("tidyverse")
 @
 
 \providecommand{\includesinceappt}{0}
@@ -926,6 +926,22 @@ print(tab2,
       table.placement="h",
       caption.placement="top")
 @
+
+<<undergraduate-research, results='asis'>>=
+d3 = read.csv("undergraduate_research.csv") %>%
+  mutate(Topic = str_trunc(Topic, 50))
+
+tab3 <- xtable(d3,
+               caption="Undergraduate Research Projects Supervised",
+               label = "tab:undergraduate-research")
+
+print(tab3,
+      include.rownames = FALSE,
+      taple.placement = "h",
+      caption.placement = "top")
+
+@
+
 
 
 %%---------------------------------------------------------------------------%%
