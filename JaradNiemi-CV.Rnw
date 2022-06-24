@@ -493,6 +493,8 @@ Joint Statistical Meetings, 31 July 2018
 
 {\small
 
+``Computer Model Emulation in Agriculture,'' NCCC-170, 16 Jun 2022
+
 ``COVID-19 Forecast Hub,'' ISU Undergraduate STAT Club, 22 Oct 2020
 
 ``Bayesian analysis in R,'' Rgronomists/LunchinatoRs, 1 Feb 2019
@@ -615,6 +617,7 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Spring 2022 & HCI 522 & Scientific Methods in Human Computer Interaction \\
 Fall 2021 & STAT 587-1 & Statistical Methods For Research Workers \\
 & STAT 615 & Advanced Bayesian Methods \\
 Spring 2021 & STAT 330-2 & Probability and Statistics for Computer Science \\
@@ -801,6 +804,7 @@ Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
+ \item NCCC-170 - Website Editor (2022--present)
  \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{3,581 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
