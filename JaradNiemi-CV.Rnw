@@ -691,7 +691,7 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \section{\bf Grants}
 
 \begin{itemize}
-\item Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue, Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE), 1 Sep 2020 to 31 Aug 2024 [\$10,000,000]
+\item USDA NIFA (2020-68012-31824) Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue, Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE), 1 Sep 2020 to 31 Aug 2024 [\$10,000,000]
 \item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel,
 Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall,
 Prairie Strips for Healthy Soils and Thriving Farms,
