@@ -691,20 +691,26 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \section{\bf Grants}
 
 \begin{itemize}
-\item USDA NIFA (2020-68012-31824) Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue, Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE), 1 Sep 2020 to 31 Aug 2024 [\$10,000,000]
-\item Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel,
-Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall,
+\item USDA NIFA (\#2020-68012-31824)
+%Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue,
+Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE),
+Role: Co-PI.
+1 Sep 2020 to 31 Aug 2024.
+[\$10,000,000]
+\item Foundation for Food and Agriculture Research,
+%Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall,
 Prairie Strips for Healthy Soils and Thriving Farms,
-Foundation for Food and Agriculture Research,
+Role: Co-PI
 1 October 2018 to 30 September 2021
-[\$746,204.44] (allocation to Niemi: $\sim$ 6\%)
-\item Lisa Schulte-Moore, J. Gordon Arbuckle, Robert Brown, Emily Heaton, Matt
-Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, {\bf Jarad Niemi},
-and Dara Wald.
+[\$746,204.44]
+% (allocation to Niemi: $\sim$ 6\%)
+\item Iowa State University Presidential Interdisciplinary Research Initiative (ISU-PIRI),
+% Lisa Schulte-Moore, J. Gordon Arbuckle, Robert Brown, Emily Heaton, Matt Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, {\bf Jarad Niemi}, and Dara Wald.
 Initiative for Cultivating Human And Naturally reGenerative Enterprises (I-CHANGE),
-Iowa State University Presidential Interdisciplinary Research Initiative (PIRI),
+Role: Co-PI.
 1 June 2018 to 31 May 2021
-[\$741,480] (allocation to Niemi: $\sim$ 12\%)
+[\$741,480]
+% (allocation to Niemi: $\sim$ 12\%)
 
 \sinceappt
 
