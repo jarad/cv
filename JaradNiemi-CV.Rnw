@@ -721,12 +721,12 @@ Role: Co-PI.
 \section{\bf Honors, and Awards}
 
 \begin{itemize}
-\item 2022 LAS Outstanding Achievement in Extension or Professional Practice
-\item \href{https://www.inside.iastate.edu/article/2022/04/28/awards}{2022 ISU Interdisciplinary Team Research Award} for \href{https://cchange.research.iastate.edu/}{C-CHANGE}
-\item American Society of Agronomy \href{https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/agj2.21069}{Presidential Award (NCCC-170)}
-\item \href{https://www.swcs.org/resources/news/soil-and-water-conservation-society-recognizes-international-leaders-in-conservation}{2020 Conservation Innovation Award}, Soil and Water Conservation Society, \href{http://prairiestrips.org/}{STRIPS Team}
-\item \href{https://news.las.iastate.edu/2018/05/14/las-announces-2018-award-winners/}{Iowa State University Institutional Service Award}, 2018
-\item \href{https://www.cals.iastate.edu/features/2018/science-based-trials-rowcrops-integrated-prairie-strips-project-received-team-award}{Iowa State University College of Agriculture and Life Sciences Team Award}, 8 Mar 2018
+\item \href{https://archive.las.iastate.edu/2022/08/10/celebrate-faculty-and-staff-at-las-fall-convocation-and-awards-ceremony/}{2022 Iowa State University College of Liberal Arts \& Sciences Outstanding Achievement in Extension or Professional Practice}
+\item \href{https://www.inside.iastate.edu/article/2022/04/28/awards}{2022 Iowa State University Interdisciplinary Team Research Award} (\href{https://cchange.research.iastate.edu/}{C-CHANGE})
+\item 2021 American Society of Agronomy \href{https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/agj2.21069}{Presidential Award} (\href{https://nccc170.netlify.app/}{NCCC-170})
+\item \href{https://www.swcs.org/resources/news/soil-and-water-conservation-society-recognizes-international-leaders-in-conservation}{2020 Conservation Innovation Award}, Soil and Water Conservation Society (\href{http://prairiestrips.org/}{STRIPS Team})
+\item \href{https://news.las.iastate.edu/2018/05/14/las-announces-2018-award-winners/}{2018 Iowa State University College of Liberal Arts \& Sciences Institutional Service Award}
+\item \href{https://www.cals.iastate.edu/features/2018/science-based-trials-rowcrops-integrated-prairie-strips-project-received-team-award}{2018 Iowa State University College of Agriculture and Life Sciences Team Award} (\href{http://prairiestrips.org/}{STRIPS Team})
 
 \sinceappt
 
@@ -763,45 +763,42 @@ Role: Co-PI.
 
 %---------------------------------------------------------------------------
 \section{\bf Service}
-
+{\bf Profession}
 \begin{itemize}
 \item NSF Panel (2018)
 \item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
-\item Refereeing
- \begin{itemize}
- \item
- Journal of Computational and Graphical Statistics (2021),
- F1000 (2020),
- Annals of Applied Statistics (2019),
- Statistics and Computing (2019),
- Bioinformatics (2018),
- Journal of the American Statistical Association (2017),
- SIAM Undergraduate Research Online (2017),
- Bayesian Analysis (2016,)
- Science (2016),
- Plos ONE (2016),
- Scientific Reports (2016),
- Annals of Applied Statistics (2015),
- Journal of Computational and Graphical Statistics (2014),
- Technometrics (2013),
- Electronic Journal of Statistics (2013),
- Journal of the American Statistical Association (2015,2014,2012),
- Journal of Quantitative Analysis in Sports (2014,2012),
- Statistics and Computing (2015,2012),
- Journal of Agricultural, Biological, and Environmental Statistics (2015,2012x2),
- Current Computer-Aided Drug Design (2012),
- IEEE Trans. on Systems, Man, and Cybernetics--Part C: Applications and Reviews (2011),
- Journal of Agricultural, Biological, and Environmental Statistics (2011),
- Applied Stochastic Models in Business and Industry (2011),
- Annals of Applied Statistics  (2011$\times 2$),
- Computational Statistics \& Data Analysis (2010),
- Electronic Journal of Statistics (2010),
- International Society for Disease Surveillance conference (2010--2013),
- Journal of Statistical Education (2009)
- \end{itemize}
-
-
-
+% \item Refereeing
+%  \begin{itemize}
+%  \item
+%  Journal of Computational and Graphical Statistics (2021),
+%  F1000 (2020),
+%  Annals of Applied Statistics (2019),
+%  Statistics and Computing (2019),
+%  Bioinformatics (2018),
+%  Journal of the American Statistical Association (2017),
+%  SIAM Undergraduate Research Online (2017),
+%  Bayesian Analysis (2016,)
+%  Science (2016),
+%  Plos ONE (2016),
+%  Scientific Reports (2016),
+%  Annals of Applied Statistics (2015),
+%  Journal of Computational and Graphical Statistics (2014),
+%  Technometrics (2013),
+%  Electronic Journal of Statistics (2013),
+%  Journal of the American Statistical Association (2015,2014,2012),
+%  Journal of Quantitative Analysis in Sports (2014,2012),
+%  Statistics and Computing (2015,2012),
+%  Journal of Agricultural, Biological, and Environmental Statistics (2015,2012x2),
+%  Current Computer-Aided Drug Design (2012),
+%  IEEE Trans. on Systems, Man, and Cybernetics--Part C: Applications and Reviews (2011),
+%  Journal of Agricultural, Biological, and Environmental Statistics (2011),
+%  Applied Stochastic Models in Business and Industry (2011),
+%  Annals of Applied Statistics  (2011$\times 2$),
+%  Computational Statistics \& Data Analysis (2010),
+%  Electronic Journal of Statistics (2010),
+%  International Society for Disease Surveillance conference (2010--2013),
+%  Journal of Statistical Education (2009)
+ % \end{itemize}
 
 \item Conference organization
  \begin{itemize}
@@ -811,25 +808,28 @@ Role: Co-PI.
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
- \item NCCC-170 - Website Editor (2022--present)
- \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{3,581 rep}
+ \item \href{https://nccc170.netlify.app/}{NCCC-170 Website} Development Lead (2022--present)
+ \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{4,551 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
  \item News Editor for Significance Magazine (2010--2012)
  \item Professional twitter account ({\tt \href{https://twitter.com/jaradniemi}{@jaradniemi}})
+ \item Professional YouTube channel (\url{https://www.youtube.com/jaradniemi}) (2011--present)
 %\item Boy Scouts of America troop presentation on estimating player abilities in basketball
  \end{itemize}
 
-\item University service
-\begin{itemize}
-\item ISU LAS CASTLE (2020--present)
-\item ISU STRIPS Data lead (2018--present)
-\item ISU Faculty Compensation Committee (2016--present)
-\item ISU Transportation Advisory Council (2015--2018)
-\item ISU Faculty Senate departmental representative (2012--2018)
-\item UCSB Faculty Legislature, member (2010--2011)
-\item Center for Research in Financial Mathematics and Statistics, UCSB, member (2010--2011)
-\item Quantitative Methods in the Social Sciences, UCSB, core faculty (2009--2011)
+\item {\bf University service}
+  \begin{itemize}
+  \item ISU Provost Working Group on Faculty Salary Equity Study (2022--present)
+  \item ISU LAS CASTLE (2020--present)
+  \item C-CHANGE Smart Technologies Lead (2020--present)
+  \item ISU STRIPS Data lead (2018--present)
+  \item ISU Faculty Compensation Committee (2016--2022)
+  \item ISU Transportation Advisory Council (2015--2018)
+  \item ISU Faculty Senate departmental representative (2012--2018)
+  \item UCSB Faculty Legislature, member (2010--2011)
+  \item Center for Research in Financial Mathematics and Statistics, UCSB, member (2010--2011)
+  \item Quantitative Methods in the Social Sciences, UCSB, core faculty (2009--2011)
 %\item Overall plan for advising students work group, University of Minnesota (1997-1999)
 %\item Semester advising task force, University of Minnesota (1997-1999)
 %\item Committee for semester conversion institution, University of Minnesota (1996-1999)
@@ -841,18 +841,21 @@ Role: Co-PI.
  \end{itemize}
 
 
-\item Departmental service
+\item {\bf Departmental service}
  	\begin{itemize}
 	\item ISU Department of Statistics
 		\begin{itemize}
-		\item Faculty Search Committee, member (2021--current)
-		\item Curriculum Review Committee, chair (2021--current)
-		\item Exam Future Committee, member (2021--current)
+		\item Graduate Student Services Specialist Search Committee (2022)
+		\item Faculty Search Committee, member (2018--2019, 2021--2022)
+		\item Graduate Curriculum and Exams Review, co-chair (2022--present)
+		\item Graduate Curriculum Review Committee, chair (2021--2022)
+		\item Graduate Exams Review Committee, member (2021--current)
+		\item Diversity, Equity, and Inclusion Committee, member (2020--2021)
 		\item Website Committee, chair (2020--current)
-		\item Graduate Admissions Committee, member (2020--current)
-		\item Computation Advisory Committee, member (2011--2019,2020--current), chair (2017--2019)
+		\item Graduate Recruiting and Admissions Committee, member (2020--current), chair (2022--current)
+		\item Computation Advisory Committee, member (2011--2022), chair (2017--2019)
 		\item Chair Search Advisory committee (2018--2019)
-		\item Data Science Faculty search committee (2018--2019)
+		% \item Data Science Faculty search committee (2018--2019)
 		\item Qualifying Exam Committee, member (2016--2019)
     \item Snedecor Sustainability Committee, co-chair (2015--2017)
   	\item Preparing Future Faculty mentor:
