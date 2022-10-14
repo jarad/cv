@@ -77,8 +77,8 @@ options(width=120)
 library("tidyverse")
 @
 
-\providecommand{\includesinceappt}{1}
-\providecommand{\includesubmitted}{1}
+\providecommand{\includesinceappt}{0}
+\providecommand{\includesubmitted}{0}
 \providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
@@ -210,10 +210,11 @@ under_revision_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
   cat(d$authors, ". ",
-      d$title,
+      paste0("``",d$title,"''"),
       "\\emph{ under revision for ",
       d$journal,
-      "}",
+      "} ",
+      ifelse(is.na(d$`pre-print`), "", paste0("\\url{",d$`pre-print`,"} ")),
       "\n\n", sep="")
   return(data.frame(a=1)) # to avoid error
 }
@@ -228,10 +229,11 @@ submitted_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
   cat(d$authors, ". ",
-      d$title,
-      " \\emph{submitted to the ",
+      paste0("``",d$title,"''"),
+      " \\emph{submitted to ",
       d$journal,
-      "}",
+      "} ",
+      ifelse(is.na(d$`pre-print`), "", paste0("\\url{",d$`pre-print`,"} ")),
       "\n\n", sep="")
   return(data.frame(a=1)) # to avoid error
 }
@@ -264,10 +266,10 @@ published_print = function(d) {
       "(",d$year,") ",
       "``",d$title, '"',
       ifelse(in_print,
-             paste0("\\emph{",d$journal,"}, "),
-             paste0("\\emph{ to appear in ", d$journal, "} ")),
+             paste0(" \\emph{",d$journal,"}, "),
+             paste0(" \\emph{ to appear in ", d$journal, "} ")),
       end,
-      ifelse(is.na(d$url), "", paste0("(\\href{",d$url,"}{url}) ")),
+      ifelse(is.na(d$url), "", paste0("\\href{",d$url,"}{url} ")),
       "\n\n",
       sep="")
   return(data.frame(a=1)) # to avoid error
@@ -357,6 +359,12 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 
 \subsection{\bf Other publications} \vspace{-0.2in}
 
+Luis Damiano* and {\bf Jarad Niemi}. The RITAS Algorithm: a constructive yield
+monitor data processing algorithm. \url{https://arxiv.org/abs/2209.11313}
+
+Will Landau* and {\bf Jarad Niemi}. A fully Bayesian strategy for high-dimensional
+hierarchical modeling using massively parallel computing. \url{https://arxiv.org/abs/1606.06659}
+
 \sinceappt
 
 {\bf Jarad Niemi} and Andrew Gelman. (2011) Statistical graphics: making information clear -- and beautiful. \emph{Significance} 8, 135--137
@@ -365,7 +373,7 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 {\bf Jarad B. Niemi}. (2010) Evaluating individual player contributions to team offense and defense: a model based approach. \emph{JSM Proceedings, Section on Statistics in Sports}. Vancouver, BC, Canada: American Statistical Association. 4914--4923.
 % (100% concept, 100% writing, 100% coding)
 
-{\bf Jarad B. Niemi} and Matthew Wheeler. Efficient Bayesian inference in stochastic chemical kinetic models using graphical processing units. \href{http://arxiv.org/abs/1101.4242}{url}
+{\bf Jarad B. Niemi} and Matthew Wheeler. Efficient Bayesian inference in stochastic chemical kinetic models using graphical processing units. \url{http://arxiv.org/abs/1101.4242}
 
 Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton, Jon J. Calderas, Rich G. Schafermeyer, and Kevin P. Christmas. Compositions having enhanced aqueous solubility and methods of their preparation. United States Patent Application 20030026872 %PCT/US2002/014505 \emph{filed}
 % (30% concept, 5% writing, 30% lab work)
