@@ -845,7 +845,7 @@ Role: Co-PI.
  	\begin{itemize}
 	\item ISU Department of Statistics
 		\begin{itemize}
-		\item Graduate Student Services Specialist Search Committee (2022)
+		\item Graduate Student Services Specialist Search Committee, member (2022)
 		\item Faculty Search Committee, member (2018--2019, 2021--2022)
 		\item Graduate Curriculum and Exams Review, co-chair (2022--present)
 		\item Graduate Curriculum Review Committee, chair (2021--2022)
