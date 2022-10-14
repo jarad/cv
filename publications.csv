@@ -1,6 +1,6 @@
 title,authors,status,journal,volume,issue,number,pages,url,doi,pre-print,year,new,notes
-Automatic Dynamic Relevance Determination for Gaussian process regression with high-dimensional functional inputs,"Luis Damiano, Margaret Johnson, Joaquim Teixeira, Max D. Morris, {\bf Jarad Niemi}",submitted,Technometrics,,,,,,,https://arxiv.org/abs/2209.00044,25,TRUE,
-Augmenting agroecosystem models with remote sensing data and machine learning changes overall estimates of nitrate-nitrogen leaching,"Matt Nowatzke, Luis Damiano, Fernando Miguez, Gabe McNunn, {\bf Jarad Niemi}, Lisa Schulte-Moore, Emily Heaton, Andy VanLoocke",published,Environmental Research Letters,,,,,,,,2022,TRUE,
+Automatic Dynamic Relevance Determination for Gaussian process regression with high-dimensional functional inputs,"Luis Damiano*, Margaret Johnson, Joaquim Teixeira, Max D. Morris, {\bf Jarad Niemi}",submitted,Technometrics,,,,,,,https://arxiv.org/abs/2209.00044,25,TRUE,
+Augmenting agroecosystem models with remote sensing data and machine learning changes overall estimates of nitrate-nitrogen leaching,"Matt Nowatzke, Luis Damiano*, Fernando Miguez, Gabe McNunn, {\bf Jarad Niemi}, Lisa Schulte-Moore, Emily Heaton, Andy VanLoocke",published,Environmental Research Letters,,,,,,,,2022,TRUE,
 Valid predictions in one-way random effects ANOVA,"Nicholas Syring, Fernando Miguez, and {\bf Jarad Niemi}",under revision,Biometrics,,,,,,,,20,TRUE,
 Mixture distribution forecasts for disease outbreaks,Spencer Wadsworth* and {\bf Jarad Niemi},in preparation,,,,,,,,,19,TRUE,
 Effects of prairie strips on soil movement,"Jessica Nelson, Matt Liebman, Tim Youngquist, Katherine Goode, and {\bf Jarad Niemi}",in preparation,,,,,,,,,18,TRUE,
