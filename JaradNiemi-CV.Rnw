@@ -77,9 +77,9 @@ options(width=120)
 library("tidyverse")
 @
 
-\providecommand{\includesinceappt}{0}
-\providecommand{\includesubmitted}{0}
-\providecommand{\includeinprep}{0}
+\providecommand{\includesinceappt}{1}
+\providecommand{\includesubmitted}{1}
+\providecommand{\includeinprep}{1}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Associate Professor ------------------------------}}
@@ -389,9 +389,11 @@ Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton
 
 \subsection{\bf At other universities} \vspace{-0.2in}
 
+``Toward Emulators for Agricultural Computer Models,'' Virginia Tech, 3 Nov 2022
+
 ``COVID-19 Forecast Hub,'' virtual, University of Iowa, 15 Oct 2020
 
-``Sequantial Knot Selection in Sparse Gaussian Processes,''
+``Sequential Knot Selection in Sparse Gaussian Processes,''
 Simon Fraser University, 10 Jan 2020
 
 ``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvine, 28 Nov 2017
