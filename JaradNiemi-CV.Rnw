@@ -77,9 +77,9 @@ options(width=120)
 library("tidyverse")
 @
 
-\providecommand{\includesinceappt}{1}
-\providecommand{\includesubmitted}{1}
-\providecommand{\includeinprep}{1}
+\providecommand{\includesinceappt}{0}
+\providecommand{\includesubmitted}{0}
+\providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
 \newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Associate Professor ------------------------------}}
@@ -360,7 +360,9 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton, Jon J. Calderas, Rich G. Schafermeyer, and Kevin P. Christmas.
 (2002)
 Compositions with high intensity sweetener having enhanced aqueous solubility and methods of their preparation.
-United States Patent Application 20030026872 %PCT/US2002/014505 \emph{filed}
+United States Patent Application 20030026872 \n
+\url{https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2002091856}
+%PCT/US2002/014505 \emph{filed}
 % (30% concept, 5% writing, 30% lab work)
 
 
