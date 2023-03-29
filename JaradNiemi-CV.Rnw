@@ -168,6 +168,7 @@ Research Engineer & Procter \& Gamble & 1999-2001
 
 %%===========================================================================%%
 
+\filbreak
 \section{Publications}
 
 * Indicates a student advisee or co-advisee.
@@ -178,8 +179,6 @@ Research Engineer & Procter \& Gamble & 1999-2001
 pubs = readr::read_csv("publications.csv") %>%
   arrange(-year)
 @
-
-
 
 \if1\includeinprep
 \subsection{\bf In preparation} \vspace{-0.2in}
@@ -297,6 +296,7 @@ tmp = pubs %>%
 
 %--------------------------------------------------------------
 
+\filbreak
 \subsection{\bf Book Chapters} \vspace{-0.2in}
 
 % \sinceappt
@@ -306,6 +306,7 @@ tmp = pubs %>%
 , Editors: Subhash C. Basak, Guillermo Restrepo and Jose Luis Villaveces, Bentham Publishers (\href{http://www.eurekaselect.com/132675/chapter/linear-regression%2C-model-averaging%2C-and-bayesian-techniques-for-predicting-chemical-activities-from-structur}{url})
 % (70% all)
 
+\filbreak
 \subsection{\bf Refereed Conference Proceedings} \vspace{-0.2in}
 
 % \sinceappt
@@ -319,7 +320,7 @@ Michael Ludkovski and {\bf Jarad Niemi} (2011) Optimal disease outbreak decision
 % (50% concept, 90% writing, 90% coding)
 
 
-
+\filbreak
 \subsection{\bf Refereed Abstracts} \vspace{-0.2in}
 
 % \sinceappt
@@ -341,6 +342,7 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 
 
 
+\filbreak
 \subsection{\bf Book reviews} \vspace{-0.2in}
 
 % \sinceappt
@@ -355,26 +357,27 @@ Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. (2016) CDCPlot: 
 
 {\bf Jarad B. Niemi}. (2010) \underline{Dynamic Linear Models with R}. \emph{The American Statistician} 64(3), pg 268 \href{http://dx.doi.org/10.1198/tast.2010.br643}{url}
 
+\filbreak
 \subsection{\bf Patent Applications} \vspace{-0.2in}
 
 Tim W. Dake, {\bf Jarad B. Niemi}, Don L. Hughes, Jeff J. Kester, Don B. Compton, Jon J. Calderas, Rich G. Schafermeyer, and Kevin P. Christmas.
 (2002)
 Compositions with high intensity sweetener having enhanced aqueous solubility and methods of their preparation.
-United States Patent Application 20030026872 \n
+United States Patent Application 20030026872 \\
 \url{https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2002091856}
 %PCT/US2002/014505 \emph{filed}
 % (30% concept, 5% writing, 30% lab work)
 
-
+\filbreak
 \subsection{\bf Other manuscripts} \vspace{-0.2in}
+
+% \sinceappt
 
 Luis Damiano* and {\bf Jarad Niemi}. The RITAS Algorithm: a constructive yield
 monitor data processing algorithm. \url{https://arxiv.org/abs/2209.11313}
 
 Will Landau* and {\bf Jarad Niemi}. A fully Bayesian strategy for high-dimensional
 hierarchical modeling using massively parallel computing. \url{https://arxiv.org/abs/1606.06659}
-
-\sinceappt
 
 {\bf Jarad Niemi} and Andrew Gelman. (2011) Statistical graphics: making information clear -- and beautiful. \emph{Significance} 8, 135--137
 % (60% concept, 80% writing)
@@ -391,12 +394,14 @@ hierarchical modeling using massively parallel computing. \url{https://arxiv.org
 
 %------------------------------------------------------------------------------
 
+\filbreak
 \section{\bf Invited Talks}
 
 \vspace{-0.2in}
 
-
 \subsection{\bf At other universities} \vspace{-0.2in}
+
+\sinceappt
 
 ``Toward emulators for agricultural computer models,'' Virginia Tech, 3 Nov 2022
 
@@ -408,8 +413,6 @@ Simon Fraser University, 10 Jan 2020
 ``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvine, 28 Nov 2017
 
 ``Fully Bayesian analysis of RNAseq data for gene expression heterosis detection.'' University of Massachusetts - Amherst, 24 March 2017
-
-\sinceappt
 
 ``A computational approach to the sequential control problem.'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012
 
@@ -435,6 +438,8 @@ Simon Fraser University, 10 Jan 2020
 
 \subsection{\bf At conferences} \vspace{-0.2in}
 
+\sinceappt
+
 ``Gaussian processes with functional length-scales for agricultural models.''
 Statistical Society of Canada Annual Meeting, 11 Jun 2021
 
@@ -443,8 +448,6 @@ Joint Statistical Meetings, 6 Aug 2020,
 
 ``OAT knot selection for approximate Gaussian processes.''
 SIAM UQ20, March 2020 (canceled due to COVID-19)
-
-\sinceappt
 
 ``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis.'' 9th International Conference of the ERCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
 
@@ -468,10 +471,10 @@ SIAM UQ20, March 2020 (canceled due to COVID-19)
 
 \subsection{\bf At agencies, companies, other venues} \vspace{-0.2in}
 
+\sinceappt
+
 ``Emulation of Agricultural Production Systems sIMulator (APSIM).''
 Los Alamos National Labs, 23 Sep 2020
-
-\sinceappt
 
 ``Hierarchical modeling and data fusion.'' Centers for Disease Control and Prevention Seasonal Influenza Forecasting Workshop, 31 Aug 2016
 
@@ -487,12 +490,12 @@ Los Alamos National Labs, 23 Sep 2020
 
 {\small
 
+\sinceappt
+
 ``Subfield Yield Analysis for Precision Agriculture.'' Joint Statistical Meetings, 30 July 2019
 
 ``Fully Bayesian Analysis of Hierarchical Count Regression Models.''
 Joint Statistical Meetings, 31 July 2018
-
-\sinceappt
 
 ``Optimal sequential management decisions for measles outbreaks.'' 10\textsuperscript{th} International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011
 
@@ -512,6 +515,8 @@ Joint Statistical Meetings, 31 July 2018
 
 {\small
 
+\sinceappt
+
 ``Computer Model Emulation in Agriculture.'' NCCC-170, 16 Jun 2022
 
 ``COVID-19 Forecast Hub.'' ISU Undergraduate STAT Club, 22 Oct 2020
@@ -519,8 +524,6 @@ Joint Statistical Meetings, 31 July 2018
 ``Bayesian analysis in R.'' Rgronomists/LunchinatoRs, 1 Feb 2019
 
 ``Emulation of WEPP and DEP.'' SAMSI MUMS Prediction Uncertainty and Extrapolation working group, 28 Nov 2018
-
-\sinceappt
 
 ``Using information underlying missing data for improve estimation of NFL field goal kicker accuracy.'' Midwest Sports Analytics Meetings, 19 Nov 2016
 
@@ -561,10 +564,12 @@ Joint Statistical Meetings, 31 July 2018
 }
 %------------------------------------------------------------------------------
 
-
+\filbreak
 \section{\bf Posters}
 
 {\small
+
+\sinceappt
 
 {\bf Jarad Niemi} and Will Landau.
 Fully Bayesian analysis of hierarchical count regression models applied to RNAseq.
@@ -572,8 +577,6 @@ Fully Bayesian analysis of hierarchical count regression models applied to RNAse
 
 {\bf Jarad Niemi} and Will Landau.
 {\tt fbseq}: An R package for fully Bayesian analysis of RNAseq data.
-
-\sinceappt
 
 Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. CDCPlot: an Application for Viewing Weekly CDC MMWR Disease Count Data. 2015 International Society for Disease Surveillance Conference, 10 Dec 2015
 
@@ -622,7 +625,7 @@ The Duke Chronicle
 
 %---------------------------------------------------------------------------
 
-\newpage
+\filbreak
 \section{\bf Courses taught}
 \vspace{0.1in}
 
@@ -631,6 +634,8 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Spring 2023 & STAT 486/586 & Introduction to Statistical Computing \\
+Fall 2022 & STAT 330 & Probability and Statistics for Computer Science \\
 Spring 2022 & HCI 522 & Scientific Methods in Human Computer Interaction \\
 Fall 2021 & STAT 587-1 & Statistical Methods For Research Workers \\
 & STAT 615 & Advanced Bayesian Methods \\
@@ -684,7 +689,7 @@ Winter 2010 & PSTAT 262 & Applied Bayesian Time Series \\
 %Spring 2010 & 596 & Importance sampling on graphical models
 %\end{tabular}
 
-
+\filbreak
 {\bf Short courses}
 
 \begin{tabular}{llll}
@@ -700,11 +705,12 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 
 
-\newpage
 
+\filbreak
 \section{\bf Grants}
 
 \begin{itemize}
+\sinceappt
 \item USDA NIFA (\#2020-68012-31824)
 %Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue,
 Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE),
@@ -726,24 +732,20 @@ Role: Co-PI.
 [\$741,480; \$6,175 to Niemi]
 % (allocation to Niemi: $\sim$ 12\%)
 
-\sinceappt
-
 \item D. Nettleton, P. Liu, {\bf J. Niemi}, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156; \$272,039 to Niemi]
 \end{itemize}
 
-
+\filbreak
 \section{\bf Honors, and Awards}
 
 \begin{itemize}
+\sinceappt
 \item \href{https://archive.las.iastate.edu/2022/08/10/celebrate-faculty-and-staff-at-las-fall-convocation-and-awards-ceremony/}{2022 Iowa State University College of Liberal Arts \& Sciences Outstanding Achievement in Extension or Professional Practice}
 \item \href{https://www.inside.iastate.edu/article/2022/04/28/awards}{2022 Iowa State University Interdisciplinary Team Research Award} (\href{https://cchange.research.iastate.edu/}{C-CHANGE})
 \item 2021 American Society of Agronomy \href{https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/agj2.21069}{Presidential Award} (\href{https://nccc170.netlify.app/}{NCCC-170})
 \item \href{https://www.swcs.org/resources/news/soil-and-water-conservation-society-recognizes-international-leaders-in-conservation}{2020 Conservation Innovation Award}, Soil and Water Conservation Society (\href{http://prairiestrips.org/}{STRIPS Team})
 \item \href{https://news.las.iastate.edu/2018/05/14/las-announces-2018-award-winners/}{2018 Iowa State University College of Liberal Arts \& Sciences Institutional Service Award}
 \item \href{https://www.cals.iastate.edu/features/2018/science-based-trials-rowcrops-integrated-prairie-strips-project-received-team-award}{2018 Iowa State University College of Agriculture and Life Sciences Team Award} (\href{http://prairiestrips.org/}{STRIPS Team})
-
-\sinceappt
-
 \item Iowa State University Health Research Initiative on Infectious Diseases (PI Michael Cho, I was one of many investigators) [\$150,000] (2012)
 \item World Meeting of the International Society for Bayesian Analysis Early Career Researchers Travel Grant [\$500] (2012)
 \item Iowa State University College of Liberal Arts and Sciences grant for GPU cluster and RA support [\$88,000] (2011)
@@ -766,7 +768,7 @@ Role: Co-PI.
 
 %%---------------------------------------------------------------------------
 
-
+\filbreak
 \section{\bf Memberships}
 \begin{itemize}
 \item American Association for the Advancement of Science
