@@ -824,8 +824,10 @@ Role: Co-PI.
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
+ \item Iowa State Science \& Technology Fair Judge (2022--2023)
+ \item First Lego League Coach (2022--2023)
  \item \href{https://nccc170.netlify.app/}{NCCC-170 Website} Development Lead (2022--present)
- \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{4,551 rep}
+ \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{4,561 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
  \item News Editor for Significance Magazine (2010--2012)
@@ -886,12 +888,12 @@ Role: Co-PI.
 		\item Computational Statistics working group, chair (2011--2014)
 		\item Social committee (2011--2015)
 		\end{itemize}
-	\item UCSB Department of Statistics \& Applied Probability
-		\begin{itemize}
-		\item Applied statistics qualifying exam committee, UCSB (2010--2011)
-		\item Computing committee, UCSB (2009--2011)
-		\item Library liaison, UCSB (2009--2011)
-	  \end{itemize}
+	% \item UCSB Department of Statistics \& Applied Probability
+	% 	\begin{itemize}
+	% 	\item Applied statistics qualifying exam committee, UCSB (2010--2011)
+	% 	\item Computing committee, UCSB (2009--2011)
+	% 	\item Library liaison, UCSB (2009--2011)
+	%   \end{itemize}
 %	\item Duke University Statistical Science graduate consultative committee,  (2005--2007)
 %	\item University of Minnesota Biostatistics Student rep. on Biostatistics faculty committee (2003--2005)
  	\end{itemize}
