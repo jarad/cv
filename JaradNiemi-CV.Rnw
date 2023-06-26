@@ -517,6 +517,8 @@ Joint Statistical Meetings, 31 July 2018
 
 \sinceappt
 
+``Gaussian Process Emulators with FUnctional Inputs for Water Erosion Prediction Project'' NCCC-170, 15 Jun 2023
+
 ``Computer Model Emulation in Agriculture.'' NCCC-170, 16 Jun 2022
 
 ``COVID-19 Forecast Hub.'' ISU Undergraduate STAT Club, 22 Oct 2020
