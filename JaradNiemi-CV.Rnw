@@ -139,14 +139,15 @@ B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Pr
 
 \begin{tabular}{l@{\qquad}r}
 Statistics & Iowa State University \\
-Associate Professor & 2017--present \\
-Assistant Professor & 2011--2017 \\
+\quad Professor & 2023--present \\
+\quad Associate Professor & 2017--2023 \\
+\quad Assistant Professor & 2011--2017 \\
 \\
 Statistics and Actuarial Sciences & Simon Fraser University \\
-Visiting Scholar & 2019-2020 \\
+\quad Visiting Scholar & 2019-2020 \\
 \\
 Statistics \& Applied Probability & University of California,\ Santa Barbara \\
-Assistant Professor & 2009--2011
+\quad Assistant Professor & 2009--2011
 \end{tabular}
 
 
@@ -403,6 +404,9 @@ hierarchical modeling using massively parallel computing. \url{https://arxiv.org
 
 \sinceappt
 
+
+``Building statistical emulators of computer models,'' St. Olaf College, 14 Nov 2022
+
 ``Toward emulators for agricultural computer models,'' Virginia Tech, 3 Nov 2022
 
 ``COVID-19 forecast hub,'' University of Iowa, 15 Oct 2020
@@ -517,9 +521,11 @@ Joint Statistical Meetings, 31 July 2018
 
 \sinceappt
 
-``Gaussian Process Emulators with FUnctional Inputs for Water Erosion Prediction Project'' NCCC-170, 15 Jun 2023
+``Gaussian Process Emulators with Functional Inputs for Water Erosion Prediction Project'' NCCC170, 15 Jun 2023
 
-``Computer Model Emulation in Agriculture.'' NCCC-170, 16 Jun 2022
+``Advancing Scientific Practice through Agricultural Statistics,'' Iowa State University, 26 Sep 2022
+
+``Computer Model Emulation in Agriculture.'' NCCC170, 16 Jun 2022
 
 ``COVID-19 Forecast Hub.'' ISU Undergraduate STAT Club, 22 Oct 2020
 
@@ -744,7 +750,7 @@ Role: Co-PI.
 \sinceappt
 \item \href{https://archive.las.iastate.edu/2022/08/10/celebrate-faculty-and-staff-at-las-fall-convocation-and-awards-ceremony/}{2022 Iowa State University College of Liberal Arts \& Sciences Outstanding Achievement in Extension or Professional Practice}
 \item \href{https://www.inside.iastate.edu/article/2022/04/28/awards}{2022 Iowa State University Interdisciplinary Team Research Award} (\href{https://cchange.research.iastate.edu/}{C-CHANGE})
-\item 2021 American Society of Agronomy \href{https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/agj2.21069}{Presidential Award} (\href{https://nccc170.netlify.app/}{NCCC-170})
+\item 2021 American Society of Agronomy \href{https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/agj2.21069}{Presidential Award} (\href{https://nccc170.netlify.app/}{NCCC170})
 \item \href{https://www.swcs.org/resources/news/soil-and-water-conservation-society-recognizes-international-leaders-in-conservation}{2020 Conservation Innovation Award}, Soil and Water Conservation Society (\href{http://prairiestrips.org/}{STRIPS Team})
 \item \href{https://news.las.iastate.edu/2018/05/14/las-announces-2018-award-winners/}{2018 Iowa State University College of Liberal Arts \& Sciences Institutional Service Award}
 \item \href{https://www.cals.iastate.edu/features/2018/science-based-trials-rowcrops-integrated-prairie-strips-project-received-team-award}{2018 Iowa State University College of Agriculture and Life Sciences Team Award} (\href{http://prairiestrips.org/}{STRIPS Team})
@@ -828,7 +834,7 @@ Role: Co-PI.
  \begin{itemize}
  \item Iowa State Science \& Technology Fair Judge (2022--2023)
  \item First Lego League Coach (2022--2023)
- \item \href{https://nccc170.netlify.app/}{NCCC-170 Website} Development Lead (2022--present)
+ \item \href{https://nccc170.netlify.app/}{NCCC170 Website} Development Lead (2022--present)
  \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{4,561 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
