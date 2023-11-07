@@ -789,7 +789,7 @@ Role: Co-PI.
 \section{\bf Service}
 {\bf Profession}
 \begin{itemize}
-\item NSF Panel (2018)
+\item NSF Panel (2018, 2024)
 \item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
 % \item Refereeing
 %  \begin{itemize}
@@ -847,7 +847,7 @@ Role: Co-PI.
 \item {\bf University service}
   \begin{itemize}
   \item ISU Provost Working Group on Faculty Salary Equity Study (2022--present)
-  \item ISU LAS CASTLE (2020--present)
+  \item ISU LAS CASTLE (2020--present, chair 2023--present)
   \item C-CHANGE Smart Technologies Lead (2020--present)
   \item ISU STRIPS Data lead (2018--present)
   \item ISU Faculty Compensation Committee (2016--2022)
@@ -871,14 +871,15 @@ Role: Co-PI.
  	\begin{itemize}
 	\item ISU Department of Statistics
 		\begin{itemize}
-		\item Graduate Student Services Specialist Search Committee, member (2022)
+		\item Director of Graduate Recruiting and Admissions (2022--current)
+		\item Graduate Student Services Specialist Search Committee, member (2022, 2023)
 		\item Faculty Search Committee, member (2018--2019, 2021--2022)
 		\item Graduate Curriculum and Exams Review, co-chair (2022--present)
 		\item Graduate Curriculum Review Committee, chair (2021--2022)
 		\item Graduate Exams Review Committee, member (2021--current)
 		\item Diversity, Equity, and Inclusion Committee, member (2020--2021)
 		\item Website Committee, chair (2020--current)
-		\item Graduate Recruiting and Admissions Committee, member (2020--current), chair (2022--current)
+		\item Graduate Recruiting and Admissions Committee, member (2020--current)
 		\item Computation Advisory Committee, member (2011--2022), chair (2017--2019)
 		\item Chair Search Advisory committee (2018--2019)
 		% \item Data Science Faculty search committee (2018--2019)
