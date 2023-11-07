@@ -937,7 +937,7 @@ d = d %>%
 tab = xtable(d %>%
                filter(Chair %in% c('Chair','Co-chair')) %>%
                arrange(School, Degree, desc(Completed), Chair),
-             caption = "Students advised",
+             caption = "Graduate students advised",
              label   = "tab:advisees")
 
 print(tab,
@@ -960,7 +960,7 @@ s = d %>%
   arrange(desc(`Chair/Co-chair`), STAT, Degree)
 
 tab2 = xtable(s,
-              caption='All student committees',
+              caption='Graduate student committees',
               label="tab:committees",
               digits=0)
 
@@ -970,7 +970,7 @@ print(tab2,
       caption.placement="top")
 @
 
-<<undergraduate-research, results='asis'>>=
+<<undergraduate-research, results='asis', cache.extra = tools::md5sum("undergraduate_research.csv")>>=
 d3 = read.csv("undergraduate_research.csv") %>%
   mutate(Topic = str_trunc(Topic, 50))
 
