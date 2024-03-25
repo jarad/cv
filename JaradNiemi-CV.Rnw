@@ -155,7 +155,8 @@ Statistics \& Applied Probability & University of California,\ Santa Barbara \\
 \section{\bf Employment}
 
 \begin{tabular}{l@{\qquad}l@{\qquad}r}
-Consultant & Boehringer Ingelheim Vetmedica, Inc. & 2012--2013 \\
+Consultant & Sustainable Environmental Consultants & 2024 \\
+ & Boehringer Ingelheim Vetmedica, Inc. & 2012--2013 \\
  & Natural Resources Research Institute  & 2009--2010 \\
  & Denver Health & 2008 \\
  & Purdue Pharma LP & 2007--2008 \\
@@ -826,14 +827,15 @@ Role: Co-PI.
 
 \item Conference organization
  \begin{itemize}
+ \item Conference on Applied Statistics in Agriculture and Natural Resources, Program Committee Member (2024)
  \item International Society for Disease Surveillance Analytical Methods track chair (2012,2013)
- \item International Society for Disease Surveillance session chair (2010)
+ \item International Society for Disease Surveillance Session chair (2010)
  \item Joint Statistical Meetings, Section on Statistical Computing session chair (2009)
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
  \item Iowa State Science \& Technology Fair Judge (2022--2023)
- \item First Lego League Coach (2022--2023)
+ \item First Lego League Coach (2022--2024)
  \item \href{https://nccc170.netlify.app/}{NCCC170 Website} Development Lead (2022--present)
  \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{4,561 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
