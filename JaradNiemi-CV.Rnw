@@ -643,6 +643,9 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Fall 2024 & STAT 5870-1 & Statistical Methods For Research Workers \\
+Spring 2024 & STAT 486/586 & Introduction to Statistical Computing \\
+& STAT 544 & Bayesian Statistics \\
 Spring 2023 & STAT 486/586 & Introduction to Statistical Computing \\
 Fall 2022 & STAT 330 & Probability and Statistics for Computer Science \\
 Spring 2022 & HCI 522 & Scientific Methods in Human Computer Interaction \\
