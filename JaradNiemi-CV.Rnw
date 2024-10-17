@@ -138,6 +138,9 @@ B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Pr
 \section{\bf Academic Positions}
 
 \begin{tabular}{l@{\qquad}r}
+Data Science & Iowa State University \\
+\quad Professor in Charge & 2024--present \\
+\\
 Statistics & Iowa State University \\
 \quad Professor & 2023--present \\
 \quad Associate Professor & 2017--2023 \\
@@ -155,7 +158,9 @@ Statistics \& Applied Probability & University of California,\ Santa Barbara \\
 \section{\bf Employment}
 
 \begin{tabular}{l@{\qquad}l@{\qquad}r}
-Consultant & Sustainable Environmental Consultants & 2024 \\
+Consultant 
+ & Kemin Industries & 2024 \\
+ & Sustainable Environmental Consultants & 2024 \\
  & Boehringer Ingelheim Vetmedica, Inc. & 2012--2013 \\
  & Natural Resources Research Institute  & 2009--2010 \\
  & Denver Health & 2008 \\
@@ -837,6 +842,7 @@ Role: Co-PI.
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
+ \item First Robotics Competition \href{https://www.teamneutrino.org/}{Team Neutrino Mentor} (2024--)
  \item Iowa State Science \& Technology Fair Judge (2022--2023)
  \item First Lego League Coach (2022--2024)
  \item \href{https://nccc170.netlify.app/}{NCCC170 Website} Development Lead (2022--present)
@@ -844,14 +850,14 @@ Role: Co-PI.
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
  \item Professional website (\url{http://jarad.me/}) (2009--present)
  \item News Editor for Significance Magazine (2010--2012)
- \item Professional twitter account ({\tt \href{https://twitter.com/jaradniemi}{@jaradniemi}})
+ % \item Professional twitter account ({\tt \href{https://twitter.com/jaradniemi}{@jaradniemi}})
  \item Professional YouTube channel (\url{https://www.youtube.com/jaradniemi}) (2011--present)
 %\item Boy Scouts of America troop presentation on estimating player abilities in basketball
  \end{itemize}
 
 \item {\bf University service}
   \begin{itemize}
-  \item ISU Provost Working Group on Faculty Salary Equity Study (2022--present)
+  \item ISU Provost Working Group on Faculty Salary Equity Study (2022--2024)
   \item ISU LAS CASTLE (2020--present, chair 2023--present)
   \item C-CHANGE Smart Technologies Lead (2020--present)
   \item ISU STRIPS Data lead (2018--present)
