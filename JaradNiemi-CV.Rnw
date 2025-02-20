@@ -82,7 +82,7 @@ library("tidyverse")
 \providecommand{\includeinprep}{0}
 
 \if1\includesinceappt
-\newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Associate Professor ------------------------------}}
+\newcommand{\sinceappt}{\emph{-------------------------- above are since promotion to Professor ------------------------------}}
 \fi
 
 \if0\includesinceappt
@@ -159,8 +159,8 @@ Statistics \& Applied Probability & University of California,\ Santa Barbara \\
 
 \begin{tabular}{l@{\qquad}l@{\qquad}r}
 Consultant 
+ & Eocene Environmental Group, Inc. & 2024--2025 \\
  & Kemin Industries & 2024 \\
- & Sustainable Environmental Consultants & 2024 \\
  & Boehringer Ingelheim Vetmedica, Inc. & 2012--2013 \\
  & Natural Resources Research Institute  & 2009--2010 \\
  & Denver Health & 2008 \\
@@ -193,9 +193,10 @@ pubs = readr::read_csv("publications.csv") %>%
 in_prep_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
-  cat(d$authors, ". ",
+  cat("\\begin{samepage}\n",
+    d$authors, ". ",
       d$title,
-      "\n\n",
+      "\n\\end{samepage}\n\n",
       sep="")
   return(data.frame(a=1)) # to avoid error
 }
@@ -215,13 +216,14 @@ tmp = pubs %>%
 under_revision_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
-  cat(d$authors, ". ",
+  cat("\\begin{samepage}\n",
+    d$authors, ". ",
       paste0(d$title),
       "\\emph{ under revision for ",
       d$journal,
       "} ",
       ifelse(is.na(d$`pre-print`), "", paste0("\\url{",d$`pre-print`,"} ")),
-      "\n\n", sep="")
+      "\n\\end{samepage}\n\n", sep="")
   return(data.frame(a=1)) # to avoid error
 }
 
@@ -234,13 +236,14 @@ tmp = pubs %>%
 submitted_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
-  cat(d$authors, ". ",
+  cat("\\begin{samepage}\n",
+    d$authors, ". ",
       paste0(d$title),
       " \\emph{submitted to ",
       d$journal,
       "} ",
       ifelse(is.na(d$`pre-print`), "", paste0("\\url{",d$`pre-print`,"} ")),
-      "\n\n", sep="")
+      "\n\\end{samepage}\n\n", sep="")
   return(data.frame(a=1)) # to avoid error
 }
 
@@ -268,7 +271,8 @@ published_print = function(d) {
   if (!is.na(d$pages))  end = paste0(end, ", ", d$pages)
   if (in_print)         end = paste0(end,". ")
 
-  cat(d$authors, ". ",
+  cat("\\begin{samepage}\n",
+    d$authors, ". ",
       "(",d$year,") ",
       d$title,
       ifelse(in_print,
@@ -276,7 +280,7 @@ published_print = function(d) {
              paste0(" \\emph{ to appear in ", d$journal, "} ")),
       end,
       ifelse(is.na(d$url), "", paste0("\\href{",d$url,"}{url} ")),
-      "\n\n",
+      "\n\\end{samepage}\n\n",
       sep="")
   return(data.frame(a=1)) # to avoid error
 }
@@ -858,9 +862,9 @@ Role: Co-PI.
 \item {\bf University service}
   \begin{itemize}
   \item ISU Provost Working Group on Faculty Salary Equity Study (2022--2024)
-  \item ISU LAS CASTLE (2020--present, chair 2023--present)
-  \item C-CHANGE Smart Technologies Lead (2020--present)
-  \item ISU STRIPS Data lead (2018--present)
+  \item ISU LAS CASTLE (2020--2025, chair 2023--2025)
+  \item C-CHANGE Smart Technologies Lead (2020--2024)
+  \item ISU STRIPS Data lead (2018--2024)
   \item ISU Faculty Compensation Committee (2016--2022)
   \item ISU Transportation Advisory Council (2015--2018)
   \item ISU Faculty Senate departmental representative (2012--2018)
@@ -890,7 +894,7 @@ Role: Co-PI.
 		\item Graduate Exams Review Committee, member (2021--current)
 		\item Diversity, Equity, and Inclusion Committee, member (2020--2021)
 		\item Website Committee, chair (2020--current)
-		\item Graduate Recruiting and Admissions Committee, member (2020--current)
+		\item Graduate Recruiting and Admissions Committee, member (2020--current), director (2022--current)
 		\item Computation Advisory Committee, member (2011--2022), chair (2017--2019)
 		\item Chair Search Advisory committee (2018--2019)
 		% \item Data Science Faculty search committee (2018--2019)
