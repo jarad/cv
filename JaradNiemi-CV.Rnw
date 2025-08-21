@@ -765,6 +765,7 @@ Role: Co-PI.
 \section{\bf Honors, and Awards}
 
 \begin{itemize}
+\item Iowa State University Emerging Leaders Academy (2025)
 \sinceappt
 \item \href{https://archive.las.iastate.edu/2022/08/10/celebrate-faculty-and-staff-at-las-fall-convocation-and-awards-ceremony/}{2022 Iowa State University College of Liberal Arts \& Sciences Outstanding Achievement in Extension or Professional Practice}
 \item \href{https://www.inside.iastate.edu/article/2022/04/28/awards}{2022 Iowa State University Interdisciplinary Team Research Award} (\href{https://cchange.research.iastate.edu/}{C-CHANGE})
@@ -800,7 +801,6 @@ Role: Co-PI.
 \item American Association for the Advancement of Science
 \item American Statistical Association
 \item International Society for Bayesian Analysis
-\item International Society for Disease Surveillance
 \end{itemize}
 
 %---------------------------------------------------------------------------
@@ -844,6 +844,7 @@ Role: Co-PI.
 
 \item Conference organization
  \begin{itemize}
+ \item Conference on Predictive Inference in Sports, Conference Chair (2025)
  \item Conference on Applied Statistics in Agriculture and Natural Resources, Program Committee Member (2024)
  \item International Society for Disease Surveillance Analytical Methods track chair (2012,2013)
  \item International Society for Disease Surveillance Session chair (2010)
@@ -851,9 +852,9 @@ Role: Co-PI.
  \end{itemize}
 \item Other statistical community service (hyperlinked if appropriate)
  \begin{itemize}
- \item First Robotics Competition \href{https://www.teamneutrino.org/}{Team Neutrino Mentor} (2024--current)
+ \item First Robotics Competition (FRC) \href{https://www.teamneutrino.org/}{Team Neutrino (\#3928)} Mentor (2024--current)
  \item Iowa State Science \& Technology Fair Judge (2022--2023)
- \item First Lego League Coach (2022--2024)
+ \item First Lego League (FLL) Coach (2022--2024)
  \item \href{https://nccc170.netlify.app/}{NCCC170 Website} Development Lead (2022--present)
  \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{4,561 rep}
  \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
@@ -891,7 +892,8 @@ Role: Co-PI.
  	\begin{itemize}
 	\item ISU Department of Statistics
 		\begin{itemize}		
-		\item Graduate Recruiting and Admissions Committee, member (2020--current), director (2022--current)
+		\item Director of Statistical Consulting (2025--current)
+		\item Graduate Recruiting and Admissions Committee, member (2020--current), director (2022--2025)
 		\item Data Science Club, advisor (2025--current)
 		\item Sports Analytics Club, advisor (2020--current)
 		\item Graduate Student Services Specialist Search Committee, member (2022, 2023)
