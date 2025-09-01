@@ -737,6 +737,9 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 
 \begin{itemize}
 \sinceappt
+\item Iowa State University Presidential Interdisciplinary Research Initiative (ISU-PIRI), HYDRA: Hydration and Defense Resource Advancement,
+Role: Investigator, 
+1 July 2025 to 30 June 2028
 \item USDA NIFA (\#2020-68012-31824)
 %Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue,
 Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE),
@@ -762,9 +765,10 @@ Role: Co-PI.
 \end{itemize}
 
 \filbreak
-\section{\bf Honors, and Awards}
+\section{\bf Honors and Awards}
 
 \begin{itemize}
+\item 2025 Iowa State University College of Liberal Arts \& Sciences Inclusive Excellence (Team Award including Ulrike Genschel, Laura Ziegler, and Ann Hawkins)
 \item Iowa State University Emerging Leaders Academy (2025)
 \sinceappt
 \item \href{https://archive.las.iastate.edu/2022/08/10/celebrate-faculty-and-staff-at-las-fall-convocation-and-awards-ceremony/}{2022 Iowa State University College of Liberal Arts \& Sciences Outstanding Achievement in Extension or Professional Practice}
