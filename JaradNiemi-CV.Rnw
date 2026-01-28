@@ -138,8 +138,8 @@ B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Pr
 \section{\bf Academic Positions}
 
 \begin{tabular}{l@{\qquad}r}
-Data Science & Iowa State University \\
-\quad Professor in Charge & 2024--present \\
+Data Science Program & Iowa State University \\
+\quad Director & 2024--present \\
 \\
 Statistics & Iowa State University \\
 \quad Professor & 2023--present \\
@@ -655,6 +655,8 @@ The Duke Chronicle
 \begin{tabular}{lll}
 \multicolumn{3}{l}{At Iowa State University:} \\
 \hline
+Spring 2026 & DS 4010 & Data Science Capstone \\
+Fall 2025 & STAT 6150 & Advanced Bayesian Methods \\
 Spring 2025 & STAT 4610X & Sports Analytics \\
 & DS 4010 & Data Science Capstone \\
 Fall 2024 & STAT 5870-1 & Statistical Methods For Research Workers \\
@@ -871,6 +873,7 @@ Role: Co-PI.
 
 \item {\bf University service}
   \begin{itemize}
+  \item ISU Data Science Program Director (2024--current)
   \item ISU Provost Working Group on Faculty Salary Equity Study (2022--2024)
   \item ISU LAS CASTLE (2020--2025, chair 2023--2025)
   \item C-CHANGE Smart Technologies Lead (2020--2024)
@@ -896,7 +899,7 @@ Role: Co-PI.
  	\begin{itemize}
 	\item ISU Department of Statistics
 		\begin{itemize}		
-		\item Director of Statistical Consulting (2025--current)
+		\item Statistical Consulting Director (2025--current)
 		\item Graduate Recruiting and Admissions Committee, member (2020--current), director (2022--2025)
 		\item Data Science Club, advisor (2025--current)
 		\item Sports Analytics Club, advisor (2020--current)
