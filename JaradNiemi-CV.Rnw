@@ -457,14 +457,18 @@ Simon Fraser University, 10 Jan 2020
 
 \sinceappt
 
+``Specifying prior distributions in reliability applications.''
+SIAM Conference on Uncertainty Quantification (UQ26), 23 Mar 2026
+
 ``Gaussian processes with functional length-scales for agricultural models.''
 Statistical Society of Canada Annual Meeting, 11 Jun 2021
 
 ``Multivariate temporal modeling of crime with dynamic linear models.''
-Joint Statistical Meetings, 6 Aug 2020,
+Joint Statistical Meetings, 6 Aug 2020
 
 ``OAT knot selection for approximate Gaussian processes.''
-SIAM UQ20, March 2020 (canceled due to COVID-19)
+SIAM Conference on Uncertainty Quantification  UQ20, 
+March 2020 (canceled due to COVID-19)
 
 ``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis.'' 9th International Conference of the ERCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
 
@@ -873,7 +877,6 @@ Role: Co-PI.
 
 \item {\bf University service}
   \begin{itemize}
-  \item ISU Data Science Program Director (2024--current)
   \item ISU Provost Working Group on Faculty Salary Equity Study (2022--2024)
   \item ISU LAS CASTLE (2020--2025, chair 2023--2025)
   \item C-CHANGE Smart Technologies Lead (2020--2024)
@@ -895,16 +898,22 @@ Role: Co-PI.
  \end{itemize}
 
 
-\item {\bf Departmental service}
+\item {\bf Departmental/Program service}
  	\begin{itemize}
+ 	\item ISU Data Science Program
+ 	  \begin{itemize}
+ 	  \item Administrative Assistant Search Committee, co-chair joint with Psychology (2026)
+    \item ISU Data Science Program Director (2024--current)
+ 	  \end{itemize}
 	\item ISU Department of Statistics
-		\begin{itemize}		
+		\begin{itemize}	
+		\item Communications Specialist Search Committee, member (2025)
 		\item Statistical Consulting Director (2025--current)
-		\item Graduate Recruiting and Admissions Committee, member (2020--current), director (2022--2025)
+		\item Graduate Recruiting and Admissions Committee, member (2020--2026), director (2022--2025)
 		\item Data Science Club, advisor (2025--current)
 		\item Sports Analytics Club, advisor (2020--current)
 		\item Graduate Student Services Specialist Search Committee, member (2022, 2023)
-		\item Faculty Search Committee, member (2018--2019, 2021--2022), chair (2023--2024)
+		\item Faculty Search Committee, member (2018--2019, 2021--2022, 2025--2026), chair (2023--2024)
 		\item Graduate Curriculum and Exams Review, co-chair (2022--2024)
 		\item Graduate Curriculum Review Committee, chair (2021--2022)
 		\item Graduate Exams Review Committee, member (2016--2019, 2021--2023)
