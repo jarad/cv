@@ -455,10 +455,13 @@ Simon Fraser University, 10 Jan 2020
 
 \subsection{\bf At conferences} \vspace{-0.2in}
 
-\sinceappt
+``Bayesian Success in Disease Severity Forecasting.'' 
+Best of Statistical Science (BOSS) 2026, 24 Apr 2026
 
 ``Specifying prior distributions in reliability applications.''
 SIAM Conference on Uncertainty Quantification (UQ26), 23 Mar 2026
+
+\sinceappt
 
 ``Gaussian processes with functional length-scales for agricultural models.''
 Statistical Society of Canada Annual Meeting, 11 Jun 2021
@@ -817,6 +820,7 @@ Role: Co-PI.
 \section{\bf Service}
 {\bf Profession}
 \begin{itemize}
+\item American Statistical Association Iowa Chapter Treasurer (2026--present)
 \item NSF Panel (2018, 2024, 2025)
 \item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
 % \item Refereeing
@@ -903,7 +907,8 @@ Role: Co-PI.
  	\item ISU Data Science Program
  	  \begin{itemize}
  	  \item Administrative Assistant Search Committee, co-chair joint with Psychology (2026)
-    \item ISU Data Science Program Director (2024--current)
+    \item Data Science Program Director (2024--current)
+    \item Data Science Curriculum Committee (2024--current)
  	  \end{itemize}
 	\item ISU Department of Statistics
 		\begin{itemize}	
