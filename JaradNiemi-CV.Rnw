@@ -412,11 +412,14 @@ hierarchical modeling using massively parallel computing. \url{https://arxiv.org
 
 \subsection{\bf At other universities} \vspace{-0.2in}
 
-\sinceappt
-
+``Bayesian methodology for disease severity forecasting,''
+University of Nebraska, Medical Center, 10 Oct 2025
 
 ``Bayesian methodology for disease severity forecasting,'' 
 Medical College of Wisconsin, 2 May 2025
+
+
+\sinceappt
 
 ``Building statistical emulators of computer models,'' St. Olaf College, 14 Nov 2022
 
@@ -455,7 +458,7 @@ Simon Fraser University, 10 Jan 2020
 
 \subsection{\bf At conferences} \vspace{-0.2in}
 
-``Bayesian Success in Disease Severity Forecasting.'' 
+``Bayesian success in disease severity forecasting.'' 
 Best of Statistical Science (BOSS) 2026, 24 Apr 2026
 
 ``Specifying prior distributions in reliability applications.''
