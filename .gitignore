@@ -38,3 +38,4 @@ JaradNiemi-CV.R
 *.Rproj
 cache/
 
+.DS_Store
