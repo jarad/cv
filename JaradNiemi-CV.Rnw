@@ -780,8 +780,8 @@ Role: Co-PI.
 \section{\bf Honors and Awards}
 
 \begin{itemize}
+\item Iowa State University Emerging Leaders Academy (2025--2026)
 \item 2025 Iowa State University College of Liberal Arts \& Sciences Inclusive Excellence (Team Award including Ulrike Genschel, Laura Ziegler, and Ann Hawkins)
-\item Iowa State University Emerging Leaders Academy (2025)
 \sinceappt
 \item \href{https://archive.las.iastate.edu/2022/08/10/celebrate-faculty-and-staff-at-las-fall-convocation-and-awards-ceremony/}{2022 Iowa State University College of Liberal Arts \& Sciences Outstanding Achievement in Extension or Professional Practice}
 \item \href{https://www.inside.iastate.edu/article/2022/04/28/awards}{2022 Iowa State University Interdisciplinary Team Research Award} (\href{https://cchange.research.iastate.edu/}{C-CHANGE})
@@ -825,7 +825,7 @@ Role: Co-PI.
 \begin{itemize}
 \item American Statistical Association Iowa Chapter Treasurer (2026--present)
 \item NSF Panel (2018, 2024, 2025)
-\item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--current)
+\item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--2026)
 % \item Refereeing
 %  \begin{itemize}
 %  \item
@@ -911,7 +911,7 @@ Role: Co-PI.
  	  \begin{itemize}
  	  \item Administrative Assistant Search Committee, co-chair joint with Psychology (2026)
     \item Data Science Program Director (2024--current)
-    \item Data Science Curriculum Committee (2024--current)
+    \item Data Science Curriculum Committee (chair 2024--current)
  	  \end{itemize}
 	\item ISU Department of Statistics
 		\begin{itemize}	
