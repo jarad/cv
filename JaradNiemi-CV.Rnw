@@ -597,7 +597,7 @@ cat("\\end{tabular}\n\n")
 
 sh = courses[courses$kind == "short",]
 sh = sh[ord(sh),]
-cat("\\filbreak\n{\\bf Short courses}\n\n\\begin{tabular}{llll}\n")
+cat("\\filbreak\n{\\bf Short courses}\n\n\\begin{tabular}{l p{2.2in} p{2.0in} l}\n")
 for (j in seq_len(nrow(sh))) {
   cat(sh$term[j], " ", sh$year[j], " & ", tex_text(sh$title[j]), " & ",
       tex_text(sh$institution[j]), " & ", tex_text(sh$duration[j]), " \\\\\n", sep="")
