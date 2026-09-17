@@ -200,6 +200,20 @@ iso_floor = function(x) as.Date(ifelse(is.na(x), NA_character_,
   ifelse(grepl("^\\d{4}$", x),        paste0(x,"-01-01"),
   ifelse(grepl("^\\d{4}-\\d{2}$", x), paste0(x,"-01"), x))))
 
+# 2018 | AY18-19 | 2011--2022 | 2020--present
+# a span of two consecutive years is an academic year, which is how committee
+# and departmental terms are actually counted
+span = function(s, e) {
+  s = as.integer(substr(s, 1, 4)); e = as.integer(substr(e, 1, 4))
+  mapply(function(s1, e1) {
+    if (is.na(s1))        return(NA_character_)
+    if (is.na(e1))        return(paste0(s1, "--present"))
+    if (e1 == s1)         return(as.character(s1))
+    if (e1 == s1 + 1)     return(sprintf("AY%02d-%02d", s1 %% 100, e1 %% 100))
+    paste0(s1, "--", e1)
+  }, s, e)
+}
+
 people     = readr::read_csv("people.csv")
 aliases    = readr::read_csv("aliases.csv")
 committees = readr::read_csv("studentcommittees.csv")
@@ -555,89 +569,41 @@ The Duke Chronicle
 \section{\bf Courses taught}
 \vspace{0.1in}
 
-{\bf Regular courses}
+<<courses, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("courses.csv"), results='asis', message=FALSE>>=
+courses = readr::read_csv("courses.csv")
 
-\begin{tabular}{lll}
-\multicolumn{3}{l}{At Iowa State University:} \\
-\hline
-Spring 2026 & DS 4010 & Data Science Capstone \\
-Fall 2025 & STAT 6150 & Advanced Bayesian Methods \\
-Spring 2025 & STAT 4610X & Sports Analytics \\
-& DS 4010 & Data Science Capstone \\
-Fall 2024 & STAT 5870-1 & Statistical Methods For Research Workers \\
-Spring 2024 & STAT 486/586 & Introduction to Statistical Computing \\
-& STAT 544 & Bayesian Statistics \\
-Spring 2023 & STAT 486/586 & Introduction to Statistical Computing \\
-Fall 2022 & STAT 330 & Probability and Statistics for Computer Science \\
-Spring 2022 & HCI 522 & Scientific Methods in Human Computer Interaction \\
-Fall 2021 & STAT 587-1 & Statistical Methods For Research Workers \\
-& STAT 615 & Advanced Bayesian Methods \\
-Spring 2021 & STAT 330-2 & Probability and Statistics for Computer Science \\
-& STAT 587-3 & Statistical Methods For Research Workers \\
-Fall 2020 & STAT 587-2 & Statistical Methods For Research Workers \\
-Spring 2019 & STAT 544 & Bayesian Statistics \\
-& STAT 587C & Statistical Methods for Research Workers \\
-Fall 2018 & STAT 226 & Introduction to Business Statistics \\
-Spring 2018 & STAT 544 & Bayesian Statistics \\
- & STAT 401C & Statistical Methods for Research Workers \\
-Fall 2017 & STAT 615 & Advanced Bayesian Methods \\
-Spring 2017 & STAT 401D & Statistical Methods for Research Workers \\
- & STAT 544 & Bayesian Statistics \\
-Fall 2016 & STAT 330 & Probability and Statistics for Computer Science \\
-Spring 2016 & STAT 544 & Bayesian Statistics \\
-Fall 2015 & STAT 615 & Advanced Bayesian Methods \\
-Spring 2015 & STAT 544 & Bayesian Statistics \\
-Fall 2014 & STAT 401A & Statistical Methods for Research Workers \\
-& STAT 330 & Probability and Statistics for Computer Science \\
-Spring 2014 & STAT 544 & Bayesian Statistics \\
-Fall 2013 & STAT 401A & Statistical Methods for Research Workers \\
-& STAT 615 & Advanced Bayesian Methods \\
-Spring 2013 & STAT 544 & Bayesian Statistics \\
-Fall 2012 & STAT 401A & Statistical Methods for Research Workers \\
- & HON 321E & Paradox \\
-Spring 2012 & STAT 401A & Statistical Methods for Research Workers \\
-Fall 2011 & STAT 615 & Advanced Bayesian Methods \\
-\hline
-\\
-\multicolumn{3}{l}{At University of California - Santa Barbara:} \\
-\hline
-Spring 2011 & PSTAT 120C & Probability and Statistics \\ % (categorical, nonparametrics, and Bayesian)
-& PSTAT 230 & Seminars and Projects in Statistical Consulting \\
-Winter 2011 & PSTAT 220B & Advanced Statistical Methods (GLMs) \\
-Fall 2010  & PSTAT 120B & Probability and Statistics \\
-Spring 2010 & PSTAT 120B & Probability and Statistics (estimation and testing) \\
- & PSTAT 230 & Seminar and Projects in Statistical Consulting \\
-Winter 2010 & PSTAT 262 & Applied Bayesian Time Series \\
-\hline
-\end{tabular}
+TERM_ORDER = c(Spring=1, Summer=2, Fall=3, Winter=4,
+               Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6,
+               Jul=7, Aug=8, Sep=9, Oct=10, Nov=11, Dec=12)
+ord = function(d) order(-as.integer(d$year), -TERM_ORDER[d$term])
 
-% {\bf Independent studies}
-%
-%\begin{tabular}{llll}
-%Spring & 596 & Parallelizing block composite likelihoods \\
-%Winter 2011 & 596 & Bayesian inference in stochastic chemical kinetic models \\
-%& 596 & Bayesian inference in ecological models \\
-%& 510 & Preparation for applied statistics qualifying exam \\
-%Fall 2010 & 596 & Bayesian inference in graphical processing units \\
-%Spring 2010 & 596 & Importance sampling on graphical models
-%\end{tabular}
+reg = courses[courses$kind == "regular",]
+cat("{\\bf Regular courses}\n\n\\begin{tabular}{lll}\n")
+for (inst in unique(reg$institution)) {
+  dd = reg[reg$institution == inst,]
+  dd = dd[ord(dd),]
+  cat("\\multicolumn{3}{l}{At ", tex_text(inst), ":} \\\\\n\\hline\n", sep="")
+  prev = ""
+  for (j in seq_len(nrow(dd))) {
+    tm = paste(dd$term[j], dd$year[j])
+    # the term is printed once and left blank for further courses that term
+    shown = if (identical(tm, prev)) "" else tm
+    prev = tm
+    cat(shown, " & ", tex_text(dd$number[j]), " & ", tex_text(dd$title[j]), " \\\\\n", sep="")
+  }
+  cat("\\hline\n\\\\\n")
+}
+cat("\\end{tabular}\n\n")
 
-\filbreak
-{\bf Short courses}
-
-\begin{tabular}{llll}
-Jan 2022 & Data Management Workshop & ISU & 1-day \\
-Dec 2016 & Introduction to R for Biosurveillance & ISDS & 1-day \\
-Dec 2015 & Introduction to R for Biosurveillance & ISDS & 1-day \\
-Dec 2014 & Introduction to R for Biosurveillance & ISDS & 1-day \\
-Apr 2010 & Sequential Monte Carlo methods & ASA-Albuquerque & $\frac{1}{2}$-day \\
-Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
-\end{tabular}
-
-%-------------------------------------------------------------------
-
-
-
+sh = courses[courses$kind == "short",]
+sh = sh[ord(sh),]
+cat("\\filbreak\n{\\bf Short courses}\n\n\\begin{tabular}{llll}\n")
+for (j in seq_len(nrow(sh))) {
+  cat(sh$term[j], " ", sh$year[j], " & ", tex_text(sh$title[j]), " & ",
+      tex_text(sh$institution[j]), " & ", tex_text(sh$duration[j]), " \\\\\n", sep="")
+}
+cat("\\end{tabular}\n")
+@
 
 \filbreak
 \section{\bf Grants}
@@ -681,65 +647,44 @@ cat("\\end{itemize}\n")
 \filbreak
 \section{\bf Honors and Awards}
 
-\begin{itemize}
-\item Iowa State University Emerging Leaders Academy (2025--2026)
-\item 2025 Iowa State University College of Liberal Arts \& Sciences Inclusive Excellence (Team Award including Ulrike Genschel, Laura Ziegler, and Ann Hawkins)
-\sinceappt
-\item \href{https://archive.las.iastate.edu/2022/08/10/celebrate-faculty-and-staff-at-las-fall-convocation-and-awards-ceremony/}{2022 Iowa State University College of Liberal Arts \& Sciences Outstanding Achievement in Extension or Professional Practice}
-\item \href{https://www.inside.iastate.edu/article/2022/04/28/awards}{2022 Iowa State University Interdisciplinary Team Research Award} (\href{https://cchange.research.iastate.edu/}{C-CHANGE})
-\item 2021 American Society of Agronomy \href{https://acsess.onlinelibrary.wiley.com/doi/full/10.1002/agj2.21069}{Presidential Award} (\href{https://nccc170.netlify.app/}{NCCC170})
-\item \href{https://www.swcs.org/resources/news/soil-and-water-conservation-society-recognizes-international-leaders-in-conservation}{2020 Conservation Innovation Award}, Soil and Water Conservation Society (\href{http://prairiestrips.org/}{STRIPS Team})
-\item \href{https://news.las.iastate.edu/2018/05/14/las-announces-2018-award-winners/}{2018 Iowa State University College of Liberal Arts \& Sciences Institutional Service Award}
-\item \href{https://www.cals.iastate.edu/features/2018/science-based-trials-rowcrops-integrated-prairie-strips-project-received-team-award}{2018 Iowa State University College of Agriculture and Life Sciences Team Award} (\href{http://prairiestrips.org/}{STRIPS Team})
-\item Iowa State University Health Research Initiative on Infectious Diseases (PI Michael Cho, I was one of many investigators) [\$150,000] (2012)
-\item World Meeting of the International Society for Bayesian Analysis Early Career Researchers Travel Grant [\$500] (2012)
-\item Iowa State University College of Liberal Arts and Sciences grant for GPU cluster and RA support [\$88,000] (2011)
-\item University of California Regents Junior Faculty Fellowship [\$7,500] (2011)
-\item MCMSki3 conference travel support [\$650] (2011)
-\item NVIDIA Academic Partnership Program award [2$\times$ NVIDIA C2050 GPUs] (2010)
-\item Section on Bayesian Statistical Science Student Paper Competition winner [\$1,000] (2009)
-\item International Society for Disease Surveillance Technical Contest 2\textsuperscript{nd} place (2008)
-\item NSF National Research Service Award Fellowship (2003--2004)
-% \item Undergraduate Research Opportunity Program grant (1997)
-% \item John Tate Memorial Scholarship (1997)
-% \item Presidential Leadership Award (1997)
-% \item Lower Division Honors (1997)
-% \item Whiteside Scholastic Scholarship (1995)
-% \item Phillips Family Scholarship (1995)
-\end{itemize}
+<<honors, dependson="read_pubs", cache=TRUE, cache.extra = c(tools::md5sum("honors.csv"), tools::md5sum("memberships.csv")), results='asis', message=FALSE>>=
+honors = readr::read_csv("honors.csv") %>% arrange(desc(start_date))
 
+link = function(text, href) if (is.na(href)) text else paste0("\\href{", href, "}{", text, "}")
 
+cat("\\begin{itemize}\n")
+was_since = TRUE
+for (i in seq_len(nrow(honors))) {
+  d = honors[i,]
+  since = !is.na(d$start_date) && iso_floor(d$start_date) >= PROMOTION_DATE
+  if (was_since && !since) cat("\\sinceappt\n")
+  was_since = since
 
-
-%%---------------------------------------------------------------------------
+  label = tex_text(d$name)
+  if (!is.na(d$organization)) label = paste0(tex_text(d$organization), " ", label)
+  cat("\\item ", link(label, d$url),
+      if (!is.na(d$notes)) paste0(" (", link(tex_text(d$notes), d$notes_url), ")") else "",
+      if (!is.na(d$amount)) paste0(" [\\$", formatC(d$amount, format="d", big.mark=","), "]") else "",
+      " (", span(d$start_date, d$end_date), ")\n", sep="")
+}
+cat("\\end{itemize}\n")
+@
 
 \filbreak
 \section{\bf Memberships}
-\begin{itemize}
-\item American Association for the Advancement of Science
-\item American Statistical Association
-\item International Society for Bayesian Analysis
-\end{itemize}
 
-%---------------------------------------------------------------------------
+<<memberships, dependson="honors", results='asis', cache.extra = tools::md5sum("memberships.csv"), message=FALSE>>=
+mem = readr::read_csv("memberships.csv")
+cat("\\begin{itemize}\n")
+for (i in seq_len(nrow(mem))) cat("\\item ", tex_text(mem$organization[i]), "\n", sep="")
+cat("\\end{itemize}\n")
+@
+
 \section{\bf Service}
 
 <<service, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("service.csv"), results='asis', message=FALSE>>=
 service = readr::read_csv("service.csv")
 
-# 2018 | AY18-19 | 2011--2022 | 2020--present
-# a span of two consecutive years is an academic year, which is how committee
-# and departmental terms are actually counted
-span = function(s, e) {
-  s = as.integer(substr(s, 1, 4)); e = as.integer(substr(e, 1, 4))
-  mapply(function(s1, e1) {
-    if (is.na(s1))        return(NA_character_)
-    if (is.na(e1))        return(paste0(s1, "--present"))
-    if (e1 == s1)         return(as.character(s1))
-    if (e1 == s1 + 1)     return(sprintf("AY%02d-%02d", s1 %% 100, e1 %% 100))
-    paste0(s1, "--", e1)
-  }, s, e)
-}
 
 render_item = function(d) {
   d = d[order(-as.integer(substr(d$start_date, 1, 4))),]
