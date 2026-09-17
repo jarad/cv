@@ -227,6 +227,13 @@ spellings = spellings[order(-nchar(spellings$spelling)),]   # longest first
 # chair or co-chair both count as having advised the student
 advisee_ids = unique(committees$person_id[!is.na(committees$Chair)])
 
+# escape regex metacharacters one at a time; a character class trips over {}
+rx_escape = function(s) {
+  for (ch in c("\\", ".", "|", "(", ")", "[", "]", "{", "}", "^", "$", "*", "+", "?"))
+    s = gsub(ch, paste0("\\", ch), s, fixed=TRUE)
+  s
+}
+
 decorate_authors = function(s) {
   if (is.na(s)) return(s)
   out = tex_escape(s)
@@ -234,8 +241,13 @@ decorate_authors = function(s) {
     pid = spellings$person_id[i]
     esc = tex_escape(spellings$spelling[i])
     if (!grepl(esc, out, fixed=TRUE)) next
-    if (pid == "jarad-niemi")        out = gsub(esc, paste0("{\\bf ",esc,"}"), out, fixed=TRUE)
-    else if (pid %in% advisee_ids)   out = gsub(esc, paste0(esc,"*"),          out, fixed=TRUE)
+    rep = if (pid == "jarad-niemi")      paste0("{\\bf ", esc, "}")
+          else if (pid %in% advisee_ids) paste0(esc, "*")
+          else next
+    # a spelling only counts at an author boundary, so "J. Niemi" does not
+    # match inside "Gerald J. Niemi"
+    pat = paste0("(^|,\\s*|\\s+and\\s+|\\(\\s*)", rx_escape(esc), "(?=$|[,.;)]|\\s)")
+    out = gsub(pat, paste0("\\1", gsub("\\\\", "\\\\\\\\", rep)), out, perl=TRUE)
   }
   out
 }
@@ -464,7 +476,7 @@ hierarchical modeling using massively parallel computing. \url{https://arxiv.org
 {\bf Jarad Niemi} and Andrew Gelman. (2011) Statistical graphics: making information clear -- and beautiful. \emph{Significance} 8, 135--137
 % (60% concept, 80% writing)
 
-{\bf Jarad B. Niemi} and Matthew Wheeler. (2011) Efficient Bayesian inference in stochastic chemical kinetic models using graphical processing units. \url{http://arxiv.org/abs/1101.4242}
+{\bf Jarad B. Niemi} and Matthew Wheeler*. (2011) Efficient Bayesian inference in stochastic chemical kinetic models using graphical processing units. \url{http://arxiv.org/abs/1101.4242}
 
 {\bf Jarad B. Niemi}. (2010) Evaluating individual player contributions to team offense and defense: a model based approach. \emph{JSM Proceedings, Section on Statistics in Sports}. Vancouver, BC, Canada: American Statistical Association. 4914--4923.
 % (100% concept, 100% writing, 100% coding)
