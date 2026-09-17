@@ -959,12 +959,29 @@ Role: Co-PI.
 
 \vspace{0.1in}
 
-<<read_studentcommittees, cache.extra = tools::md5sum("studentcommittees.csv")>>=
+<<read_studentcommittees, cache.extra = c(tools::md5sum("studentcommittees.csv"), tools::md5sum("people.csv"))>>=
 # library(plyr)
 library(dplyr)
 library(xtable)
 
-d = readr::read_csv("studentcommittees.csv") %>%
+people = readr::read_csv("people.csv")
+
+d = readr::read_csv("studentcommittees.csv")
+
+# every person referenced must exist in people.csv; fail loudly rather than
+# silently dropping a student from the CV
+unresolved = setdiff(na.omit(c(d$person_id, d$co_chair_id)), people$person_id)
+if (length(unresolved))
+  stop("person_id not found in people.csv: ", paste(unresolved, collapse=", "))
+
+d = d %>%
+  left_join(people %>% select(person_id, Student = name), by = "person_id") %>%
+  left_join(people %>% select(co_chair_id = person_id, `Co-chair` = name),
+            by = "co_chair_id") %>%
+  # master's degrees are reported together regardless of whether the awarding
+  # department calls it an MS or an MA
+  mutate(Degree = ifelse(Degree == "MA", "MS", Degree)) %>%
+  select(Student, School, Department, Degree, Completed, Chair, `Co-chair`) %>%
   mutate(School = factor(School, levels=c("ISU","UCSB")),
          Chair  = factor(Chair,  levels=c("Chair","Co-chair","")))
 
