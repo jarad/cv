@@ -479,7 +479,7 @@ fmt_date = function(d) {
 
 # a trailing parenthetical: whether it was invited, plus any note
 annotate = function(d) {
-  bits = c(if (isTRUE(d$invited)) "invited" else if (isTRUE(!d$invited)) "contributed",
+  bits = c(if (!is.na(d$solicitation)) d$solicitation,
            if (!is.na(d$notes)) d$notes)
   if (!length(bits)) "" else paste0(" (", paste(bits, collapse="; "), ")")
 }
