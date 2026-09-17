@@ -244,7 +244,6 @@ pubs = readr::read_csv("publications.csv") %>%
 @
 
 \if1\includeinprep
-\subsection{\bf In preparation} \vspace{-0.2in}
 <<in_preparation, dependson="read_pubs", results='asis'>>=
 in_prep_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
@@ -257,10 +256,16 @@ in_prep_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-tmp = pubs %>%
-  filter(status=="in preparation") %>%
-  group_by(title) %>%
-  do(in_prep_print(.))
+in_prep = pubs %>% filter(status=="in preparation")
+
+# Only emit the heading when there is something to put under it. In
+# preparation work is usually only listed close to a promotion case, so most
+# of the time this section should not appear at all.
+if (nrow(in_prep) > 0) {
+  cat("\\subsection{\\bf In preparation} \\vspace{-0.2in}\n")
+  in_prep = in_prep %>% arrange(desc(sort_order))
+  for (i in seq_len(nrow(in_prep))) in_prep_print(in_prep[i,])
+}
 @
 \fi
 
@@ -283,10 +288,8 @@ under_revision_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-tmp = pubs %>%
-  filter(status=="under revision") %>%
-  group_by(title) %>%
-  do(under_revision_print(.))
+ur = pubs %>% filter(status=="under revision") %>% arrange(desc(sort_order))
+for (i in seq_len(nrow(ur))) under_revision_print(ur[i,])
 
 
 submitted_print = function(d) {
@@ -303,10 +306,8 @@ submitted_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-tmp = pubs %>%
-  filter(status=="submitted") %>%
-  group_by(title) %>%
-  do(submitted_print(.))
+sub = pubs %>% filter(status=="submitted") %>% arrange(desc(sort_order))
+for (i in seq_len(nrow(sub))) submitted_print(sub[i,])
 @
 \fi
 
