@@ -463,242 +463,79 @@ hierarchical modeling using massively parallel computing. \url{https://arxiv.org
 %------------------------------------------------------------------------------
 
 \filbreak
-\section{\bf Invited Talks}
-
-\vspace{-0.2in}
-
-\subsection{\bf At other universities} \vspace{-0.2in}
-
-``Bayesian methodology for disease severity forecasting,''
-University of Nebraska, Medical Center, 10 Oct 2025
-
-``Bayesian methodology for disease severity forecasting,'' 
-Medical College of Wisconsin, 2 May 2025
-
-
-\sinceappt
-
-``Building statistical emulators of computer models,'' St. Olaf College, 14 Nov 2022
-
-``Toward emulators for agricultural computer models,'' Virginia Tech, 3 Nov 2022
-
-``COVID-19 forecast hub,'' University of Iowa, 15 Oct 2020
-
-``Sequential knot selection in sparse Gaussian processes,''
-Simon Fraser University, 10 Jan 2020
-
-``Fully Bayesian analysis for hierarchical count regression models.'' University of California, Irvine, 28 Nov 2017
-
-``Fully Bayesian analysis of RNAseq data for gene expression heterosis detection.'' University of Massachusetts - Amherst, 24 March 2017
-
-``A computational approach to the sequential control problem.'' Duke Department of Statistical Science 25$^{th}$ Anniversary Celebration, 20 Oct 2012
-
-``Determining optimal sequential disease outbreak interventions.'' University of Iowa, Computational Epidemiology Seminar, 20 Jan 2012
-
-``Early outbreak detection using syndromic surveillance networks.'' University of California, Los Angeles Biostatistics departmental seminar, 19 November 2009
-
-``Computational methods for general state-space models.'' University of New Mexico Mathematics and Statistics departmental seminar, 19 February 2009
-
-``Computational methods for general state-space models.'' University of Michigan Statistics departmental seminar, 17 February 2009
-
-``Computational methods for general state-space models.'' University of Texas, Austin Information, Risk, and Operations Management departmental seminar, 17 February 2009
-
-``Computational methods for general state-space models.'' Johns Hopkins Biostatistics departmental seminar, 6 February 2009
-
-``Computational methods for general state-space models.'' University of California, Los Angeles Biostatistics departmental seminar, 28 January 2009
-
-``Computational methods for general state-space models.'' Iowa State Statistics  departmental seminar, 26 January 2009
-
-``Computational approaches for general state-space models.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2009
-
-
-
-\subsection{\bf At conferences} \vspace{-0.2in}
-
-``Bayesian success in disease severity forecasting.'' 
-Best of Statistical Science (BOSS) 2026, 24 Apr 2026
-
-``Specifying prior distributions in reliability applications.''
-SIAM Conference on Uncertainty Quantification (UQ26), 23 Mar 2026
-
-\sinceappt
-
-``Gaussian processes with functional length-scales for agricultural models.''
-Statistical Society of Canada Annual Meeting, 11 Jun 2021
-
-``Multivariate temporal modeling of crime with dynamic linear models.''
-Joint Statistical Meetings, 6 Aug 2020
-
-``OAT knot selection for approximate Gaussian processes.''
-SIAM Conference on Uncertainty Quantification  UQ20, 
-March 2020 (canceled due to COVID-19)
-
-``Parallelized Markov chain Monte Carlo algorithms utilizing GPUs with an application to RNAseq data analysis.'' 9th International Conference of the ERCIM WG on Computational and Methodological Statistics, University of Seville, Spain, 9-11 December 2016
-
-``Massively parallel approximate Gaussian process regression.'' Spring Research Conference, Illinois Institute of Technology, 26 May 2016
-
-``Massively parallel approximate Gaussian process regression.'' Joint Statistical Meetings, 7 Aug 2014
-
-``Particle learning for sequential estimation and prediction of disease outbreaks.''  2013 ICSA-ISBS Joint Statistical Conference, 10 Jun 2013
-
-``Particle learning for low counts in disease outbreaks.'' Midwest Statistics Research Colloquium, 15 Mar 2013
-
-``Rejection sampling on a graphical processing unit.'' 11th World Meeting of the International Society for Bayesian Analysis, 28 Jun 2012
-
-``Adaptive mixture modeling Metropolis methods for state inference in nonlinear time series.'' Joint Statistical Meetings, 3 August 2009
-
-``Test power for drug abuse surveillance.'' BioSecure, 2 December 2008
-
-
-
-
-
-\subsection{\bf At agencies, companies, other venues} \vspace{-0.2in}
-
-\sinceappt
-
-``Emulation of Agricultural Production Systems sIMulator (APSIM).''
-Los Alamos National Labs, 23 Sep 2020
-
-``Hierarchical modeling and data fusion.'' Centers for Disease Control and Prevention Seasonal Influenza Forecasting Workshop, 31 Aug 2016
-
-``Stochastic dynamic models for low count observations.'' Institute for Disease Modeling Symposium, 19 Apr 2016
-
-``Particle learning for low counts in disease outbreaks.'' Institute for Disease Modeling, 18 Apr 2016
-
-
-
-
-
-\section{\bf Contributed Talks at Major Conferences}
-
-{\small
-
-\sinceappt
-
-``Subfield Yield Analysis for Precision Agriculture.'' Joint Statistical Meetings, 30 July 2019
-
-``Fully Bayesian Analysis of Hierarchical Count Regression Models.''
-Joint Statistical Meetings, 31 July 2018
-
-``Optimal sequential management decisions for measles outbreaks.'' 10\textsuperscript{th} International Society for Disease Surveillance 10\textsuperscript{th} Annual Conference, 7 Dec 2011
-
-``Evaluating individual player contributions in basketball.'' Joint Statistical Meetings, 4 Aug 2010
-
-``Optimal sequential management decisions for influenza outbreaks.'' 9\textsuperscript{th} International Society for Disease Surveillance 9\textsuperscript{th} Annual Conference, 2 Dec 2010
-
-``Mixture likelihood ratio scan statistic for disease outbreak detection.'' 7\textsuperscript{th} Annual Meeting of the International Society for Disease Surveillance, 3 December 2008
-
-``Bayesian modeling and inference in single cell dynamic networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 26 May 2007
-
-``Identifying and evaluating contrarian strategies for NCAA tournament pools.'' 2006 Joint Statistical Meetings, 8 August
-
+\filbreak
+\section{\bf Talks}
+
+<<read_presentations, dependson="read_pubs", cache=TRUE, cache.extra = tools::md5sum("presentations.csv"), message=FALSE>>=
+pres = readr::read_csv("presentations.csv")
+
+# ISO 8601 at whatever precision was recorded -> the CV's display form
+fmt_date = function(d) {
+  if (is.na(d)) return("")
+  if (nchar(d) == 4) return(d)
+  if (nchar(d) == 7) return(format(as.Date(paste0(d, "-01")), "%B %Y"))
+  sub("^0", "", format(as.Date(d), "%d %b %Y"))
 }
 
-\section{\bf Other Talks}
-
-{\small
-
-\sinceappt
-
-``Gaussian Process Emulators with Functional Inputs for Water Erosion Prediction Project'' NCCC170, 15 Jun 2023
-
-``Advancing Scientific Practice through Agricultural Statistics,'' Iowa State University, 26 Sep 2022
-
-``Computer Model Emulation in Agriculture.'' NCCC170, 16 Jun 2022
-
-``COVID-19 Forecast Hub.'' ISU Undergraduate STAT Club, 22 Oct 2020
-
-``Bayesian analysis in R.'' Rgronomists/LunchinatoRs, 1 Feb 2019
-
-``Emulation of WEPP and DEP.'' SAMSI MUMS Prediction Uncertainty and Extrapolation working group, 28 Nov 2018
-
-``Using information underlying missing data for improve estimation of NFL field goal kicker accuracy.'' Midwest Sports Analytics Meetings, 19 Nov 2016
-
-``Bayesian analysis for heterosis detection in RNAseq data.'' Department of Statistics, Colorado State University, 11 Dec 2015
-
-``Bayesian analysis for heterosis detection in RNAseq data.'' Department of Applied Mathematics, University of Colorado-Boulder, 7 Dec 2015
-
-``Empirical Bayes analysis for detection of gene heterosis in RNAseq data.'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 27 Apr 2015
-
-``Empirical Bayes identification of gene heterosis using RNAseq counts.'' Animal Breeding and Genetics, Iowa State University, 28 Jan 2015
-
-``Particle learning for low counts in disease outbreaks.'' Department of Statistics, Iowa State University, 16 September 2013
-
-``Statistical methods for identifying gene expression heterosis.'' Conference on Applied Statistics in Agriculture, Manhattan, KS, 30 Apr 2013 (joint with Dan Nettleton)
-
-``A sequential Monte Carlo primer.'' Iowa State University, Department of Statistics, Computational Statistics working group, 12 Oct 2011
-
-``Statistical computing on graphical processing units.'' Iowa State University, Department of Statistics, Computational Statistics working group, 28 Sep 2011
-
-``Time management.'' UCSB IGERT Career Development Seminar Series, 12 Apr 2011
-
-``Optimal dynamic policies for influenza management.'' Iowa State University departmental seminar, 24 February 2011
-
-``Optimal sequential management decisions for influenza outbreaks.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 12 January 2011 (joint with Mike Ludkovski)
-
-``A brief introduction to R.'' University of California, Santa Barbara Quantitative Methods in Social Sciences seminar, 8 Apr 2010
-
-``A sequential Monte Carlo primer.'' University of California, Santa Barbara Statistics and Applied Probability departmental seminar, 21 October 2009
-
-``Assessing the effectiveness of a national drug intervention policy.'' Graduate Student Seminar Series, 17 November 2008
-
-``Discrete-time models for intracellular processes in systems biology.'' Graduate Student Research Day, Duke University, 02 Apr 2008
-
-``Bayesian analysis in systems biology: advances and impact in single-cell dynamical networks.'' Graduate Student Seminar Series, 25 February 2008
-
-``Stochastic modelling and estimation in dynamic cellular networks.'' 39\textsuperscript{th} Symposium on the Interface: Computing Science and Statistics, 24 May 2007 (invited, given on behalf of Mike West)
-
+# a trailing parenthetical: whether it was invited, plus any note
+annotate = function(d) {
+  bits = c(if (isTRUE(d$invited)) "invited" else if (isTRUE(!d$invited)) "contributed",
+           if (!is.na(d$notes)) d$notes)
+  if (!length(bits)) "" else paste0(" (", paste(bits, collapse="; "), ")")
 }
-%------------------------------------------------------------------------------
+
+# "A", "A and B", "A, B, and C"
+name_list = function(v) {
+  v = v[!is.na(v) & v != ""]
+  if (length(v) <= 1) return(paste(v, collapse=""))
+  if (length(v) == 2) return(paste(v, collapse=" and "))
+  paste0(paste(v[-length(v)], collapse=", "), ", and ", v[length(v)])
+}
+@
+
+<<talks, dependson="read_presentations", results='asis'>>=
+talks = pres %>%
+  filter(kind == "talk") %>%
+  arrange(desc(coalesce(date, "0000")))
+
+# one promotion marker, placed where the list crosses the cutoff, rather than
+# eight markers positioned by hand
+was_since = TRUE
+for (i in seq_len(nrow(talks))) {
+  d = talks[i,]
+  since = !is.na(d$date) && iso_floor(d$date) >= PROMOTION_DATE
+  if (was_since && !since) cat("\n\\sinceappt\n\n")
+  was_since = since
+  cat("``", tex_text(d$title), ",'' ", tex_text(d$venue),
+      if (!is.na(d$date)) paste0(", ", fmt_date(d$date)) else "",
+      annotate(d), "\n\n", sep="")
+}
+@
 
 \filbreak
 \section{\bf Posters}
 
-{\small
+<<posters, dependson="read_presentations", results='asis'>>=
+posters = pres %>%
+  filter(kind == "poster") %>%
+  arrange(desc(coalesce(date, "0000")))
 
-\sinceappt
-
-{\bf Jarad Niemi} and Will Landau.
-Fully Bayesian analysis of hierarchical count regression models applied to RNAseq.
-2018 ISBA World Meeting, 26 Jun 2018
-
-{\bf Jarad Niemi} and Will Landau.
-{\tt fbseq}: An R package for fully Bayesian analysis of RNAseq data.
-
-Nicholas L. Michaud*, Aaron Kite-Powell, and {\bf Jarad Niemi}. CDCPlot: an Application for Viewing Weekly CDC MMWR Disease Count Data. 2015 International Society for Disease Surveillance Conference, 10 Dec 2015
-
-Nicholas L. Michaud* and {\bf Jarad Niemi}. A Bayesian Hierarchical Model for Estimating Influenza Epidemic Severity. Epidemics5, 3 Dec 2015
-
-Will Landau*, and {\bf Jarad Niemi}. A Hierarchical Modeling Strategy for Identifying Gene Expression Heterosis using Parallel Computing with Graphics Processing Units (GPUs). Conference on Applied Statistics in Agriculture, Kansas State University, Apr 2015
-
-Eric Mittman*, {\bf Jarad Niemi}, and Dan Nettleton. Hierarchical Bayesian modeling of RNA-seq data with Stan. Conference on Applied Statistics in Agriculture, Kansas State University, Apr 2015
-
-{\bf Jarad Niemi} and Michael Ludkovski. Poisson-binomial state-space model for disease outbreaks with low counts. International Society for Bayesian Analysis World Meeting, 16 July 2014
-
-Ignacio Alvarez* and {\bf Jarad Niemi}. Bayesian Inference for covariance matrix. Conference on Applied Statistics in Agriculture, Manhattan, KS, 29 Apr 2014
-
-{\bf Jarad Niemi}. ``A Tool for Interactive Disease Outbreak Visualization, Detection, and Forecasting'' 2013 International Society for Disease Surveillance Conference, 7 Dec 2013
-
-MacDonald, A.L., L.A. Schulte Moore, M.J. Helmers, and {\bf J.B. Niemi}.  Bird response to native habitat strips integrated into agricultural fields.  International Conference on Agricultural Biodiversity and Sustainability, Hokkaido University, Japan,  29 Aug 2012
-
-A.L. MacDonald, L.A. Schulte, M.J. Helmers, and {\bf J.B. Niemi}.  2012.  Testing a new conservation practice for agricultural landscapes: Bird response to prairie strips in row-cropped landscapes.  97th Annual Meeting of the Ecological Society of America, Portland, Oregon, 7 Aug 2012
-
-{\bf Jarad Niemi}. ``An exploratory analysis of the 2010 measles outbreak in Zimbabwe'' 2011 International Society for Disease Surveillance Conference, 7 Dec 2011
-
-{\bf Jarad Niemi} and Matthew Wheeler. ``Parameter inference in stochastic chemical kinetic models on GPUs.'' MCMSki3: 4\textsuperscript{th} International IMS/ISBA Joint Meeting, 6 Jan 2011
-
-{\bf Jarad Niemi} and Mike West. ``Nonlinear dynamic models for single-cell time-lapse microscopy.'' Duke Center for Systems Biology Retreat, 18 May 2009
-
-{\bf Jarad Niemi} ``Adaptive mixture filtering: an alternative to particle filtering?'' SAMSI Sequential Monte Carlo Kickoff Workshop, 8 September 2008
-
-{\bf Jarad Niemi} and Mike West. ``Bayesian parameter estimation for systems biological models of dynamic cellular networks.'' SAMSI Biosystems Modeling Workshop, 5 March 2007
-
-{\bf Jarad Niemi} and Mike West. ``Bayesian parameter estimation for systems biological models of dynamic cellular networks.'' 1\textsuperscript{st} Annual Duke Systems Biology Symposium, 14 September 2006
-
-{\bf Jarad Niemi} and Mike West. ``Bayesian parameter estimation for systems biological models of dynamic cellular networks.'' 8\textsuperscript{th}Valencia International Meeting on Bayesian Statistics, 5 Jun 2006
-
+cat("{\\small\n")
+was_since = TRUE
+for (i in seq_len(nrow(posters))) {
+  d = posters[i,]
+  since = !is.na(d$date) && iso_floor(d$date) >= PROMOTION_DATE
+  if (was_since && !since) cat("\n\\sinceappt\n\n")
+  was_since = since
+  who = name_list(c(d$presenting_author,
+                    if (!is.na(d$work_authors)) trimws(strsplit(d$work_authors, ",")[[1]])))
+  cat(decorate_authors(who), ". ", tex_text(d$title), ".",
+      if (!is.na(d$venue)) paste0(" ", tex_text(d$venue)) else "",
+      if (!is.na(d$date)) paste0(", ", fmt_date(d$date)) else "",
+      annotate(d), "\n\n", sep="")
 }
+cat("}\n")
+@
 
 \section{\bf News interviews (hyperlinked)}
 
