@@ -478,8 +478,8 @@ fmt_date = function(d) {
 }
 
 # a trailing parenthetical: whether it was invited, plus any note
-annotate = function(d) {
-  bits = c(if (!is.na(d$solicitation)) d$solicitation,
+annotate = function(d, show_solicitation = TRUE) {
+  bits = c(if (show_solicitation && !is.na(d$solicitation)) d$solicitation,
            if (!is.na(d$notes)) d$notes)
   if (!length(bits)) "" else paste0(" (", paste(bits, collapse="; "), ")")
 }
@@ -527,12 +527,13 @@ for (i in seq_len(nrow(posters))) {
   since = !is.na(d$date) && iso_floor(d$date) >= PROMOTION_DATE
   if (was_since && !since) cat("\n\\sinceappt\n\n")
   was_since = since
+  # posters are always contributed, so printing it on every row is noise
   who = name_list(c(d$presenting_author,
                     if (!is.na(d$work_authors)) trimws(strsplit(d$work_authors, ",")[[1]])))
   cat(decorate_authors(who), ". ", tex_text(d$title), ".",
       if (!is.na(d$venue)) paste0(" ", tex_text(d$venue)) else "",
       if (!is.na(d$date)) paste0(", ", fmt_date(d$date)) else "",
-      annotate(d), "\n\n", sep="")
+      annotate(d, show_solicitation = FALSE), "\n\n", sep="")
 }
 cat("}\n")
 @
