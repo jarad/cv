@@ -256,7 +256,7 @@ in_prep_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-in_prep = pubs %>% filter(status=="in preparation")
+in_prep = pubs %>% filter(status=="in preparation", type=="journal article")
 
 # Only emit the heading when there is something to put under it. In
 # preparation work is usually only listed close to a promotion case, so most
@@ -288,7 +288,7 @@ under_revision_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-ur = pubs %>% filter(status=="under revision") %>% arrange(desc(sort_order))
+ur = pubs %>% filter(status=="under revision", type=="journal article") %>% arrange(desc(sort_order))
 for (i in seq_len(nrow(ur))) under_revision_print(ur[i,])
 
 
@@ -306,7 +306,7 @@ submitted_print = function(d) {
   return(data.frame(a=1)) # to avoid error
 }
 
-sub = pubs %>% filter(status=="submitted") %>% arrange(desc(sort_order))
+sub = pubs %>% filter(status=="submitted", type=="journal article") %>% arrange(desc(sort_order))
 for (i in seq_len(nrow(sub))) submitted_print(sub[i,])
 @
 \fi
@@ -344,7 +344,7 @@ published_print = function(d) {
 
 
 tmp = pubs %>%
-  filter(status=="published", since_promotion) %>%
+  filter(status=="published", type=="journal article", since_promotion) %>%
   arrange(-year) %>%
   rowwise() %>%
   do(published_print(.))
@@ -352,7 +352,7 @@ tmp = pubs %>%
 cat("\n\n\\sinceappt\n\n")
 
 tmp = pubs %>%
-  filter(status=="published", !since_promotion) %>%
+  filter(status=="published", type=="journal article", !since_promotion) %>%
   arrange(-year) %>%
   rowwise() %>%
   do(published_print(.))
