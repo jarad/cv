@@ -642,34 +642,41 @@ Dec 2009 & Introduction to statistical analysis in R & NRRI & 2-day
 \filbreak
 \section{\bf Grants}
 
-\begin{itemize}
-\sinceappt
-\item Iowa State University Presidential Interdisciplinary Research Initiative (ISU-PIRI), HYDRA: Hydration and Defense Resource Advancement,
-Role: Investigator, 
-1 July 2025 to 30 June 2028
-\item USDA NIFA (\#2020-68012-31824)
-%Lisa Schulte Moore, Thomas Richard, Rudi Roselein, J. Gordon Arbuckle, Robert Brown, Alexis Campbell, Jaquiline Comito, Emily Heaton, Matthew Helmers, Kevin Kimle, Matt Liebman, Mark Mba Wright, {\bf Jarad Niemi}, Dvid Swenson, Michael Thompson, John Tyndall, Andy VanLoocke, Wen Zhiyou, Saurabh, Daniel Ciolkosz, Christine Costllo, Lara Fowler, Mark Gagnon, Kathleen Hill, C. Clare Hinrichs, Alexander Hristov, Matthew Johnson, Heather Karsten, Armen Kemanian, Hilal Ezgi Toraman, Thomas Schwartz, and Steven Trabue,
-Consortium for Cultivating Human and Naturally reGenerative Enterprises (C-CHANGE),
-Role: Co-PI.
-1 Sep 2020 to 31 Aug 2025.
-[\$10,000,000; \$62,614 to Niemi]
-\item Foundation for Food and Agriculture Research,
-%Richard Cruse, Matt Helmers, Matt Liebman, Marshall McDaniel, Bradley Miller, {\bf Jarad Niemi}, Lisa Schulte, and John Tyndall,
-Prairie Strips for Healthy Soils and Thriving Farms,
-Role: Co-PI
-1 October 2018 to 30 September 2021
-[\$746,204.44; \$69,747 to Niemi]
-% (allocation to Niemi: $\sim$ 6\%)
-\item Iowa State University Presidential Interdisciplinary Research Initiative (ISU-PIRI),
-% Lisa Schulte-Moore, J. Gordon Arbuckle, Robert Brown, Emily Heaton, Matt Helmers, Adam Janke, Kevin Kimle, Matt Liebman, Marshall McDaniel, {\bf Jarad Niemi}, and Dara Wald.
-Initiative for Cultivating Human And Naturally reGenerative Enterprises (I-CHANGE),
-Role: Co-PI.
-1 June 2018 to 31 May 2021
-[\$741,480; \$6,175 to Niemi]
-% (allocation to Niemi: $\sim$ 12\%)
+<<grants, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("grants.csv"), results='asis', message=FALSE>>=
+grants = readr::read_csv("grants.csv") %>% arrange(desc(start_date))
 
-\item D. Nettleton, P. Liu, {\bf J. Niemi}, P. Schnable. Hierarchical Modeling and Parallelized Bayesian Inference for the Analysis of RNAseq Data, National Institutes of Health, September 1, 2013 to May 31, 2017 [\$1,088,156; \$272,039 to Niemi]
-\end{itemize}
+# $1,088,156 and $746,204.44 -- thousands separators, cents only when present
+money = function(a) {
+  if (is.na(a)) return(NA_character_)
+  paste0("\\$", formatC(a, format = "f",
+                         digits = if (a == round(a)) 0 else 2, big.mark = ","))
+}
+
+cat("\\begin{itemize}\n")
+was_since = TRUE
+for (i in seq_len(nrow(grants))) {
+  d = grants[i,]
+  # placed by date, so adding a grant cannot strand it on the wrong side
+  since = !is.na(d$start_date) && iso_floor(d$start_date) >= PROMOTION_DATE
+  if (was_since && !since) cat("\\sinceappt\n")
+  was_since = since
+
+  amounts = if (is.na(d$amount_total)) "" else
+    paste0(" [", money(d$amount_total),
+           if (!is.na(d$amount_niemi)) paste0("; ", money(d$amount_niemi), " to Niemi") else "",
+           "]")
+
+  cat("\\item ", tex_text(d$funder),
+      if (!is.na(d$award_number)) paste0(" (\\#", tex_text(d$award_number), ")") else "",
+      ", ", tex_text(d$title), ",",
+      if (!is.na(d$role)) paste0(" Role: ", tex_text(d$role), ",") else "",
+      " ", fmt_date(d$start_date), " to ", fmt_date(d$end_date),
+      amounts,
+      if (!is.na(d$notes)) paste0(" (", tex_text(d$notes), ")") else "",
+      "\n", sep="")
+}
+cat("\\end{itemize}\n")
+@
 
 \filbreak
 \section{\bf Honors and Awards}
