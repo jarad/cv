@@ -727,39 +727,46 @@ cat("\\end{itemize}\n")
 <<service, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("service.csv"), results='asis', message=FALSE>>=
 service = readr::read_csv("service.csv")
 
-# 2018 | 2018--2019 | 2020--present
-span = function(s, e) ifelse(is.na(e), paste0(s, "--present"),
-                      ifelse(s == e, as.character(s), paste0(s, "--", e)))
+# 2018 | AY18-19 | 2011--2022 | 2020--present
+# a span of two consecutive years is an academic year, which is how committee
+# and departmental terms are actually counted
+span = function(s, e) {
+  s = as.integer(substr(s, 1, 4)); e = as.integer(substr(e, 1, 4))
+  mapply(function(s1, e1) {
+    if (is.na(s1))        return(NA_character_)
+    if (is.na(e1))        return(paste0(s1, "--present"))
+    if (e1 == s1)         return(as.character(s1))
+    if (e1 == s1 + 1)     return(sprintf("AY%02d-%02d", s1 %% 100, e1 %% 100))
+    paste0(s1, "--", e1)
+  }, s, e)
+}
 
-# one activity may hold several roles, each over several spans:
-# "member (2018--2019, 2021--2022), chair (2023--2024)"
 render_item = function(d) {
-  d = d[order(-d$start_year),]
-  label = tex_text(d$name[1])
+  d = d[order(-as.integer(substr(d$start_date, 1, 4))),]
+  org = d$organization[1]; act = d$activity[1]
+  label = if (is.na(act)) org
+          else if (is.na(org) || identical(org, d$group[1])) act
+          else paste0(act, ", ", org)
+  label = tex_text(label)
   if (!is.na(d$url[1])) label = paste0("\\href{", d$url[1], "}{", label, "}")
-  if (!is.na(d$detail[1])) label = paste0(label, ": ", tex_text(d$detail[1]))
 
   parts = character(0)
-  # the span held without a named role reads first, then each named role
   roles = c(if (any(is.na(d$role))) NA_character_, unique(d$role[!is.na(d$role)]))
   for (r in roles) {
     k = if (is.na(r)) is.na(d$role) else (!is.na(d$role) & d$role == r)
-    k = k & !is.na(d$start_year)              # nothing to show without a year
+    k = k & !is.na(d$start_date)
     if (!any(k)) next
-    yrs = paste(span(d$start_year[k], d$end_year[k]), collapse = ", ")
+    yrs = paste(span(d$start_date[k], d$end_date[k]), collapse = ", ")
     parts = c(parts, if (is.na(r)) paste0("(", yrs, ")")
                      else paste0(tex_text(r), " (", yrs, ")"))
   }
-  # a bare "(years)" follows the name directly; a named role is comma-separated
   sep = if (!length(parts)) "" else if (startsWith(parts[1], "(")) " " else ", "
   cat("\\item ", label, sep, paste(parts, collapse = ", "), "\n", sep="")
 }
 
 render_group = function(d) {
-  d = d[order(-d$start_year),]
-  # an activity is identified by name plus detail, so two Preparing Future
-  # Faculty mentees stay two entries rather than collapsing into one
-  key = paste(d$name, ifelse(is.na(d$detail), "", d$detail), sep = "\r")
+  d = d[order(-as.integer(substr(d$start_date, 1, 4))),]
+  key = paste(coalesce(d$organization, ""), coalesce(d$activity, ""), sep = "\r")
   for (k in unique(key)) render_item(d[key == k,])
 }
 
@@ -768,7 +775,7 @@ for (cat_name in c("Profession", "University service", "Departmental/Program ser
   dd = service[service$category == cat_name,]
   if (!nrow(dd)) next
   cat("\\item {\\bf ", cat_name, "}\n\\begin{itemize}\n", sep="")
-  render_group(dd[is.na(dd$group),])                    # ungrouped first
+  render_group(dd[is.na(dd$group),])
   for (g in unique(dd$group[!is.na(dd$group)])) {
     cat("\\item ", tex_text(g), "\n\\begin{itemize}\n", sep="")
     render_group(dd[!is.na(dd$group) & dd$group == g,])
@@ -870,6 +877,22 @@ print(tab3,
       taple.placement = "h",
       caption.placement = "top")
 
+@
+
+<<mentoring, dependson="service", results='asis', cache.extra = tools::md5sum("mentoring.csv"), message=FALSE>>=
+# mentoring sits with the advisees rather than under service: it is work with
+# individual students, not committee work
+m = readr::read_csv("mentoring.csv") %>%
+  arrange(desc(start_date)) %>%
+  transmute(Student = student, Program = programme,
+            Institution = institution, Years = span(start_date, end_date))
+
+print(xtable(m,
+             caption = "Students mentored",
+             label   = "tab:mentoring"),
+      include.rownames  = FALSE,
+      table.placement   = "h",
+      caption.placement = "top")
 @
 
 
