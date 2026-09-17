@@ -182,9 +182,65 @@ Research Engineer & Procter \& Gamble & 1999-2001
 
 \vspace{-0.3in}
 
-<<read_pubs, echo=FALSE, cache=TRUE, cache.extra = tools::md5sum('publications.csv'), message=FALSE>>=
+<<read_pubs, echo=FALSE, cache=TRUE, cache.extra = c(tools::md5sum('publications.csv'), tools::md5sum('people.csv'), tools::md5sum('aliases.csv'), tools::md5sum('studentcommittees.csv')), message=FALSE>>=
+# The CSVs hold plain text. Everything LaTeX -- escaping, bolding my own name,
+# starring advisees, italics -- is applied here at render time.
+
+tex_escape = function(x) {
+  x = gsub("\\", "\\textbackslash{}", x, fixed=TRUE)
+  for (ch in c("&","%","$","#","_","{","}")) x = gsub(ch, paste0("\\",ch), x, fixed=TRUE)
+  x = gsub("~", "\\textasciitilde{}",  x, fixed=TRUE)
+  gsub("^", "\\textasciicircum{}", x, fixed=TRUE)
+}
+# *italic* (Markdown) -> \emph{italic}, applied after escaping
+tex_text = function(x) gsub("\\*([^*]+)\\*", "\\\\emph{\\1}", tex_escape(x))
+
+# partial ISO 8601 ("2020", "2020-10") -> earliest instant it could denote
+iso_floor = function(x) as.Date(ifelse(is.na(x), NA_character_,
+  ifelse(grepl("^\\d{4}$", x),        paste0(x,"-01-01"),
+  ifelse(grepl("^\\d{4}-\\d{2}$", x), paste0(x,"-01"), x))))
+
+people     = readr::read_csv("people.csv")
+aliases    = readr::read_csv("aliases.csv")
+committees = readr::read_csv("studentcommittees.csv")
+
+# every way a person's name may appear in a byline
+spellings = dplyr::bind_rows(
+  people  %>% dplyr::transmute(person_id, spelling = name),
+  aliases %>% dplyr::transmute(person_id, spelling = alias))
+spellings = spellings[order(-nchar(spellings$spelling)),]   # longest first
+
+# chair or co-chair both count as having advised the student
+advisee_ids = unique(committees$person_id[!is.na(committees$Chair)])
+
+decorate_authors = function(s) {
+  if (is.na(s)) return(s)
+  out = tex_escape(s)
+  for (i in seq_len(nrow(spellings))) {
+    pid = spellings$person_id[i]
+    esc = tex_escape(spellings$spelling[i])
+    if (!grepl(esc, out, fixed=TRUE)) next
+    if (pid == "jarad-niemi")        out = gsub(esc, paste0("{\\bf ",esc,"}"), out, fixed=TRUE)
+    else if (pid %in% advisee_ids)   out = gsub(esc, paste0(esc,"*"),          out, fixed=TRUE)
+  }
+  out
+}
+
+# Work appearing on or after this date counts as since my promotion to
+# Professor. The boundary is the promotion dossier, not the effective date of
+# the title, which is why it falls in early 2022 rather than 2023.
+PROMOTION_DATE = as.Date("2022-01-01")
+
 pubs = readr::read_csv("publications.csv") %>%
-  arrange(-year)
+  arrange(-year) %>%
+  mutate(authors_tex = vapply(authors, decorate_authors, character(1)),
+         title_tex   = tex_text(title),
+         journal_tex = tex_text(journal),
+         first_public = pmin(iso_floor(date_online), iso_floor(date_print), na.rm=TRUE),
+         first_public = dplyr::coalesce(first_public,
+                          as.Date(ifelse(is.na(year), NA_character_,
+                                         sprintf("%04d-01-01", year)))),
+         since_promotion = first_public >= PROMOTION_DATE)
 @
 
 \if1\includeinprep
@@ -194,8 +250,8 @@ in_prep_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
   cat("\\begin{samepage}\n",
-    d$authors, ". ",
-      d$title,
+    d$authors_tex, ". ",
+      d$title_tex,
       "\n\\end{samepage}\n\n",
       sep="")
   return(data.frame(a=1)) # to avoid error
@@ -217,10 +273,10 @@ under_revision_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
   cat("\\begin{samepage}\n",
-    d$authors, ". ",
-      paste0(d$title),
+    d$authors_tex, ". ",
+      paste0(d$title_tex),
       "\\emph{ under revision for ",
-      d$journal,
+      d$journal_tex,
       "} ",
       ifelse(is.na(d$`pre-print`), "", paste0("\\url{",d$`pre-print`,"} ")),
       "\n\\end{samepage}\n\n", sep="")
@@ -237,10 +293,10 @@ submitted_print = function(d) {
   if (nrow(d)==0) return(data.frame(a=1)) # to avoid error
 
   cat("\\begin{samepage}\n",
-    d$authors, ". ",
-      paste0(d$title),
+    d$authors_tex, ". ",
+      paste0(d$title_tex),
       " \\emph{submitted to ",
-      d$journal,
+      d$journal_tex,
       "} ",
       ifelse(is.na(d$`pre-print`), "", paste0("\\url{",d$`pre-print`,"} ")),
       "\n\\end{samepage}\n\n", sep="")
@@ -272,12 +328,12 @@ published_print = function(d) {
   if (in_print)         end = paste0(end,". ")
 
   cat("\\begin{samepage}\n",
-    d$authors, ". ",
+    d$authors_tex, ". ",
       "(",d$year,") ",
-      d$title,
+      d$title_tex,
       ifelse(in_print,
-             paste0(" \\emph{",d$journal,"}, "),
-             paste0(" \\emph{ to appear in ", d$journal, "} ")),
+             paste0(" \\emph{",d$journal_tex,"}, "),
+             paste0(" \\emph{ to appear in ", d$journal_tex, "} ")),
       end,
       ifelse(is.na(d$url), "", paste0("\\href{",d$url,"}{url} ")),
       "\n\\end{samepage}\n\n",
@@ -287,7 +343,7 @@ published_print = function(d) {
 
 
 tmp = pubs %>%
-  filter(status=="published", new) %>%
+  filter(status=="published", since_promotion) %>%
   arrange(-year) %>%
   rowwise() %>%
   do(published_print(.))
@@ -295,7 +351,7 @@ tmp = pubs %>%
 cat("\n\n\\sinceappt\n\n")
 
 tmp = pubs %>%
-  filter(status=="published", !new) %>%
+  filter(status=="published", !since_promotion) %>%
   arrange(-year) %>%
   rowwise() %>%
   do(published_print(.))
