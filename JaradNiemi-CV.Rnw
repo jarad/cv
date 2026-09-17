@@ -723,138 +723,61 @@ cat("\\end{itemize}\n")
 
 %---------------------------------------------------------------------------
 \section{\bf Service}
-{\bf Profession}
-\begin{itemize}
-\item American Statistical Association Iowa Chapter Treasurer (2026--present)
-\item NSF Panel (2018, 2024, 2025)
-\item Associate Editor for \emph{Journal of Agricultural, Biological, and Environmental Statistics} (2016--2026)
-% \item Refereeing
-%  \begin{itemize}
-%  \item
-%  Journal of Computational and Graphical Statistics (2021),
-%  F1000 (2020),
-%  Annals of Applied Statistics (2019),
-%  Statistics and Computing (2019),
-%  Bioinformatics (2018),
-%  Journal of the American Statistical Association (2017),
-%  SIAM Undergraduate Research Online (2017),
-%  Bayesian Analysis (2016,)
-%  Science (2016),
-%  Plos ONE (2016),
-%  Scientific Reports (2016),
-%  Annals of Applied Statistics (2015),
-%  Journal of Computational and Graphical Statistics (2014),
-%  Technometrics (2013),
-%  Electronic Journal of Statistics (2013),
-%  Journal of the American Statistical Association (2015,2014,2012),
-%  Journal of Quantitative Analysis in Sports (2014,2012),
-%  Statistics and Computing (2015,2012),
-%  Journal of Agricultural, Biological, and Environmental Statistics (2015,2012x2),
-%  Current Computer-Aided Drug Design (2012),
-%  IEEE Trans. on Systems, Man, and Cybernetics--Part C: Applications and Reviews (2011),
-%  Journal of Agricultural, Biological, and Environmental Statistics (2011),
-%  Applied Stochastic Models in Business and Industry (2011),
-%  Annals of Applied Statistics  (2011$\times 2$),
-%  Computational Statistics \& Data Analysis (2010),
-%  Electronic Journal of Statistics (2010),
-%  International Society for Disease Surveillance conference (2010--2013),
-%  Journal of Statistical Education (2009)
- % \end{itemize}
 
-\item Conference organization
- \begin{itemize}
- \item Conference on Predictive Inference in Sports, Conference Chair (2025)
- \item Conference on Applied Statistics in Agriculture and Natural Resources, Program Committee Member (2024)
- \item International Society for Disease Surveillance Analytical Methods track chair (2012,2013)
- \item International Society for Disease Surveillance Session chair (2010)
- \item Joint Statistical Meetings, Section on Statistical Computing session chair (2009)
- \end{itemize}
-\item Other statistical community service (hyperlinked if appropriate)
- \begin{itemize}
- \item First Robotics Competition (FRC) \href{https://www.teamneutrino.org/}{Team Neutrino (\#3928)} Mentor (2024--current)
- \item Iowa State Science \& Technology Fair Judge (2022--2023)
- \item First Lego League (FLL) Coach (2022--2024)
- \item \href{https://nccc170.netlify.app/}{NCCC170 Website} Development Lead (2022--present)
- \item Cross-validated user \href{http://stats.stackexchange.com/users/40440/jaradniemi}{4,561 rep}
- \item \href{http://bayesian.org/}{International Society for Bayesian Analysis -  Web Editor} (2013--2015)
- \item Professional website (\url{http://jarad.me/}) (2009--present)
- \item News Editor for Significance Magazine (2010--2012)
- % \item Professional twitter account ({\tt \href{https://twitter.com/jaradniemi}{@jaradniemi}})
- \item Professional YouTube channel (\url{https://www.youtube.com/jaradniemi}) (2011--present)
-%\item Boy Scouts of America troop presentation on estimating player abilities in basketball
- \end{itemize}
+<<service, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("service.csv"), results='asis', message=FALSE>>=
+service = readr::read_csv("service.csv")
 
-\item {\bf University service}
-  \begin{itemize}
-  \item ISU Provost Working Group on Faculty Salary Equity Study (2022--2024)
-  \item ISU LAS CASTLE (2020--2025, chair 2023--2025)
-  \item C-CHANGE Smart Technologies Lead (2020--2024)
-  \item ISU STRIPS Data lead (2018--2024)
-  \item ISU Faculty Compensation Committee (2016--2022)
-  \item ISU Transportation Advisory Council (2015--2018)
-  \item ISU Faculty Senate departmental representative (2012--2018)
-  \item UCSB Faculty Legislature, member (2010--2011)
-  \item Center for Research in Financial Mathematics and Statistics, UCSB, member (2010--2011)
-  \item Quantitative Methods in the Social Sciences, UCSB, core faculty (2009--2011)
-%\item Overall plan for advising students work group, University of Minnesota (1997-1999)
-%\item Semester advising task force, University of Minnesota (1997-1999)
-%\item Committee for semester conversion institution, University of Minnesota (1996-1999)
-%\item Semester conversion committee, University of Minnesota (1996-1999)
-%\item Business and rules committee, University of Minnesota (1996-1997)
-%\item Student senate consultative committee, University of Minnesota (1996-1997)
-%\item Management team for the Minnesota student association, University of Minnesota (1996-1997)
-%\item Institute of Technology senator, University of Minnesota (1996-1997)
- \end{itemize}
+# 2018 | 2018--2019 | 2020--present
+span = function(s, e) ifelse(is.na(e), paste0(s, "--present"),
+                      ifelse(s == e, as.character(s), paste0(s, "--", e)))
 
+# one activity may hold several roles, each over several spans:
+# "member (2018--2019, 2021--2022), chair (2023--2024)"
+render_item = function(d) {
+  d = d[order(-d$start_year),]
+  label = tex_text(d$name[1])
+  if (!is.na(d$url[1])) label = paste0("\\href{", d$url[1], "}{", label, "}")
+  if (!is.na(d$detail[1])) label = paste0(label, ": ", tex_text(d$detail[1]))
 
-\item {\bf Departmental/Program service}
- 	\begin{itemize}
- 	\item ISU Data Science Program
- 	  \begin{itemize}
- 	  \item Administrative Assistant Search Committee, co-chair joint with Psychology (2026)
-    \item Data Science Program Director (2024--current)
-    \item Data Science Curriculum Committee (chair 2024--current)
- 	  \end{itemize}
-	\item ISU Department of Statistics
-		\begin{itemize}	
-		\item Communications Specialist Search Committee, member (2025)
-		\item Statistical Consulting Director (2025--current)
-		\item Graduate Recruiting and Admissions Committee, member (2020--2026), director (2022--2025)
-		\item Data Science Club, advisor (2025--current)
-		\item Sports Analytics Club, advisor (2020--current)
-		\item Graduate Student Services Specialist Search Committee, member (2022, 2023)
-		\item Faculty Search Committee, member (2018--2019, 2021--2022, 2025--2026), chair (2023--2024)
-		\item Graduate Curriculum and Exams Review, co-chair (2022--2024)
-		\item Graduate Curriculum Review Committee, chair (2021--2022)
-		\item Graduate Exams Review Committee, member (2016--2019, 2021--2023)
-		\item Diversity, Equity, and Inclusion Committee, member (2020--2021)
-		\item Website Committee, member (2020--current), chair (2020--2024)
-		\item Computation Advisory Committee, member (2011--2022, 2023--current), chair (2017--2019)
-		\item Department Chair Search Advisory committee (2012--2014, 2018--2019)
-		% \item Data Science Faculty search committee (2018--2019)
-    \item Snedecor Sustainability Committee, co-chair (2015--2017)
-  	\item Preparing Future Faculty mentor:
-  	  \begin{itemize}
-  	  \item Will Landau (2013--2014)
-  	  \item Natalia da Silva (2015--2016)
-  	  \end{itemize}
-  	\item STAT-ers advisor (2011--2017)
-		\item Statistics/BCB search committee (2014--2015)
-		\item Director of Statistical Consulting search committee (2014--2015)
-		\item Computational Statistics working group, chair (2011--2014)
-		\item Social Committee (2011--2015)
-		\end{itemize}
-	% \item UCSB Department of Statistics \& Applied Probability
-	% 	\begin{itemize}
-	% 	\item Applied statistics qualifying exam committee, UCSB (2010--2011)
-	% 	\item Computing committee, UCSB (2009--2011)
-	% 	\item Library liaison, UCSB (2009--2011)
-	%   \end{itemize}
-%	\item Duke University Statistical Science graduate consultative committee,  (2005--2007)
-%	\item University of Minnesota Biostatistics Student rep. on Biostatistics faculty committee (2003--2005)
- 	\end{itemize}
-\end{itemize}
+  parts = character(0)
+  # the span held without a named role reads first, then each named role
+  roles = c(if (any(is.na(d$role))) NA_character_, unique(d$role[!is.na(d$role)]))
+  for (r in roles) {
+    k = if (is.na(r)) is.na(d$role) else (!is.na(d$role) & d$role == r)
+    k = k & !is.na(d$start_year)              # nothing to show without a year
+    if (!any(k)) next
+    yrs = paste(span(d$start_year[k], d$end_year[k]), collapse = ", ")
+    parts = c(parts, if (is.na(r)) paste0("(", yrs, ")")
+                     else paste0(tex_text(r), " (", yrs, ")"))
+  }
+  # a bare "(years)" follows the name directly; a named role is comma-separated
+  sep = if (!length(parts)) "" else if (startsWith(parts[1], "(")) " " else ", "
+  cat("\\item ", label, sep, paste(parts, collapse = ", "), "\n", sep="")
+}
 
+render_group = function(d) {
+  d = d[order(-d$start_year),]
+  # an activity is identified by name plus detail, so two Preparing Future
+  # Faculty mentees stay two entries rather than collapsing into one
+  key = paste(d$name, ifelse(is.na(d$detail), "", d$detail), sep = "\r")
+  for (k in unique(key)) render_item(d[key == k,])
+}
+
+cat("\\begin{itemize}\n")
+for (cat_name in c("Profession", "University service", "Departmental/Program service")) {
+  dd = service[service$category == cat_name,]
+  if (!nrow(dd)) next
+  cat("\\item {\\bf ", cat_name, "}\n\\begin{itemize}\n", sep="")
+  render_group(dd[is.na(dd$group),])                    # ungrouped first
+  for (g in unique(dd$group[!is.na(dd$group)])) {
+    cat("\\item ", tex_text(g), "\n\\begin{itemize}\n", sep="")
+    render_group(dd[!is.na(dd$group) & dd$group == g,])
+    cat("\\end{itemize}\n")
+  }
+  cat("\\end{itemize}\n")
+}
+cat("\\end{itemize}\n")
+@
 
 \newpage
 \section{\bf Student Committees and Advisees}
