@@ -1,0 +1,36 @@
+name: Build CV
+
+# Mirrors .githooks/pre-push: rebuild the CV, proofread it, and make sure the
+# committed PDF is what the sources actually produce. Runs on every pull
+# request so a broken or stale build can't be merged.
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            r-base-core r-cran-tidyverse r-cran-xtable r-cran-knitr \
+            r-cran-codetools \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-fonts-recommended
+
+      - name: Build and proofread the CV
+        run: make
+
+      - name: Check the committed PDF matches the sources
+        run: |
+          if ! git diff --quiet -- JaradNiemi-CV.pdf; then
+            echo "::error::JaradNiemi-CV.pdf does not match the sources. Run 'make' and commit the rebuilt PDF."
+            git diff --stat -- JaradNiemi-CV.pdf
+            exit 1
+          fi
