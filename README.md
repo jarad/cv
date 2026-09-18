@@ -47,15 +47,36 @@ The `notes` column is shown to the reader; `internal_notes` is not.
 
 ## Building
 
-    Rscript -e 'library(knitr); knit("JaradNiemi-CV.Rnw")'
-    pdflatex JaradNiemi-CV.tex && pdflatex JaradNiemi-CV.tex
-    Rscript R/proof.R
+    make            rebuild the PDF and proofread it
+    make proof      proofread whatever was last built
+    make clean      remove build artefacts
 
 `R/proof.R` exits non-zero if anything is wrong. It checks that the data is
 plain text, that every record reaches the page, that no internal note leaks
 into it, that names are decorated correctly and only for the right people, and
 that LaTeX reported no errors *or overfull boxes* — the latter being warnings
 rather than errors, and so easy to miss.
+
+## Not pushing a broken CV
+
+`.githooks/pre-push` rebuilds the CV, runs the proofreader, and refuses the
+push if either fails or if the committed PDF does not match the sources being
+pushed. Enable it once per clone:
+
+    git config core.hooksPath .githooks
+
+That configuration is local to a clone and is not itself cloned, so a fresh
+checkout has no gate until the line above is run. `git push --no-verify`
+bypasses it when necessary.
+
+The staleness check works because builds are byte-reproducible: `pdflatex`
+would otherwise stamp the current time into the PDF, so two identical builds
+would differ. The `Makefile` pins `SOURCE_DATE_EPOCH`, which fixes the date
+recorded in the PDF metadata and makes an unchanged source always produce an
+identical file.
+
+The proofreader catches mechanical faults, not prose. Read the PDF before
+sending it anywhere.
 
 ## Student committees
 

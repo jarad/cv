@@ -1,0 +1,36 @@
+#!/bin/sh
+# Refuses a push when the CV does not build cleanly, fails proofreading, or
+# when the committed PDF does not match what the sources produce.
+#
+# Enable once per clone:   git config core.hooksPath .githooks
+# Bypass in an emergency:  git push --no-verify
+
+set -e
+cd "$(git rev-parse --show-toplevel)"
+
+if [ ! -f JaradNiemi-CV.Rnw ]; then
+    exit 0
+fi
+
+printf 'pre-push: rebuilding and proofreading the CV\n'
+
+if ! make --no-print-directory all > /tmp/cv-prepush.$$ 2>&1; then
+    printf 'pre-push: the CV failed to build or did not pass proofreading.\n\n'
+    tail -40 /tmp/cv-prepush.$$
+    rm -f /tmp/cv-prepush.$$
+    printf '\npre-push: push aborted. Fix the problems above, then commit the rebuilt PDF.\n'
+    exit 1
+fi
+rm -f /tmp/cv-prepush.$$
+
+# The build is reproducible, so a dirty PDF here means the committed one was
+# built from different sources than the ones being pushed.
+if ! git diff --quiet -- JaradNiemi-CV.pdf; then
+    printf 'pre-push: JaradNiemi-CV.pdf does not match the sources being pushed.\n'
+    printf '          The data or the .Rnw changed without the PDF being rebuilt.\n'
+    printf "          Run 'make' and commit the rebuilt PDF, then push again.\n"
+    exit 1
+fi
+
+printf 'pre-push: CV builds cleanly and passes all checks\n'
+exit 0
