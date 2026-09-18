@@ -11,6 +11,9 @@ content of its own.
 ## Layout
 
     data/                       the source of truth, one file per kind of record
+      education.csv             degrees, theses and advisors
+      positions.csv             academic appointments
+      employment.csv            non-academic and pre-academic employment
       publications.csv          articles, with lifecycle status and output type
       presentations.csv         talks and posters
       grants.csv                funded projects, amounts and roles
@@ -18,6 +21,7 @@ content of its own.
       courses.csv               regular and short courses taught
       honors.csv                awards, with amounts and links
       memberships.csv           professional societies
+      news.csv                  news interviews
       mentoring.csv             students mentored, e.g. Preparing Future Faculty
       people.csv                everyone the CV refers to, one row per person
       aliases.csv               the several ways a person's name may appear

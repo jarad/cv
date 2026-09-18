@@ -77,6 +77,39 @@ options(width=120)
 library("tidyverse")
 @
 
+<<helpers, echo=FALSE, message=FALSE>>=
+# The CSVs hold plain text. Everything LaTeX -- escaping, bolding my own name,
+# starring advisees, italics -- is applied here at render time.
+
+tex_escape = function(x) {
+  x = gsub("\\", "\\textbackslash{}", x, fixed=TRUE)
+  for (ch in c("&","%","$","#","_","{","}")) x = gsub(ch, paste0("\\",ch), x, fixed=TRUE)
+  x = gsub("~", "\\textasciitilde{}",  x, fixed=TRUE)
+  gsub("^", "\\textasciicircum{}", x, fixed=TRUE)
+}
+# *italic* (Markdown) -> \emph{italic}, applied after escaping
+tex_text = function(x) gsub("\\*([^*]+)\\*", "\\\\emph{\\1}", tex_escape(x))
+
+# partial ISO 8601 ("2020", "2020-10") -> earliest instant it could denote
+iso_floor = function(x) as.Date(ifelse(is.na(x), NA_character_,
+  ifelse(grepl("^\\d{4}$", x),        paste0(x,"-01-01"),
+  ifelse(grepl("^\\d{4}-\\d{2}$", x), paste0(x,"-01"), x))))
+
+# 2018 | AY18-19 | 2011--2022 | 2020--present
+# a span of two consecutive years is an academic year, which is how committee
+# and departmental terms are actually counted
+span = function(s, e, academic = TRUE) {
+  s = as.integer(substr(s, 1, 4)); e = as.integer(substr(e, 1, 4))
+  mapply(function(s1, e1) {
+    if (is.na(s1))        return(NA_character_)
+    if (is.na(e1))        return(paste0(s1, "--present"))
+    if (e1 == s1)         return(as.character(s1))
+    if (academic && e1 == s1 + 1) return(sprintf("AY%02d-%02d", s1 %% 100, e1 %% 100))
+    paste0(s1, "--", e1)
+  }, s, e)
+}
+@
+
 \providecommand{\includesinceappt}{0}
 \providecommand{\includesubmitted}{0}
 \providecommand{\includeinprep}{0}
@@ -121,59 +154,60 @@ library("tidyverse")
 %---------------------------------------------------------------------------
 
 \section{\bf Education}
-Ph.D. Statistical Science, Duke University, 2009 \\%, GPA 3.8
-Thesis: Bayesian Analysis and Computational Methods for Dynamic Modeling\\
-Advisor: Mike West
 
-M.S. Biostatistics, University of Minnesota, 2005\\%, GPA 3.6
-Thesis: Identifying and Evaluating Contrarian Strategies for NCAA Tournament Pools \\
-Advisor: Brad Carlin
-
-B.ChE. Chemical Engineering, University of Minnesota, 1999%, Lower Div Honors Program, GPA 3.5
-
-%Duluth Marshall (College Preparatory) High School, 1995, Salutatorian
-
-%---------------------------------------------------------------------------
+<<education, dependson="helpers", cache=TRUE, cache.extra = tools::md5sum("data/education.csv"), results='asis', message=FALSE>>=
+ed = readr::read_csv("data/education.csv") %>% arrange(desc(year))
+for (i in seq_len(nrow(ed))) {
+  d = ed[i,]
+  cat(tex_text(d$degree), " ", tex_text(d$field), ", ", tex_text(d$institution),
+      ", ", d$year, "\n", sep="")
+  if (!is.na(d$thesis))  cat("\\\\\nThesis: ", tex_text(d$thesis), "\n", sep="")
+  if (!is.na(d$advisor)) cat("\\\\\nAdvisor: ", tex_text(d$advisor), "\n", sep="")
+  cat("\n")
+}
+@
 
 \section{\bf Academic Positions}
 
-\begin{tabular}{l@{\qquad}r}
-Data Science Program & Iowa State University \\
-\quad Director & 2024--present \\
-\\
-Statistics & Iowa State University \\
-\quad Professor & 2023--present \\
-\quad Associate Professor & 2017--2023 \\
-\quad Assistant Professor & 2011--2017 \\
-\\
-Statistics and Actuarial Sciences & Simon Fraser University \\
-\quad Visiting Scholar & 2019-2020 \\
-\\
-Statistics \& Applied Probability & University of California,\ Santa Barbara \\
-\quad Assistant Professor & 2009--2011
-\end{tabular}
+<<positions, dependson="helpers", cache=TRUE, cache.extra = tools::md5sum("data/positions.csv"), results='asis', message=FALSE>>=
+pos = readr::read_csv("data/positions.csv")
+# appointments are grouped by the unit they were held in, newest first
+pos = pos[order(-as.integer(pos$start_date)),]
+grp = paste(pos$unit, pos$institution, sep = "\r")
 
+cat("\\begin{tabular}{l@{\\qquad}r}\n")
+first = TRUE
+for (g in unique(grp)) {
+  d = pos[grp == g,]
+  if (!first) cat("\\\\\n")
+  first = FALSE
+  cat(tex_text(d$unit[1]), " & ", tex_text(d$institution[1]), " \\\\\n", sep="")
+  for (i in seq_len(nrow(d)))
+    cat("\\quad ", tex_text(d$title[i]), " & ",
+        span(d$start_date[i], d$end_date[i], academic = FALSE), " \\\\\n", sep="")
+}
+cat("\\end{tabular}\n")
+@
 
-%------------------------------------------------------------------------------
 \section{\bf Employment}
 
-\begin{tabular}{l@{\qquad}l@{\qquad}r}
-Consultant 
- & Eocene Environmental Group, Inc. & 2024--2026 \\
- & Kemin Industries & 2024 \\
- & Boehringer Ingelheim Vetmedica, Inc. & 2012--2013 \\
- & Natural Resources Research Institute  & 2009--2010 \\
- & Denver Health & 2008 \\
- & Purdue Pharma LP & 2007--2008 \\
-Research Assistant & Duke University (Mike West) & 2006--2009 \\
- & University of Minnesota (Brad Carlin) & 2004--2005 \\
- & University of Minnesota (Grace Peng) & 2003--2004 \\
-Junior Scientist & University of Minnesota & 2001--2004 \\
- & Natural Resources Research Institute & 2003 \\
-Research Engineer & Procter \& Gamble & 1999-2001
-\end{tabular}
+<<employment, dependson="helpers", cache=TRUE, cache.extra = tools::md5sum("data/employment.csv"), results='asis', message=FALSE>>=
+emp = readr::read_csv("data/employment.csv")
 
-%%===========================================================================%%
+cat("\\begin{tabular}{l@{\\qquad}l@{\\qquad}r}\n")
+for (r in unique(emp$role)) {
+  d = emp[emp$role == r,]
+  d = d[order(-as.integer(d$start_date)),]
+  for (i in seq_len(nrow(d))) {
+    # the role is named once, then left blank down the column
+    who = tex_text(d$employer[i])
+    if (!is.na(d$supervisor[i])) who = paste0(who, " (", tex_text(d$supervisor[i]), ")")
+    cat(if (i == 1) tex_text(r) else "", " & ", who, " & ",
+        span(d$start_date[i], d$end_date[i], academic = FALSE), " \\\\\n", sep="")
+  }
+}
+cat("\\end{tabular}\n")
+@
 
 \filbreak
 \section{Publications}
@@ -183,37 +217,6 @@ Research Engineer & Procter \& Gamble & 1999-2001
 \vspace{-0.3in}
 
 <<read_pubs, echo=FALSE, cache=TRUE, cache.extra = c(tools::md5sum('data/publications.csv'), tools::md5sum('data/people.csv'), tools::md5sum('data/aliases.csv'), tools::md5sum('data/studentcommittees.csv')), message=FALSE>>=
-# The CSVs hold plain text. Everything LaTeX -- escaping, bolding my own name,
-# starring advisees, italics -- is applied here at render time.
-
-tex_escape = function(x) {
-  x = gsub("\\", "\\textbackslash{}", x, fixed=TRUE)
-  for (ch in c("&","%","$","#","_","{","}")) x = gsub(ch, paste0("\\",ch), x, fixed=TRUE)
-  x = gsub("~", "\\textasciitilde{}",  x, fixed=TRUE)
-  gsub("^", "\\textasciicircum{}", x, fixed=TRUE)
-}
-# *italic* (Markdown) -> \emph{italic}, applied after escaping
-tex_text = function(x) gsub("\\*([^*]+)\\*", "\\\\emph{\\1}", tex_escape(x))
-
-# partial ISO 8601 ("2020", "2020-10") -> earliest instant it could denote
-iso_floor = function(x) as.Date(ifelse(is.na(x), NA_character_,
-  ifelse(grepl("^\\d{4}$", x),        paste0(x,"-01-01"),
-  ifelse(grepl("^\\d{4}-\\d{2}$", x), paste0(x,"-01"), x))))
-
-# 2018 | AY18-19 | 2011--2022 | 2020--present
-# a span of two consecutive years is an academic year, which is how committee
-# and departmental terms are actually counted
-span = function(s, e) {
-  s = as.integer(substr(s, 1, 4)); e = as.integer(substr(e, 1, 4))
-  mapply(function(s1, e1) {
-    if (is.na(s1))        return(NA_character_)
-    if (is.na(e1))        return(paste0(s1, "--present"))
-    if (e1 == s1)         return(as.character(s1))
-    if (e1 == s1 + 1)     return(sprintf("AY%02d-%02d", s1 %% 100, e1 %% 100))
-    paste0(s1, "--", e1)
-  }, s, e)
-}
-
 people     = readr::read_csv("data/people.csv")
 aliases    = readr::read_csv("data/aliases.csv")
 committees = readr::read_csv("data/studentcommittees.csv")
@@ -566,16 +569,28 @@ cat("}\n")
 
 \section{\bf News interviews (hyperlinked)}
 
-\href{http://www.nbcnews.com/business/slam-dunk-your-rivals-office-march-madness-pool-1C8912546}{CNBC}, %18/03/2013
-\href{http://moneywatch.bnet.com/economic-news/article/ncaa-brackets-how-to-win-your-march-madness-pool/403055/?tag=main;related-link-0}{CBS Moneywatch},
-\href{http://articles.moneycentral.msn.com/SmartSpending/blog/page.aspx?post=1704157}{MSN MoneyCentral},
-Slate (\href{http://www.slate.com/id/2213974/pagenum/all/}{2009}, \href{http://www.slate.com/id/2288234/pagenum/all/}{2011},
-\href{http://www.slate.com/articles/sports/sports_nut/2012/03/ncaa_basketball_tournament_bracket_act_like_a_hedge_fund_manager_and_pick_ohio_state_to_win_it_all_.single.html}{2012},
-\href{http://www.slate.com/articles/sports/sports_nut/2012/03/ncaa_basketball_tournament_bracket_act_like_a_hedge_fund_manager_and_pick_ohio_state_to_win_it_all_.single.html}{2013}),
-The Duke Chronicle
+<<news, dependson="helpers", cache=TRUE, cache.extra = tools::md5sum("data/news.csv"), results='asis', message=FALSE>>=
+nw = readr::read_csv("data/news.csv")
 
-
-%---------------------------------------------------------------------------
+# one outlet interviewed me several times, so its years are listed after it
+items = character(0)
+for (o in unique(nw$outlet)) {
+  d = nw[nw$outlet == o,]
+  if (nrow(d) == 1 && is.na(d$year[1])) {
+    items = c(items, if (is.na(d$url[1])) tex_text(o)
+                     else paste0("\\href{", d$url[1], "}{", tex_text(o), "}"))
+  } else if (nrow(d) == 1) {
+    lbl = if (is.na(d$url[1])) tex_text(o) else paste0("\\href{", d$url[1], "}{", tex_text(o), "}")
+    items = c(items, lbl)
+  } else {
+    d = d[order(d$year),]
+    yrs = mapply(function(y, u) if (is.na(u)) y else paste0("\\href{", u, "}{", y, "}"),
+                 d$year, d$url)
+    items = c(items, paste0(tex_text(o), " (", paste(yrs, collapse = ", "), ")"))
+  }
+}
+cat(paste(items, collapse = ",\n"), "\n", sep="")
+@
 
 \filbreak
 \section{\bf Courses taught}
