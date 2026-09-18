@@ -844,7 +844,9 @@ print(tab2,
 <<undergraduate-research, results='asis', cache.extra = tools::md5sum("data/undergraduate_research.csv")>>=
 d3 = readr::read_csv("data/undergraduate_research.csv") %>%
   mutate(Year = span(start_date, end_date, academic = FALSE),
-         Topic = str_trunc(Topic, 50)) %>%
+         # "--present" is wider than any prior Year value, so the topic
+         # column is trimmed a bit further to keep the table in-margin
+         Topic = str_trunc(Topic, 42)) %>%
   select(Student, Year, Topic)
 
 tab3 <- xtable(d3,
