@@ -40,7 +40,18 @@ meaning, such as a species name, is written in Markdown (`*Drosophila*`).
 Dates are **ISO 8601** at whatever precision is actually known: `2024`,
 `2024-06`, or `2024-06-15`. Never invent a day to make a column uniform. The
 CV prints years, and a span of two consecutive years prints as an academic
-year, `AY18-19`.
+year, `AY18-19`. Exact dates matter beyond the CV itself: annual review runs
+on a fiscal year (July-June), so a role's actual start or end date decides
+which review it falls under in a way a bare year cannot. Backfill exact
+dates when they can be found (email, offer letters, meeting minutes), and
+prioritize anything currently ongoing (a blank `end_date`) since that is
+what a future review will need.
+
+`studentcommittees.csv` tracks a committee relationship's `start_date` and
+`end_date` separately from `graduation_date`: a student can leave a
+committee (or Niemi can roll off it) without the student graduating, and a
+blank `graduation_date` means the degree is still in progress regardless of
+whether the committee relationship itself has ended.
 
 People are referenced by `person_id`, never by repeating a name. Because the
 same person may be published under several spellings, `aliases.csv` records

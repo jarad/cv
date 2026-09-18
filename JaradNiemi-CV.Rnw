@@ -172,7 +172,7 @@ for (i in seq_len(nrow(ed))) {
 <<positions, dependson="helpers", cache=TRUE, cache.extra = tools::md5sum("data/positions.csv"), results='asis', message=FALSE>>=
 pos = readr::read_csv("data/positions.csv")
 # appointments are grouped by the unit they were held in, newest first
-pos = pos[order(-as.integer(pos$start_date)),]
+pos = pos[order(-as.integer(substr(pos$start_date, 1, 4))),]
 grp = paste(pos$unit, pos$institution, sep = "\r")
 
 cat("\\begin{tabular}{l@{\\qquad}r}\n")
@@ -197,7 +197,7 @@ emp = readr::read_csv("data/employment.csv")
 cat("\\begin{tabular}{l@{\\qquad}l@{\\qquad}r}\n")
 for (r in unique(emp$role)) {
   d = emp[emp$role == r,]
-  d = d[order(-as.integer(d$start_date)),]
+  d = d[order(-as.integer(substr(d$start_date, 1, 4))),]
   for (i in seq_len(nrow(d))) {
     # the role is named once, then left blank down the column
     who = tex_text(d$employer[i])
@@ -784,7 +784,12 @@ d = d %>%
             by = "co_chair_id") %>%
   # master's degrees are reported together regardless of whether the awarding
   # department calls it an MS or an MA
-  mutate(Degree = ifelse(Degree == "MA", "MS", Degree)) %>%
+  mutate(Degree = ifelse(Degree == "MA", "MS", Degree),
+         # the CV shows only the graduation year, or "In progress" before one
+         # is recorded; committee start/end dates are tracked for annual
+         # review but are not themselves printed here
+         Completed = ifelse(is.na(graduation_date), "In progress",
+                             substr(graduation_date, 1, 4))) %>%
   select(Student, School, Department, Degree, Completed, Chair, `Co-chair`) %>%
   mutate(School = factor(School, levels=c("ISU","UCSB")),
          Chair  = factor(Chair,  levels=c("Chair","Co-chair","")))
