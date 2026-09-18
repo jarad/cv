@@ -23,7 +23,7 @@ report <- function(ok, label, detail = NULL) {
 
 # ---- 1. the data should be plain text -------------------------------------
 cat("\ndata\n")
-for (f in list.files(".", pattern = "\\.csv$")) {
+for (f in list.files("data", pattern = "\\.csv$", full.names = TRUE)) {
   d <- suppressWarnings(read_csv(f, show_col_types = FALSE, progress = FALSE))
   bad <- character(0)
   for (col in setdiff(names(d), c("url", "notes_url", "doi", "pre-print", "website",
@@ -50,7 +50,7 @@ report(!length(k), "no empty list items", tex[k])
 
 # internal annotations must never reach the page
 internal <- c()
-for (f in list.files(".", pattern = "\\.csv$")) {
+for (f in list.files("data", pattern = "\\.csv$", full.names = TRUE)) {
   d <- suppressWarnings(read_csv(f, show_col_types = FALSE, progress = FALSE))
   if ("internal_notes" %in% names(d)) internal <- c(internal, na.omit(d$internal_notes))
 }
@@ -63,23 +63,23 @@ counts <- function(from, to) {
   b <- grep(to, tex); b <- b[b > a[1]]
   tex[a[1]:(if (length(b)) b[1] else length(tex))]
 }
-pres <- read_csv("presentations.csv", show_col_types = FALSE)
+pres <- read_csv("data/presentations.csv", show_col_types = FALSE)
 report(sum(grepl("^``", counts("\\\\section\\{\\\\bf Talks\\}", "\\\\section\\{\\\\bf Posters\\}"))) ==
          sum(pres$kind == "talk"), "every talk rendered")
-gr <- read_csv("grants.csv", show_col_types = FALSE)
+gr <- read_csv("data/grants.csv", show_col_types = FALSE)
 report(sum(grepl("^\\\\item", counts("\\\\section\\{\\\\bf Grants\\}", "\\\\section\\{\\\\bf Honors"))) ==
          nrow(gr), "every grant rendered")
-ho <- read_csv("honors.csv", show_col_types = FALSE)
+ho <- read_csv("data/honors.csv", show_col_types = FALSE)
 report(sum(grepl("^\\\\item", counts("\\\\section\\{\\\\bf Honors", "\\\\section\\{\\\\bf Memberships"))) ==
          nrow(ho), "every honor rendered")
-co <- read_csv("courses.csv", show_col_types = FALSE)
+co <- read_csv("data/courses.csv", show_col_types = FALSE)
 report(sum(grepl("&.*&", counts("\\\\section\\{\\\\bf Courses taught\\}", "\\\\section\\{\\\\bf Grants\\}"))) ==
          nrow(co), "every course rendered")
 
 # advisee stars and my own name should be decorated everywhere they appear
-pp <- read_csv("people.csv", show_col_types = FALSE)
-al <- read_csv("aliases.csv", show_col_types = FALSE)
-sc <- read_csv("studentcommittees.csv", show_col_types = FALSE)
+pp <- read_csv("data/people.csv", show_col_types = FALSE)
+al <- read_csv("data/aliases.csv", show_col_types = FALSE)
+sc <- read_csv("data/studentcommittees.csv", show_col_types = FALSE)
 advisees <- sc |> filter(!is.na(Chair)) |> distinct(person_id) |> pull(person_id)
 spell <- bind_rows(pp |> transmute(person_id, s = name), al |> transmute(person_id, s = alias))
 # only where names appear as bylines: the advisee and committee tables list

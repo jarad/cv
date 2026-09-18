@@ -182,7 +182,7 @@ Research Engineer & Procter \& Gamble & 1999-2001
 
 \vspace{-0.3in}
 
-<<read_pubs, echo=FALSE, cache=TRUE, cache.extra = c(tools::md5sum('publications.csv'), tools::md5sum('people.csv'), tools::md5sum('aliases.csv'), tools::md5sum('studentcommittees.csv')), message=FALSE>>=
+<<read_pubs, echo=FALSE, cache=TRUE, cache.extra = c(tools::md5sum('data/publications.csv'), tools::md5sum('data/people.csv'), tools::md5sum('data/aliases.csv'), tools::md5sum('data/studentcommittees.csv')), message=FALSE>>=
 # The CSVs hold plain text. Everything LaTeX -- escaping, bolding my own name,
 # starring advisees, italics -- is applied here at render time.
 
@@ -214,9 +214,9 @@ span = function(s, e) {
   }, s, e)
 }
 
-people     = readr::read_csv("people.csv")
-aliases    = readr::read_csv("aliases.csv")
-committees = readr::read_csv("studentcommittees.csv")
+people     = readr::read_csv("data/people.csv")
+aliases    = readr::read_csv("data/aliases.csv")
+committees = readr::read_csv("data/studentcommittees.csv")
 
 # every way a person's name may appear in a byline
 spellings = dplyr::bind_rows(
@@ -257,7 +257,7 @@ decorate_authors = function(s) {
 # the title, which is why it falls in early 2022 rather than 2023.
 PROMOTION_DATE = as.Date("2022-01-01")
 
-pubs = readr::read_csv("publications.csv") %>%
+pubs = readr::read_csv("data/publications.csv") %>%
   arrange(-year) %>%
   mutate(authors_tex = vapply(authors, decorate_authors, character(1)),
          title_tex   = tex_text(title),
@@ -492,8 +492,8 @@ hierarchical modeling using massively parallel computing. \url{https://arxiv.org
 \filbreak
 \section{\bf Talks}
 
-<<read_presentations, dependson="read_pubs", cache=TRUE, cache.extra = tools::md5sum("presentations.csv"), message=FALSE>>=
-pres = readr::read_csv("presentations.csv")
+<<read_presentations, dependson="read_pubs", cache=TRUE, cache.extra = tools::md5sum("data/presentations.csv"), message=FALSE>>=
+pres = readr::read_csv("data/presentations.csv")
 
 # ISO 8601 at whatever precision was recorded -> the CV's display form
 fmt_date = function(d) {
@@ -581,8 +581,8 @@ The Duke Chronicle
 \section{\bf Courses taught}
 \vspace{0.1in}
 
-<<courses, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("courses.csv"), results='asis', message=FALSE>>=
-courses = readr::read_csv("courses.csv")
+<<courses, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("data/courses.csv"), results='asis', message=FALSE>>=
+courses = readr::read_csv("data/courses.csv")
 
 TERM_ORDER = c(Spring=1, Summer=2, Fall=3, Winter=4,
                Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6,
@@ -620,8 +620,8 @@ cat("\\end{tabular}\n")
 \filbreak
 \section{\bf Grants}
 
-<<grants, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("grants.csv"), results='asis', message=FALSE>>=
-grants = readr::read_csv("grants.csv") %>% arrange(desc(start_date))
+<<grants, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("data/grants.csv"), results='asis', message=FALSE>>=
+grants = readr::read_csv("data/grants.csv") %>% arrange(desc(start_date))
 
 # $1,088,156 and $746,204.44 -- thousands separators, cents only when present
 money = function(a) {
@@ -659,8 +659,8 @@ cat("\\end{itemize}\n")
 \filbreak
 \section{\bf Honors and Awards}
 
-<<honors, dependson="read_pubs", cache=TRUE, cache.extra = c(tools::md5sum("honors.csv"), tools::md5sum("memberships.csv")), results='asis', message=FALSE>>=
-honors = readr::read_csv("honors.csv") %>% arrange(desc(start_date))
+<<honors, dependson="read_pubs", cache=TRUE, cache.extra = c(tools::md5sum("data/honors.csv"), tools::md5sum("data/memberships.csv")), results='asis', message=FALSE>>=
+honors = readr::read_csv("data/honors.csv") %>% arrange(desc(start_date))
 
 link = function(text, href) if (is.na(href)) text else paste0("\\href{", href, "}{", text, "}")
 
@@ -685,8 +685,8 @@ cat("\\end{itemize}\n")
 \filbreak
 \section{\bf Memberships}
 
-<<memberships, dependson="honors", results='asis', cache.extra = tools::md5sum("memberships.csv"), message=FALSE>>=
-mem = readr::read_csv("memberships.csv")
+<<memberships, dependson="honors", results='asis', cache.extra = tools::md5sum("data/memberships.csv"), message=FALSE>>=
+mem = readr::read_csv("data/memberships.csv")
 cat("\\begin{itemize}\n")
 for (i in seq_len(nrow(mem))) cat("\\item ", tex_text(mem$organization[i]), "\n", sep="")
 cat("\\end{itemize}\n")
@@ -694,8 +694,8 @@ cat("\\end{itemize}\n")
 
 \section{\bf Service}
 
-<<service, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("service.csv"), results='asis', message=FALSE>>=
-service = readr::read_csv("service.csv")
+<<service, dependson="read_presentations", cache=TRUE, cache.extra = tools::md5sum("data/service.csv"), results='asis', message=FALSE>>=
+service = readr::read_csv("data/service.csv")
 
 
 render_item = function(d) {
@@ -748,14 +748,14 @@ cat("\\end{itemize}\n")
 
 \vspace{0.1in}
 
-<<read_studentcommittees, cache.extra = c(tools::md5sum("studentcommittees.csv"), tools::md5sum("people.csv"))>>=
+<<read_studentcommittees, cache.extra = c(tools::md5sum("data/studentcommittees.csv"), tools::md5sum("data/people.csv"))>>=
 # library(plyr)
 library(dplyr)
 library(xtable)
 
-people = readr::read_csv("people.csv")
+people = readr::read_csv("data/people.csv")
 
-d = readr::read_csv("studentcommittees.csv")
+d = readr::read_csv("data/studentcommittees.csv")
 
 # every person referenced must exist in people.csv; fail loudly rather than
 # silently dropping a student from the CV
@@ -821,8 +821,8 @@ print(tab2,
       caption.placement="top")
 @
 
-<<undergraduate-research, results='asis', cache.extra = tools::md5sum("undergraduate_research.csv")>>=
-d3 = read.csv("undergraduate_research.csv") %>%
+<<undergraduate-research, results='asis', cache.extra = tools::md5sum("data/undergraduate_research.csv")>>=
+d3 = read.csv("data/undergraduate_research.csv") %>%
   mutate(Topic = str_trunc(Topic, 50))
 
 tab3 <- xtable(d3,
@@ -836,10 +836,10 @@ print(tab3,
 
 @
 
-<<mentoring, dependson="service", results='asis', cache.extra = tools::md5sum("mentoring.csv"), message=FALSE>>=
+<<mentoring, dependson="service", results='asis', cache.extra = tools::md5sum("data/mentoring.csv"), message=FALSE>>=
 # mentoring sits with the advisees rather than under service: it is work with
 # individual students, not committee work
-m = readr::read_csv("mentoring.csv") %>%
+m = readr::read_csv("data/mentoring.csv") %>%
   arrange(desc(start_date)) %>%
   transmute(Student = student, Program = programme,
             Institution = institution, Years = span(start_date, end_date))
