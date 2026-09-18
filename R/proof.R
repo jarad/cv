@@ -108,6 +108,20 @@ for (i in seq_len(nrow(spell))) {
 }
 report(!length(undec), "advisees starred and my name bolded throughout", unique(undec))
 
+# the converse: nobody else should be decorated as me or as an advisee.
+# Gerald J. Niemi is Jarad's father and a co-author, and "J. Niemi" is a
+# substring of his name, so this is a live hazard rather than a hypothetical.
+others <- pp |> filter(!(person_id %in% c("jarad-niemi", advisees)))
+wrong <- character(0)
+for (i in seq_len(nrow(others))) {
+  s <- others$name[i]
+  for (mark in c(paste0("{\\bf ", s, "}"), paste0(s, "*"))) {
+    k <- grep(mark, bylines, fixed = TRUE)
+    if (length(k)) wrong <- c(wrong, paste0(s, " -> ", str_trunc(bylines[k[1]], 80)))
+  }
+}
+report(!length(wrong), "no one else decorated as me or as an advisee", unique(wrong))
+
 # ---- 3. typesetting --------------------------------------------------------
 cat("\ntypesetting\n")
 log <- readLines("JaradNiemi-CV.log", warn = FALSE)
