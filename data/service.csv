@@ -1,14 +1,15 @@
 category,group,organization,activity,role,start_date,end_date,url
 Departmental/Program service,Iowa State University Data Science Program,Iowa State University Data Science Program,Administrative Assistant Search Committee,co-chair joint with Psychology,2026,2026,
-Departmental/Program service,Iowa State University Data Science Program,Iowa State University Data Science Program,Applied AI Minor Curriculum Committee,member,2024,,
-Departmental/Program service,Iowa State University Data Science Program,Iowa State University Data Science Program,Data Science Curriculum Committee,chair,2024,,
-Departmental/Program service,Iowa State University Data Science Program,,Data Science Program,Director,2024,,
+Departmental/Program service,Iowa State University Data Science Program,Iowa State University Data Science Program,Applied AI Minor Curriculum Committee,member,2024-05-14,,
+Departmental/Program service,Iowa State University Data Science Program,Iowa State University Data Science Program,Data Science Curriculum Committee,chair,2024-08-15,,
+Departmental/Program service,Iowa State University Data Science Program,,Data Science Program,Director,2024-08-15,,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Communications Specialist Search Committee,member,2025,2025,
-Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Computation Advisory Committee,member,2023,,
+Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Computation Advisory Committee,member,2023-08-15,,
+Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Computation Advisory Committee,chair,2026-08-15,,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Computation Advisory Committee,chair,2017,2019,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Computation Advisory Committee,member,2011,2022,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Computational Statistics working group,chair,2011,2014,
-Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Data Science Club,advisor,2025,,
+Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Data Science Club,advisor,2025-01-23,,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Department Chair Search Advisory committee,,2018,2019,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Department Chair Search Advisory committee,,2012,2014,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Director of Statistical Consulting search committee,,2014,2015,
@@ -28,15 +29,15 @@ Departmental/Program service,Iowa State University Department of Statistics,Iowa
 Departmental/Program service,Iowa State University Department of Statistics,,STAT-ers,advisor,2011,2017,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Snedecor Sustainability Committee,co-chair,2015,2017,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Social Committee,,2011,2015,
-Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Sports Analytics Club,advisor,2020,,
-Departmental/Program service,Iowa State University Department of Statistics,,Statistical Consulting,Director,2025,,
+Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Sports Analytics Club,advisor,2020-08-15,,
+Departmental/Program service,Iowa State University Department of Statistics,,Statistical Consulting,Director,2025-08-15,,
 Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Statistics/BCB search committee,,2014,2015,
-Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Website Committee,member,2020,,
-Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Website Committee,chair,2020,2024,
+Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Website Committee,member,2021-08-15,,
+Departmental/Program service,Iowa State University Department of Statistics,Iowa State University Department of Statistics,Website Committee,chair,2021-08-15,2024-08-15,
 Profession,,National Science Foundation,,Panel,2025,2025,
 Profession,,National Science Foundation,,Panel,2024,2024,
 Profession,,National Science Foundation,,Panel,2018,2018,
-Profession,,American Statistical Association Iowa Chapter,,Treasurer,2026,,
+Profession,,American Statistical Association Iowa Chapter,,Treasurer,2026-02-27,,
 Profession,,"*Journal of Agricultural, Biological, and Environmental Statistics*",,Associate Editor,2016,2026,
 Profession,Conference organization,Conference on Predictive Inference in Sports,,Conference Chair,2025,2025,
 Profession,Conference organization,Conference on Applied Statistics in Agriculture and Natural Resources,,Program Committee Member,2024,2024,
@@ -44,10 +45,10 @@ Profession,Conference organization,International Society for Disease Surveillanc
 Profession,Conference organization,International Society for Disease Surveillance,,Analytical Methods track chair,2012,2012,
 Profession,Conference organization,International Society for Disease Surveillance,,Session chair,2010,2010,
 Profession,Conference organization,Joint Statistical Meetings,,Section on Statistical Computing session chair,2009,2009,
-Profession,Other statistical community service,,Professional YouTube channel,,2011,,https://www.youtube.com/jaradniemi
-Profession,Other statistical community service,,Professional website,,2009,,http://jarad.me/
-Profession,Other statistical community service,NCCC170,Website,Development Lead,2022,,https://nccc170.netlify.app/
-Profession,Other statistical community service,First Robotics Competition (FRC) Team Neutrino (#3928),,Mentor,2024,,https://www.teamneutrino.org/
+Profession,Other statistical community service,,Professional YouTube channel,,2011-08-15,,https://www.youtube.com/jaradniemi
+Profession,Other statistical community service,,Professional website,,2009-08-15,,http://jarad.me/
+Profession,Other statistical community service,NCCC170,Website,Development Lead,2022-06-01,,https://nccc170.netlify.app/
+Profession,Other statistical community service,First Robotics Competition (FRC) Team Neutrino (#3928),,Mentor,2024-09-01,,https://www.teamneutrino.org/
 Profession,Other statistical community service,First Lego League (FLL),,Coach,2022,2024,
 Profession,Other statistical community service,Iowa State Science & Technology Fair,,Judge,2022,2023,
 Profession,Other statistical community service,International Society for Bayesian Analysis,,Web Editor,2013,2015,http://bayesian.org/
