@@ -77,7 +77,7 @@ options(width=120)
 library("tidyverse")
 @
 
-<<helpers, echo=FALSE, message=FALSE>>=
+<<helpers, echo=FALSE, message=FALSE, cache.extra = tools::md5sum('R/cvdata.R')>>=
 # The CSVs hold plain text. Everything LaTeX -- escaping, bolding my own name,
 # starring advisees, italics -- is applied here at render time.
 
@@ -90,24 +90,9 @@ tex_escape = function(x) {
 # *italic* (Markdown) -> \emph{italic}, applied after escaping
 tex_text = function(x) gsub("\\*([^*]+)\\*", "\\\\emph{\\1}", tex_escape(x))
 
-# partial ISO 8601 ("2020", "2020-10") -> earliest instant it could denote
-iso_floor = function(x) as.Date(ifelse(is.na(x), NA_character_,
-  ifelse(grepl("^\\d{4}$", x),        paste0(x,"-01-01"),
-  ifelse(grepl("^\\d{4}-\\d{2}$", x), paste0(x,"-01"), x))))
-
-# 2018 | AY18-19 | 2011--2022 | 2020--present
-# a span of two consecutive years is an academic year, which is how committee
-# and departmental terms are actually counted
-span = function(s, e, academic = TRUE) {
-  s = as.integer(substr(s, 1, 4)); e = as.integer(substr(e, 1, 4))
-  mapply(function(s1, e1) {
-    if (is.na(s1))        return(NA_character_)
-    if (is.na(e1))        return(paste0(s1, "--present"))
-    if (e1 == s1)         return(as.character(s1))
-    if (academic && e1 == s1 + 1) return(sprintf("AY%02d-%02d", s1 %% 100, e1 %% 100))
-    paste0(s1, "--", e1)
-  }, s, e)
-}
+# iso_floor(), fmt_date(), span(), name_list() and the byline rules are
+# shared with the website
+source("R/cvdata.R")
 @
 
 \providecommand{\includesinceappt}{0}
@@ -221,39 +206,12 @@ people     = readr::read_csv("data/people.csv")
 aliases    = readr::read_csv("data/aliases.csv")
 committees = readr::read_csv("data/studentcommittees.csv")
 
-# every way a person's name may appear in a byline
-spellings = dplyr::bind_rows(
-  people  %>% dplyr::transmute(person_id, spelling = name),
-  aliases %>% dplyr::transmute(person_id, spelling = alias))
-spellings = spellings[order(-nchar(spellings$spelling)),]   # longest first
+spellings   = cv_spellings(people, aliases)
+advisee_ids = cv_advisee_ids(committees)
 
-# chair or co-chair both count as having advised the student
-advisee_ids = unique(committees$person_id[!is.na(committees$Chair)])
-
-# escape regex metacharacters one at a time; a character class trips over {}
-rx_escape = function(s) {
-  for (ch in c("\\", ".", "|", "(", ")", "[", "]", "{", "}", "^", "$", "*", "+", "?"))
-    s = gsub(ch, paste0("\\", ch), s, fixed=TRUE)
-  s
-}
-
-decorate_authors = function(s) {
-  if (is.na(s)) return(s)
-  out = tex_escape(s)
-  for (i in seq_len(nrow(spellings))) {
-    pid = spellings$person_id[i]
-    esc = tex_escape(spellings$spelling[i])
-    if (!grepl(esc, out, fixed=TRUE)) next
-    rep = if (pid == "jarad-niemi")      paste0("{\\bf ", esc, "}")
-          else if (pid %in% advisee_ids) paste0(esc, "*")
-          else next
-    # a spelling only counts at an author boundary, so "J. Niemi" does not
-    # match inside "Gerald J. Niemi"
-    pat = paste0("(^|,\\s*|\\s+and\\s+|\\(\\s*)", rx_escape(esc), "(?=$|[,.;)]|\\s)")
-    out = gsub(pat, paste0("\\1", gsub("\\\\", "\\\\\\\\", rep)), out, perl=TRUE)
-  }
-  out
-}
+# bold my own name, star advisees
+decorate_authors = function(s) decorate_names(s, spellings, advisee_ids,
+  escape = tex_escape, me = function(x) paste0("{\\bf ", x, "}"))
 
 # Work appearing on or after this date counts as since my promotion to
 # Professor. The boundary is the promotion dossier, not the effective date of
@@ -498,27 +456,11 @@ hierarchical modeling using massively parallel computing. \url{https://arxiv.org
 <<read_presentations, dependson="read_pubs", cache=TRUE, cache.extra = tools::md5sum("data/presentations.csv"), message=FALSE>>=
 pres = readr::read_csv("data/presentations.csv")
 
-# ISO 8601 at whatever precision was recorded -> the CV's display form
-fmt_date = function(d) {
-  if (is.na(d)) return("")
-  if (nchar(d) == 4) return(d)
-  if (nchar(d) == 7) return(format(as.Date(paste0(d, "-01")), "%B %Y"))
-  sub("^0", "", format(as.Date(d), "%d %b %Y"))
-}
-
 # a trailing parenthetical: whether it was invited, plus any note
 annotate = function(d, show_solicitation = TRUE) {
   bits = c(if (show_solicitation && !is.na(d$solicitation)) d$solicitation,
            if (!is.na(d$notes)) d$notes)
   if (!length(bits)) "" else paste0(" (", paste(bits, collapse="; "), ")")
-}
-
-# "A", "A and B", "A, B, and C"
-name_list = function(v) {
-  v = v[!is.na(v) & v != ""]
-  if (length(v) <= 1) return(paste(v, collapse=""))
-  if (length(v) == 2) return(paste(v, collapse=" and "))
-  paste0(paste(v[-length(v)], collapse=", "), ", and ", v[length(v)])
 }
 @
 

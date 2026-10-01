@@ -27,6 +27,8 @@ content of its own.
       aliases.csv               the several ways a person's name may appear
       studentcommittees.csv     committees served on, keyed by person_id
       undergraduate_research.csv
+    R/cvdata.R                  rules shared with the website: reading the data,
+                                matching names to bylines, who is an advisee, dates
     R/proof.R                   checks the data, the .tex and the LaTeX log
     JaradNiemi-CV.Rnw           rendering
 
@@ -59,6 +61,13 @@ them; matching respects author boundaries, since "J. Niemi" is a substring of
 "Gerald J. Niemi", who is a different person.
 
 The `notes` column is shown to the reader; `internal_notes` is not.
+
+Some columns exist for the [website](https://github.com/jarad/jarad.github.io)
+rather than the PDF: `people.csv`'s `website` and `current_affiliation`,
+`studentcommittees.csv`'s `thesis_url`, `presentations.csv`'s `slides_url` and
+`courses.csv`'s `url`. The website reads `data/` and `R/cvdata.R` from this
+repository's master branch every night, so a change here reaches the site
+without touching the website repository.
 
 ## Building
 
