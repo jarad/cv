@@ -39,3 +39,14 @@ JaradNiemi-CV.R
 cache/
 
 .DS_Store
+
+# Quarto outputs (the prototype CV is built from cv.qmd)
+/.quarto/
+/cv.pdf
+/cv.docx
+/cv.html
+/cv-*.pdf
+/cv-*.docx
+/cv-*.html
+/cv.typ
+/cv_files/

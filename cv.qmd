@@ -1,0 +1,126 @@
+---
+pagetitle: "Jarad B. Niemi - Curriculum Vitae"
+params:
+  # Work from this date on is "new": the date of the last review or promotion
+  # dossier. Override per render: quarto render cv.qmd -P since:2023-07-01
+  since: "2022-01-01"
+  # true renders only what is new (a Word document for the review), with
+  # sections that have nothing new left out
+  new_only: false
+  # tag puts a NEW label on each new entry of the full CV, for a reviewer;
+  # none (the default) leaves the full CV clean
+  mark: none
+  # work that is not out yet is listed only when asked for:
+  #   quarto render cv.qmd -P include_submitted:true -P include_inprep:true
+  include_submitted: false
+  include_inprep: false
+execute:
+  echo: false
+  warning: false
+  message: false
+format:
+  typst:
+    papersize: us-letter
+    margin: { x: 0.9in, y: 0.8in }
+    include-in-header: cv-style/cv.typ
+    filters: [cv-style/cv.lua]
+    output-file: cv.pdf
+  docx:
+    reference-doc: cv-style/reference.docx
+    filters: [cv-style/cv.lua]
+    output-file: cv.docx
+  html:
+    css: cv-style/cv.css
+    theme: none
+    embed-resources: true
+    filters: [cv-style/cv.lua]
+    output-file: cv.html
+---
+
+```{r setup}
+source("R/sections.R")
+opt = cv_options(params)
+```
+
+# Jarad B. Niemi {.unnumbered}
+
+Department of Statistics, Iowa State University, Ames, IA 50011-1210 \
+Office: 515.294.8679 · Fax: 515.294.4040 · <niemi@iastate.edu> · <http://jarad.me>
+
+```{r intro, results='asis'}
+if (opt$new_only) {
+  cat("*Only work new since ", trimws(format(opt$since, "%e %B %Y")), ".*\n\n", sep = "")
+}
+```
+
+```{r education, results='asis'}
+emit_rows(sec_education(opt), "Education", opt)
+```
+
+```{r positions, results='asis'}
+emit_rows(sec_positions(opt), "Academic Positions", opt)
+```
+
+```{r employment, results='asis'}
+emit_rows(sec_employment(opt), "Employment", opt)
+```
+
+```{r publications, results='asis'}
+emit_section("Publications", opt, note = ADVISEE_NOTE,
+  cv_part("list", sec_unpublished(opt, "in preparation", opt$include_inprep), "In preparation"),
+  cv_part("list", bind_rows(sec_unpublished(opt, "under revision", opt$include_submitted),
+                            sec_unpublished(opt, "submitted", opt$include_submitted)),
+          "Submitted Articles"),
+  cv_part("list", sec_articles(opt), "Refereed Journal Articles"),
+  cv_part("list", sec_other_pubs(opt, "book chapter"), "Book Chapters"),
+  cv_part("list", sec_other_pubs(opt, "conference proceedings"), "Refereed Conference Proceedings"),
+  cv_part("list", sec_other_pubs(opt, "abstract"), "Refereed Abstracts"),
+  cv_part("list", sec_other_pubs(opt, "book review"), "Book reviews"),
+  cv_part("list", sec_other_pubs(opt, "patent application"), "Patent Applications"),
+  cv_part("list", sec_other_pubs(opt, "other manuscript"), "Other manuscripts"))
+```
+
+```{r talks, results='asis'}
+emit_list(sec_talks(opt), "Talks", opt)
+```
+
+```{r posters, results='asis'}
+emit_list(sec_posters(opt), "Posters", opt, note = ADVISEE_NOTE)
+```
+
+```{r news, results='asis'}
+emit_list(sec_news(opt), "News interviews (hyperlinked)", opt)
+```
+
+```{r courses, results='asis'}
+emit_section("Courses taught", opt,
+  cv_part("rows", sec_regular_courses(opt), "Regular courses"),
+  cv_part("rows", sec_short_courses(opt), "Short courses"))
+```
+
+```{r grants, results='asis'}
+emit_list(sec_grants(opt), "Grants", opt)
+```
+
+```{r honors, results='asis'}
+emit_list(sec_honors(opt), "Honors and Awards", opt)
+```
+
+```{r memberships, results='asis'}
+emit_list(sec_memberships(opt), "Memberships", opt)
+```
+
+```{r service, results='asis'}
+emit_section("Service", opt, cv_part("tree", sec_service(opt)))
+```
+
+```{r students, results='asis'}
+emit_section("Student Committees and Advisees", opt, new_page = !opt$new_only,
+  cv_part("table", sec_advisees(opt), "Graduate students advised",
+          widths = c(170, 60, 95, 60, 90, 75, 120)),
+  cv_part("table", sec_committee_summary(opt), "Graduate student committees",
+          align = c("l", "l", "l", "r", "r"), widths = c(14, 8, 8, 12, 12), keep = TRUE),
+  cv_part("table", sec_undergraduate_research(opt), "Undergraduate research projects supervised",
+          widths = c(235, 95, 330), keep = TRUE),
+  cv_part("table", sec_mentoring(opt), "Students mentored", widths = c(20, 28, 28, 12), keep = TRUE))
+```

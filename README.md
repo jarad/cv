@@ -30,6 +30,67 @@ content of its own.
     R/proof.R                   checks the data, the .tex and the LaTeX log
     JaradNiemi-CV.Rnw           rendering
 
+## Quarto prototype
+
+`cv.qmd` is a prototype of the same CV rendered by Quarto instead of LaTeX, so
+one source gives a PDF (via Typst), a Word document and a web page. Every
+section is ported; `JaradNiemi-CV.Rnw` still builds the LaTeX version from the
+same data.
+
+    cv.qmd                 the document: parameters and one chunk per section
+    R/cv.R                 format-neutral helpers: Markdown escaping, dates,
+                           bylines, and the emitters that write entries out
+    R/sections.R           one function per section, CSV in, entries out
+    cv-style/cv.lua        how each output format draws a row, a reference
+                           list, a nested list, a table and the NEW tag
+    cv-style/cv.typ        PDF styling and running header (cv.css for HTML)
+    cv-style/make-reference-docx.py
+                           builds reference.docx, the Word styles and header
+    cv-style/keep-tables.py
+                           keeps tables of up to 12 rows on one page in Word
+
+    make quarto                       build everything below
+    make quarto SINCE=2023-07-01      use a different review date
+
+    cv.pdf  cv.docx  cv.html          the whole CV, clean
+    cv-review.pdf  cv-review.docx     the whole CV, a NEW tag on what is new
+    cv-new.docx                       only what is new, empty sections dropped
+
+What counts as new is the `since` parameter (default 2022-01-01, the promotion
+dossier). Set it to the date of the last review. The `mark` parameter is `none`
+for the clean CV and `tag` for the review copy. Work that is not out yet is
+left off unless asked for: `-P include_submitted:true` lists submitted and
+under-revision articles, `-P include_inprep:true` those in preparation.
+
+PDF and Word both put the name and "Page n / total" in a header from page 2
+on, and never split an entry (an article, a talk, a row of dates and text, a
+bullet) across a page; a long entry that does not fit moves whole to the next
+page. A short table stays on one page; a long one breaks and repeats its
+header. A section whose bylines carry a star says what it means.
+
+A record is new if any day its date could denote is on or after `since`, so a
+bare `2022` counts as new for a 1 July 2022 cutoff: better one old entry
+flagged than a new one missed. Publications use `date_accepted`, then the
+earlier of `date_online` and `date_print`, then `year`; work not yet out uses
+`date_submitted`, then `date_last_activity`. Positions, employment, grants,
+service and honors use `start_date`; talks and posters use `date`; a course
+uses the end of its term; news uses `year`; a student committee is new if it
+began or the student graduated since, and undergraduate research and
+mentoring if they began or ended since. Memberships have no dates, so none is
+ever new.
+
+Book chapters, proceedings, abstracts, book reviews, patents and other
+manuscripts live in `publications.csv` with their own `type`. They share one
+shape, `authors. (year) title. details url`: `details` is whatever follows the
+title (a venue in `*italics*`, editors, pages) and the byline is decorated like
+any other. A preprint with no printed year leaves `year` blank and gives
+`date_online`, which is also what decides whether it is new. The LaTeX build
+still has these six lists written out by hand, so for now an edit to one of
+them has to be made in both places.
+
+Quarto is not installed on every machine; `pip install quarto-cli` is enough,
+and `pip install python-docx` for the Word styles and `keep-tables.py`.
+
 ## Conventions
 
 The CSVs hold **plain text**, never LaTeX. Escaping, bolding my name, starring
