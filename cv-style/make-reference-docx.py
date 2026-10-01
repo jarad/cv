@@ -6,7 +6,7 @@ Run from the repository root (needs `pip install python-docx` and pandoc):
 
 Word has no stylesheet language we can write by hand, so the look lives here
 as code. Pandoc applies these styles by name; `cv.lua` and `R/cv.R` ask for
-"CV Entry", "CV Group" and "CV New".
+"CV Entry", "CV Group", "CV Table Text", "CV Table Head" and "CV New".
 """
 import subprocess
 from docx import Document
@@ -92,6 +92,14 @@ group.base_style = styles["Normal"]
 group.font.bold = True
 group.paragraph_format.space_before = Pt(6)
 group.paragraph_format.keep_with_next = True
+
+# the text of a table of short columns (students, committees); pandoc picks the
+# paragraph style of table cells itself, so these are character styles
+cell = d.styles.add_style("CV Table Text", WD_STYLE_TYPE.CHARACTER)
+cell.font.size = Pt(9)
+head = d.styles.add_style("CV Table Head", WD_STYLE_TYPE.CHARACTER)
+head.font.size = Pt(9)
+head.font.bold = True
 
 new = d.styles.add_style("CV New", WD_STYLE_TYPE.CHARACTER)
 new.font.bold = True

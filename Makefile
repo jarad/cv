@@ -48,3 +48,4 @@ quarto:
 	quarto render cv.qmd --to typst -P since:$(SINCE) -P mark:tag --output cv-review.pdf
 	quarto render cv.qmd --to docx -P since:$(SINCE) -P mark:tag --output cv-review.docx
 	quarto render cv.qmd -P since:$(SINCE)
+	python3 cv-style/keep-tables.py cv.docx cv-review.docx cv-new.docx

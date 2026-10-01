@@ -10,6 +10,10 @@ params:
   # tag puts a NEW label on each new entry of the full CV, for a reviewer;
   # none (the default) leaves the full CV clean
   mark: none
+  # work that is not out yet is listed only when asked for:
+  #   quarto render cv.qmd -P include_submitted:true -P include_inprep:true
+  include_submitted: false
+  include_inprep: false
 execute:
   echo: false
   warning: false
@@ -57,10 +61,66 @@ emit_rows(sec_education(opt), "Education", opt)
 emit_rows(sec_positions(opt), "Academic Positions", opt)
 ```
 
+```{r employment, results='asis'}
+emit_rows(sec_employment(opt), "Employment", opt)
+```
+
 ```{r publications, results='asis'}
-emit_list(sec_articles(opt), "Publications", opt, subtitle = "Refereed Journal Articles")
+emit_section("Publications", opt, note = ADVISEE_NOTE,
+  cv_part("list", sec_unpublished(opt, "in preparation", opt$include_inprep), "In preparation"),
+  cv_part("list", bind_rows(sec_unpublished(opt, "under revision", opt$include_submitted),
+                            sec_unpublished(opt, "submitted", opt$include_submitted)),
+          "Submitted Articles"),
+  cv_part("list", sec_articles(opt), "Refereed Journal Articles"),
+  cv_part("list", sec_other_pubs(opt, "book chapter"), "Book Chapters"),
+  cv_part("list", sec_other_pubs(opt, "conference proceedings"), "Refereed Conference Proceedings"),
+  cv_part("list", sec_other_pubs(opt, "abstract"), "Refereed Abstracts"),
+  cv_part("list", sec_other_pubs(opt, "book review"), "Book reviews"),
+  cv_part("list", sec_other_pubs(opt, "patent application"), "Patent Applications"),
+  cv_part("list", sec_other_pubs(opt, "other manuscript"), "Other manuscripts"))
 ```
 
 ```{r talks, results='asis'}
 emit_list(sec_talks(opt), "Talks", opt)
+```
+
+```{r posters, results='asis'}
+emit_list(sec_posters(opt), "Posters", opt, note = ADVISEE_NOTE)
+```
+
+```{r news, results='asis'}
+emit_list(sec_news(opt), "News interviews (hyperlinked)", opt)
+```
+
+```{r courses, results='asis'}
+emit_section("Courses taught", opt,
+  cv_part("rows", sec_regular_courses(opt), "Regular courses"),
+  cv_part("rows", sec_short_courses(opt), "Short courses"))
+```
+
+```{r grants, results='asis'}
+emit_list(sec_grants(opt), "Grants", opt)
+```
+
+```{r honors, results='asis'}
+emit_list(sec_honors(opt), "Honors and Awards", opt)
+```
+
+```{r memberships, results='asis'}
+emit_list(sec_memberships(opt), "Memberships", opt)
+```
+
+```{r service, results='asis'}
+emit_section("Service", opt, cv_part("tree", sec_service(opt)))
+```
+
+```{r students, results='asis'}
+emit_section("Student Committees and Advisees", opt, new_page = !opt$new_only,
+  cv_part("table", sec_advisees(opt), "Graduate students advised",
+          widths = c(170, 60, 95, 60, 90, 75, 120)),
+  cv_part("table", sec_committee_summary(opt), "Graduate student committees",
+          align = c("l", "l", "l", "r", "r"), widths = c(14, 8, 8, 12, 12), keep = TRUE),
+  cv_part("table", sec_undergraduate_research(opt), "Undergraduate research projects supervised",
+          widths = c(235, 95, 330), keep = TRUE),
+  cv_part("table", sec_mentoring(opt), "Students mentored", widths = c(20, 28, 28, 12), keep = TRUE))
 ```
