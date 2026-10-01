@@ -17,7 +17,7 @@ TEX  = JaradNiemi-CV.tex
 PDF  = JaradNiemi-CV.pdf
 DATA = $(wildcard data/*.csv)
 
-.PHONY: all proof clean
+.PHONY: all proof clean quarto
 
 all: $(PDF)
 
@@ -33,3 +33,11 @@ proof:
 clean:
 	rm -rf cache $(TEX) JaradNiemi-CV.aux JaradNiemi-CV.log \
 	       JaradNiemi-CV.out JaradNiemi-CV-concordance.tex
+
+# Prototype: the Quarto build. Writes cv.pdf, cv.docx, cv.html, and cv-new.docx
+# holding only what is new since the `since` parameter in cv.qmd. Override it
+# with e.g.  make quarto SINCE=2023-07-01
+SINCE ?= 2022-01-01
+quarto:
+	quarto render cv.qmd -P since:$(SINCE)
+	quarto render cv.qmd --to docx -P since:$(SINCE) -P new_only:true --output cv-new.docx

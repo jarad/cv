@@ -1,0 +1,65 @@
+---
+pagetitle: "Jarad B. Niemi - Curriculum Vitae"
+params:
+  # Work from this date on is "new": the date of the last review or promotion
+  # dossier. Override per render: quarto render cv.qmd -P since:2023-07-01
+  since: "2022-01-01"
+  # true renders only what is new (a Word document for the review), with
+  # sections that have nothing new left out
+  new_only: false
+  # how the full CV flags new work: tag | divider | none
+  mark: tag
+execute:
+  echo: false
+  warning: false
+  message: false
+format:
+  typst:
+    papersize: us-letter
+    margin: { x: 0.9in, y: 0.8in }
+    include-in-header: cv-style/cv.typ
+    filters: [cv-style/cv.lua]
+    output-file: cv.pdf
+  docx:
+    reference-doc: cv-style/reference.docx
+    filters: [cv-style/cv.lua]
+    output-file: cv.docx
+  html:
+    css: cv-style/cv.css
+    theme: none
+    embed-resources: true
+    filters: [cv-style/cv.lua]
+    output-file: cv.html
+---
+
+```{r setup}
+source("R/sections.R")
+opt = cv_options(params)
+```
+
+# Jarad B. Niemi {.unnumbered}
+
+Department of Statistics, Iowa State University, Ames, IA 50011-1210 \
+Office: 515.294.8679 · Fax: 515.294.4040 · <niemi@iastate.edu> · <http://jarad.me>
+
+```{r intro, results='asis'}
+if (opt$new_only) {
+  cat("*Only work new since ", trimws(format(opt$since, "%e %B %Y")), ".*\n\n", sep = "")
+}
+```
+
+```{r education, results='asis'}
+emit_rows(sec_education(opt), "Education", opt)
+```
+
+```{r positions, results='asis'}
+emit_rows(sec_positions(opt), "Academic Positions", opt)
+```
+
+```{r publications, results='asis'}
+emit_list(sec_articles(opt), "Publications", opt, subtitle = "Refereed Journal Articles")
+```
+
+```{r talks, results='asis'}
+emit_list(sec_talks(opt), "Talks", opt)
+```

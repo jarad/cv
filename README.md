@@ -30,6 +30,39 @@ content of its own.
     R/proof.R                   checks the data, the .tex and the LaTeX log
     JaradNiemi-CV.Rnw           rendering
 
+## Quarto prototype
+
+`cv.qmd` is a prototype of the same CV rendered by Quarto instead of LaTeX, so
+one source gives a PDF (via Typst), a Word document and a web page. Only
+Education, Academic Positions, journal articles and Talks are ported so far;
+the rest still comes from `JaradNiemi-CV.Rnw`.
+
+    cv.qmd                 the document: parameters and one chunk per section
+    R/cv.R                 format-neutral helpers: Markdown escaping, dates,
+                           bylines, and the emitters that write entries out
+    R/sections.R           one function per section, CSV in, entries out
+    cv-style/cv.lua        how each output format draws a row, a reference
+                           list, the divider and the NEW tag
+    cv-style/cv.typ        PDF styling (also cv.css for HTML, reference.docx
+                           for Word)
+
+    make quarto                       cv.pdf cv.docx cv.html + cv-new.docx
+    make quarto SINCE=2023-07-01      use a different review date
+
+What counts as new is the `since` parameter (default 2022-01-01, the promotion
+dossier). Set it to the date of the last review. `cv-new.docx` holds only what
+is new, with empty sections dropped. In the full CV, `mark` chooses how new
+entries are flagged: `tag` (a NEW label), `divider` (one line where a sorted
+list crosses the cutoff) or `none`.
+
+A record is new if any day its date could denote is on or after `since`, so a
+bare `2022` counts as new for a 1 July 2022 cutoff: better one old entry
+flagged than a new one missed. Publications use `date_accepted`, then the
+earlier of `date_online` and `date_print`, then `year`. Positions, grants,
+service and honors use `start_date`; talks use `date`.
+
+Quarto is not installed on every machine; `pip install quarto-cli` is enough.
+
 ## Conventions
 
 The CSVs hold **plain text**, never LaTeX. Escaping, bolding my name, starring
