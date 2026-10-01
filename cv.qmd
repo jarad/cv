@@ -7,8 +7,9 @@ params:
   # true renders only what is new (a Word document for the review), with
   # sections that have nothing new left out
   new_only: false
-  # how the full CV flags new work: tag | divider | none
-  mark: tag
+  # tag puts a NEW label on each new entry of the full CV, for a reviewer;
+  # none (the default) leaves the full CV clean
+  mark: none
 execute:
   echo: false
   warning: false

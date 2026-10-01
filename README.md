@@ -42,18 +42,25 @@ the rest still comes from `JaradNiemi-CV.Rnw`.
                            bylines, and the emitters that write entries out
     R/sections.R           one function per section, CSV in, entries out
     cv-style/cv.lua        how each output format draws a row, a reference
-                           list, the divider and the NEW tag
-    cv-style/cv.typ        PDF styling (also cv.css for HTML, reference.docx
-                           for Word)
+                           list and the NEW tag
+    cv-style/cv.typ        PDF styling and running header (cv.css for HTML)
+    cv-style/make-reference-docx.py
+                           builds reference.docx, the Word styles and header
 
-    make quarto                       cv.pdf cv.docx cv.html + cv-new.docx
+    make quarto                       build everything below
     make quarto SINCE=2023-07-01      use a different review date
 
+    cv.pdf  cv.docx  cv.html          the whole CV, clean
+    cv-review.pdf  cv-review.docx     the whole CV, a NEW tag on what is new
+    cv-new.docx                       only what is new, empty sections dropped
+
 What counts as new is the `since` parameter (default 2022-01-01, the promotion
-dossier). Set it to the date of the last review. `cv-new.docx` holds only what
-is new, with empty sections dropped. In the full CV, `mark` chooses how new
-entries are flagged: `tag` (a NEW label), `divider` (one line where a sorted
-list crosses the cutoff) or `none`.
+dossier). Set it to the date of the last review. The `mark` parameter is `none`
+for the clean CV and `tag` for the review copy.
+
+PDF and Word both put the name and "Page n / total" in a header from page 2
+on, and never split an entry (an article, a talk, a row of dates and text)
+across a page; a long entry that does not fit moves whole to the next page.
 
 A record is new if any day its date could denote is on or after `since`, so a
 bare `2022` counts as new for a 1 July 2022 cutoff: better one old entry

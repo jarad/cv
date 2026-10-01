@@ -2,9 +2,9 @@ body { font-family: Georgia, "Times New Roman", serif; font-size: 16px; line-hei
 @media (prefers-color-scheme: dark) { body { color: #e6e6e6; background: #151515; } a { color: #8ab4f8; } }
 h1 { font-size: 1.9rem; border-bottom: 2px solid currentColor; padding-bottom: .15em; }
 h2 { font-size: 1.05rem; font-variant: small-caps; letter-spacing: .02em; border-bottom: 1px solid #888; margin-top: 2rem; }
-.cv-list p { padding-left: 1.4em; text-indent: -1.4em; margin: 0 0 .6em; }
+.cv-list p { padding-left: 1.4em; text-indent: -1.4em; margin: 0 0 .8em; }
+.cv-list p, table tr { break-inside: avoid; }
 .cv-rows table, table { border: none; width: 100%; }
 table td, table th { border: none !important; padding: .15em .6em .15em 0; vertical-align: top; }
 table td:first-child { width: 8.5rem; white-space: nowrap; }
-.cv-divider { text-align: center; font-style: italic; font-size: .85em; margin: .8em 0; color: #666; }
 .cv-new { font-size: .65em; font-weight: 700; letter-spacing: .06em; color: #9a3412; vertical-align: .15em; }

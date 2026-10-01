@@ -128,19 +128,13 @@ decorate_authors = function(s, ppl) {
 cv_options = function(params) {
   list(since    = as.Date(params$since),
        new_only = isTRUE(as.logical(params$new_only)),
-       # how "new" is shown in the full CV: "tag" (a NEW label on each entry),
-       # "divider" (one line where a sorted list crosses the cutoff) or "none"
-       mark     = params$mark %||% "tag")
+       # "tag" puts a NEW label on each new entry of the full CV; "none" (the
+       # default) leaves the full CV clean, with everything and no flags
+       mark     = params$mark %||% "none")
 }
 `%||%` = function(a, b) if (is.null(a)) b else a
 
 NEW_TAG = "[NEW]{.cv-new} "
-
-cv_divider = function(opt) {
-  cat("\n::: {.cv-divider}\n",
-      "Entries above are new since ", format(opt$since, "%e %B %Y") |> trimws(),
-      ".\n:::\n\n", sep = "")
-}
 
 cv_heading = function(title) cat("\n\n## ", title, "\n\n", sep = "")
 
@@ -148,23 +142,16 @@ cv_heading = function(title) cat("\n\n## ", title, "\n\n", sep = "")
 # report whether anything is left, so empty sections can disappear.
 apply_view = function(e, opt) if (opt$new_only) e[e$is_new, , drop = FALSE] else e
 
-# A flat list of references: authors, titles, talks. Hanging indent comes
-# from the format-specific styling of `.cv-list`.
+# A flat list of references: authors, titles, talks. Hanging indent, spacing
+# and keeping each entry on one page come from the format-specific styling of
+# `.cv-list`.
 emit_list = function(e, title, opt, subtitle = NULL) {
   e = apply_view(e, opt)
   if (!nrow(e)) return(invisible(FALSE))
   cv_heading(title)
   if (!is.null(subtitle)) cat("### ", subtitle, "\n\n", sep = "")
-  # new entries first, then one divider, then the rest: each group keeps the
-  # order it arrived in
-  e = e[order(!e$is_new), , drop = FALSE]
   cat("::: {.cv-list custom-style=\"CV Entry\"}\n\n")
-  crossed = FALSE
   for (i in seq_len(nrow(e))) {
-    if (opt$mark == "divider" && !opt$new_only && !crossed && i > 1 && !e$is_new[i] && e$is_new[i - 1]) {
-      cat(":::\n"); cv_divider(opt); cat("::: {.cv-list custom-style=\"CV Entry\"}\n\n")
-      crossed = TRUE
-    }
     tag = if (opt$mark == "tag" && !opt$new_only && e$is_new[i]) NEW_TAG else ""
     cat(tag, e$body[i], "\n\n", sep = "")
   }
@@ -182,13 +169,15 @@ emit_rows = function(e, title, opt) {
   groups = if ("group" %in% names(e)) unique(e$group) else NA
   for (g in groups) {
     d = if (is.na(g)) e else e[e$group == g, , drop = FALSE]
-    if (!is.na(g)) cat("**", g, "**\n\n", sep = "")
+    # the group's label and its rows travel together
+    cat("::: {.cv-group}\n\n")
+    if (!is.na(g)) cat("::: {custom-style=\"CV Group\"}\n**", g, "**\n:::\n\n", sep = "")
     cat("::: {.cv-rows}\n\n")
     for (i in seq_len(nrow(d))) {
-      tag = if (opt$mark != "none" && !opt$new_only && d$is_new[i]) NEW_TAG else ""
+      tag = if (opt$mark == "tag" && !opt$new_only && d$is_new[i]) NEW_TAG else ""
       cat(d$label[i], "\n:   ", tag, gsub("\n", "\n    ", d$body[i]), "\n\n", sep = "")
     }
-    cat(":::\n\n")
+    cat(":::\n\n:::\n\n")
   }
   invisible(TRUE)
 }

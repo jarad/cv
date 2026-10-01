@@ -34,10 +34,17 @@ clean:
 	rm -rf cache $(TEX) JaradNiemi-CV.aux JaradNiemi-CV.log \
 	       JaradNiemi-CV.out JaradNiemi-CV-concordance.tex
 
-# Prototype: the Quarto build. Writes cv.pdf, cv.docx, cv.html, and cv-new.docx
-# holding only what is new since the `since` parameter in cv.qmd. Override it
-# with e.g.  make quarto SINCE=2023-07-01
+# Prototype: the Quarto build.
+#   cv.pdf cv.docx cv.html   the whole CV, clean
+#   cv-review.pdf/.docx      the whole CV with a NEW tag on what is new
+#   cv-new.docx              only what is new
+# "New" is everything on or after SINCE, the date of the last review:
+#   make quarto SINCE=2023-07-01
+# Quarto writes each render to cv.<ext> and then renames it for --output, so
+# the variants go first and the plain build last.
 SINCE ?= 2022-01-01
 quarto:
-	quarto render cv.qmd -P since:$(SINCE)
 	quarto render cv.qmd --to docx -P since:$(SINCE) -P new_only:true --output cv-new.docx
+	quarto render cv.qmd --to typst -P since:$(SINCE) -P mark:tag --output cv-review.pdf
+	quarto render cv.qmd --to docx -P since:$(SINCE) -P mark:tag --output cv-review.docx
+	quarto render cv.qmd -P since:$(SINCE)

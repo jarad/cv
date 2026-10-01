@@ -4,8 +4,8 @@
 -- the one place that knows how each format draws it.
 --
 --   .cv-rows     a definition list -> a borderless two-column table
---   .cv-list     references with a hanging indent
---   .cv-divider  the "entries above are new since ..." line
+--   .cv-list     references with a hanging indent, each kept on one page
+--   .cv-group    a label and its rows, kept together on one page
 --   .cv-new      the NEW tag
 
 local is_typst = FORMAT:match('typst')
@@ -33,24 +33,25 @@ function Div(el)
     return out
   end
 
+  -- an entry must never be split across pages: each goes in an unbreakable
+  -- block. (Word does this with "keep lines together" on the CV Entry style.)
   if is_typst and el.classes:includes('cv-list') then
     local out = pandoc.List({ pandoc.RawBlock('typst',
-      '#[#set par(hanging-indent: 1.4em, spacing: 0.75em)') })
-    out:extend(el.content)
+      '#[#set par(hanging-indent: 1.4em)\n#set block(spacing: 1em)') })
+    for _, b in ipairs(el.content) do
+      out:insert(pandoc.RawBlock('typst', '#block(breakable: false)['))
+      out:insert(b)
+      out:insert(pandoc.RawBlock('typst', ']'))
+    end
     out:insert(pandoc.RawBlock('typst', ']'))
     return out
   end
 
-  if el.classes:includes('cv-divider') then
-    if is_typst then
-      local out = pandoc.List({ pandoc.RawBlock('typst',
-        '#[#set align(center)\n#set text(style: "italic", size: 9pt)') })
-      out:extend(el.content)
-      out:insert(pandoc.RawBlock('typst', ']'))
-      return out
-    end
-    el.attributes['custom-style'] = 'CV Divider'
-    return el
+  if is_typst and el.classes:includes('cv-group') then
+    local out = pandoc.List({ pandoc.RawBlock('typst', '#block(breakable: false)[') })
+    out:extend(el.content)
+    out:insert(pandoc.RawBlock('typst', ']'))
+    return out
   end
 end
 
