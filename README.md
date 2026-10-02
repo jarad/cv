@@ -119,6 +119,19 @@ same person may be published under several spellings, `aliases.csv` records
 them; matching respects author boundaries, since "J. Niemi" is a substring of
 "Gerald J. Niemi", who is a different person.
 
+`people.csv` also records where each student can be found now: `linkedin`,
+`github`, `website` (a personal page, else an employer or university
+profile), `current_title` and `current_affiliation`, with `profiles_checked`
+the date they were last confirmed. None of these are printed in the CV. The
+`student-profiles` agent (`.claude/agents/student-profiles.md`, on Sonnet)
+finds them: it only searches, and reports each match with its evidence and a
+confidence. A value is recorded only when a source ties the profile to the
+program listed in `studentcommittees.csv` (school, field, years, thesis or
+advisor), never on a name alone. Re-check once a year by asking Claude Code to
+run the agent over the students whose `profiles_checked` is over a year old,
+passing the recorded values so it confirms them and reports a changed
+position.
+
 The `notes` column is shown to the reader; `internal_notes` is not.
 
 ## Building
