@@ -28,6 +28,8 @@ content of its own.
       studentcommittees.csv     committees served on, keyed by person_id
       undergraduate_research.csv
     R/proof.R                   checks the data, the .tex and the LaTeX log
+    tools/linkedin-connections.py
+                                updates students from a LinkedIn connections export
     JaradNiemi-CV.Rnw           rendering
 
 ## Quarto prototype
@@ -127,10 +129,26 @@ the date they were last confirmed. None of these are printed in the CV. The
 finds them: it only searches, and reports each match with its evidence and a
 confidence. A value is recorded only when a source ties the profile to the
 program listed in `studentcommittees.csv` (school, field, years, thesis or
-advisor), never on a name alone. Re-check once a year by asking Claude Code to
-run the agent over the students whose `profiles_checked` is over a year old,
-passing the recorded values so it confirms them and reports a changed
-position.
+advisor), never on a name alone.
+
+Once a year, re-check in two steps:
+
+1. Request your LinkedIn data (Settings & Privacy > Data privacy > Get a copy
+   of your data > Connections) and run
+
+       python3 tools/linkedin-connections.py Connections.csv
+
+   It matches connections to students by the profile already recorded, then
+   by name or alias, and shows the new profile, title and employer for each.
+   Read the list, since a name match can still be a namesake, then rerun with
+   `--write`. A name shared by two students or two connections, or a profile
+   that differs from the one recorded, is listed and left alone.
+   `Connections.csv` lists every connection, so it is git-ignored; delete it
+   when done.
+2. Ask Claude Code to run the `student-profiles` agent over the students whose
+   `profiles_checked` is still over a year old (those you are not connected
+   to), passing the recorded values so it confirms them and reports a changed
+   position.
 
 The `notes` column is shown to the reader; `internal_notes` is not.
 
