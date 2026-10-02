@@ -66,6 +66,11 @@ sites, and never collect personal contact details (personal email, phone,
 home address), age, family or photos. Write plain text: no LaTeX, no Markdown
 in values.
 
+Your web search budget is limited (it ran out on batches of 15). Spend at most
+about 8 searches on one student and move on; give every student at least the
+LinkedIn search. Batches of about 8 students work well. A student you did not
+get to is `none` with "not searched" in `evidence`, so they can be retried.
+
 On a re-check, start from the recorded URLs: confirm each still belongs to
 the person and report a changed position. Fix a URL that has moved; never
 drop a recorded value just because you could not re-confirm it, but say so in
