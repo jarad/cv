@@ -54,3 +54,6 @@ cache/
 # LinkedIn data export: every connection, not only students; never commit it
 Connections.csv
 *LinkedInDataExport*
+
+# Python bytecode
+__pycache__/
