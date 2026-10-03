@@ -25,6 +25,11 @@ the export (an empty Company or Position leaves the recorded value), and
 `profiles_checked` is set to today, or to --date. Nothing is written without
 --write; read the changes first, since a name-only match among your
 connections can still be the wrong person.
+
+Last, every student still without a profile is listed with the unmatched
+connections whose name nearly fits (a nickname, reversed name order, a changed
+or misspelled last name). Confirming one means adding that spelling to
+data/aliases.csv; the next run then matches it by name.
 """
 import argparse
 import csv
@@ -34,6 +39,7 @@ import re
 import sys
 import unicodedata
 from collections import defaultdict
+from difflib import SequenceMatcher
 
 CREDENTIALS = {"phd", "ph d", "ms", "msc", "ma", "mba", "mph", "md", "pe", "cpa", "pmp", "pstat", "jr", "sr"}
 
@@ -51,6 +57,38 @@ def short(name):
     """First and last word only: 'jarad b niemi' -> 'jarad niemi'."""
     w = name.split()
     return f"{w[0]} {w[-1]}" if len(w) > 1 else name
+
+
+def near_miss(student_names, conn_name):
+    """How closely a connection's name fits a student who did not match, and why.
+
+    Returns (score, reason), or (0, "") when it is not worth showing. The names
+    are already normalized; a student may have several (name and aliases).
+    """
+    cw = conn_name.split()
+    if len(cw) < 2:
+        return 0, ""
+    best = (0, "")
+    for s in student_names:
+        sw = s.split()
+        if len(sw) < 2:
+            continue
+        first = SequenceMatcher(None, sw[0], cw[0]).ratio()
+        last = SequenceMatcher(None, sw[-1], cw[-1]).ratio()
+        if sw[0] == cw[-1] and sw[-1] == cw[0]:
+            hit = (0.95, "name order reversed")
+        elif sw[-1] == cw[-1] and (sw[0][0] == cw[0][0] or first >= 0.5):
+            hit = (0.6 + 0.4 * first, "same last name")
+        elif sw[0] == cw[0] and sw[-1] in cw[1:]:
+            hit = (0.8, "last name within a longer one")
+        elif sw[0] == cw[0] and last >= 0.75:
+            hit = (0.5 + 0.4 * last, "similar last name")
+        elif SequenceMatcher(None, s, conn_name).ratio() >= 0.85:
+            hit = (0.5, "similar spelling")
+        else:
+            continue
+        best = max(best, hit)
+    return best
 
 
 def profile_url(u):
@@ -155,6 +193,32 @@ def main():
             print(f"\n{title}")
             for s in dict.fromkeys(items):
                 print("    " + s)
+
+    # Students still without a profile, and connections whose name nearly fits:
+    # a nickname, a reversed name order, a changed or misspelled last name.
+    used = {m[2] for m in matched.values() if m}
+    spare = [c for c in conns if profile_url(c.get("URL", "")) not in used]
+    missing, none_close = [], []
+    for pid in sorted(students):
+        p = by_id[pid]
+        if p["linkedin"]:
+            continue
+        names = {norm(n) for n in [p["name"]] + aliases[pid]}
+        cands = sorted(((score, why, c) for c in spare
+                        for score, why in [near_miss(names, norm(f"{c['First Name']} {c['Last Name']}"))]
+                        if score), key=lambda x: -x[0])[:3]
+        (missing if cands else none_close).append((p, cands))
+    if missing:
+        print("\nStill without a LinkedIn profile, with connections whose name nearly fits.\n"
+              "To accept one, add its spelling to data/aliases.csv (person_id,alias) and rerun:")
+        for p, cands in missing:
+            print(f"    {p['person_id']} ({p['name']})")
+            for _, why, c in cands:
+                print(f"        {c['First Name']} {c['Last Name']}  [{why}]  "
+                      f"{c.get('Company', '') or '-'}, {c.get('Position', '') or '-'}  {profile_url(c.get('URL', ''))}")
+    if none_close:
+        print(f"\nStill without a LinkedIn profile, no connection close by name ({len(none_close)}), "
+              "probably not connected:\n    " + ", ".join(p["name"] for p, _ in none_close))
 
     if a.write:
         out = io.StringIO()
