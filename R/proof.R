@@ -26,7 +26,7 @@ cat("\ndata\n")
 for (f in list.files("data", pattern = "\\.csv$", full.names = TRUE)) {
   d <- suppressWarnings(read_csv(f, show_col_types = FALSE, progress = FALSE))
   bad <- character(0)
-  for (col in setdiff(names(d), c("url", "notes_url", "doi", "pre-print", "website",
+  for (col in setdiff(names(d), c("url", "notes_url", "doi", "pre-print", "website", "github",
                                   "linkedin", "orcid", "internal_notes"))) {
     v <- as.character(d[[col]])
     k <- which(!is.na(v) & str_detect(v, "\\\\|\\{|\\}|\\$\\^"))
